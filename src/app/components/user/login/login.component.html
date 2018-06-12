@@ -1,0 +1,101 @@
+<div id="container">
+<!-- nav bar -->
+<nav class="navbar navbar-dark bg-dark navbar-expand flex-column flex-md-row fixed-top">
+  <a class="navbar-brand" href="">Logo</a>
+  <div class="pg-scrollable">
+    <ul class="navbar-nav flex-row pg">
+      <li class="nav-item">
+        <a class="nav-link" href="">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">About&nbsp;us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">My&nbsp;Profile</a>
+        <ul>
+          <li class="dropdown-menu">
+            <a class="dropdown-item" href="">Account&nbsp;settings</a>
+            <a class="dropdown-item" href="">Log&nbsp;out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item">
+      <a class="nav-link" href="">Are&nbsp;you&nbsp;an&nbsp;attorney?</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=""><i class="fab fa-facebook"></i> FaceBook</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=""><i class="fab fa-twitter"></i> Twitter</a>
+    </li>
+  </ul>
+</nav>
+<!-- content -->
+<div id="body">
+<div class="container pg-border pg-margin-top">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="alert alert-primary" align="center">Login</h2>
+      <div *ngIf="errorFlag" class ="alert alert-danger">Invalid username or password</div>
+      <form (ngSubmit)="login()" #f="ngForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username or Email" class="form-control" required ngModel #username="ngModel">
+          <span class ="alert alert-warning pg-small-alert" *ngIf ="username.invalid && username.touched">Please enter username or email</span>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password" class="form-control" required ngModel #password="ngModel">
+          <span class ="alert alert-warning pg-small-alert" *ngIf ="password.invalid && password.touched">Please enter password</span>
+        </div>
+        <a href="">Forgot Password?</a><br/>
+        <br>
+        <div class="text-center">
+          <button class="btn btn-primary" [disabled]="f.invalid" type ="submit">Sign in</button>
+        </div>
+      <br>
+        <div class="text-center">
+          Not a member? <a routerLink="/register">Register Now!</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 pg-vertical-line d-none d-md-flex">  
+      <div>
+        <div class="h3 text-primary text-center">
+          (<i>Logo</i>) helps you make the right choice when looking for an attorney
+        </div>
+        <ul class="list-unstyled" style="margin:40px 0;">
+          <li>Avoid surprises by seeing what former or current clients are saying about their attorneys and how they rate them.</li><br/>
+          <li>The outcome of your case depends heavily on whether or not you picked the right attorney to represent you.</li><br/>
+          <li>Help fellow members of (<i>Logo.com</i>) by providing your own feedback and rating about your legal experience with an attorney.</li><br/>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- footer -->
+<footer class="pg-footer">
+<div class="bg-dark">
+  <div class="container pg-footer-padding">
+    <p class="pg-text-white h6">
+      <a class="pg-text-white" href=""><b>Contact Us</b></a> |
+      <a class="pg-text-white" href=""><b>FAQ</b></a>
+    </p>
+    <p class="pg-text-white">&copy; Copyright 2018, All Rights Reserved. |
+      <a href="">Terms of Use</a> |
+      <a href="">Privacy Policy</a>
+    </p>
+  </div>
+</div>
+</footer>
+</div>
