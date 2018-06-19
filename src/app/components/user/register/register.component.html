@@ -43,20 +43,20 @@
 <div id="body">
   <div class="container pg-border pg-margin-top">
     <h2 class="alert alert-success" align="center">Register</h2>
-    <form>
+    <form (ngSubmit)="register()" #f="ngForm">
       <h4 align="left">Personal information</h4>
       <div class="row form-group">
         <div class="col-sm-1"></div>
         <label class="col-sm-2">First Name:</label>
         <div class="col-sm-9">
-          <input type="text" name="firstName" class="pg-form-control">
+          <input type="text" name="firstName" class="pg-form-control" required ngModel #firstName="ngModel">
         </div>
       </div>
       <div class="row form-group">
         <div class="col-sm-1"></div>
         <label class="col-sm-2">Last Name:</label>
         <div class="col-sm-9">
-          <input type="text" name="lastName" class="pg-form-control">
+          <input type="text" name="lastName" class="pg-form-control" required ngModel #lastName="ngModel">
         </div>
       </div>
       <div class="row form-group">
@@ -77,32 +77,57 @@
               </div>
           </div>
       </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="emailError" class="alert alert-danger pg-small-alert">Emails don't match</span>
+          </div>
+      </div>
       <div class="row form-group">
         <div class="col-sm-1"></div>
         <label class="col-sm-2">Email:</label>
         <div class="col-sm-9">
-          <input type="email" name="email" placeholder="example@email.com" class="pg-form-control">
+          <input type="email" name="email" placeholder="example@email.com" class="pg-form-control" required ngModel #email="ngModel">
         </div>
       </div>
       <div class="row form-group">
         <div class="col-sm-1"></div>
         <label class="col-sm-2">Confirm Email:</label>
         <div class="col-sm-9">
-          <input type="email" name="email" placeholder="example@email.com" class="pg-form-control">
+          <input type="email" name="confirmEmail" placeholder="example@email.com" class="pg-form-control" required ngModel #confirmEmail="ngModel">
         </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="passwordError" class="alert alert-danger pg-small-alert">Passwords don't match</span>
+          </div>
       </div>
       <div class="row form-group">
         <div class="col-sm-1"></div>
         <label class="col-sm-2">Password:</label>
         <div class="col-sm-9">
-          <input type="password" name="password" placeholder="Password" class="pg-form-control">
+          <input type="password" name="password" placeholder="Password" class="pg-form-control" required ngModel #password="ngModel">
         </div>
       </div>
       <div class="row form-group">
         <div class="col-sm-1"></div>
         <label class="col-sm-2">Confirm Password:</label>
         <div class="col-sm-9">
-          <input type="password" name="password" placeholder="Confirm Password" class="pg-form-control">
+          <input type="password" name="confirmPassword" placeholder="Confirm Password" class="pg-form-control" required ngModel #confirmPassword="ngModel">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="usernameError" class="alert alert-danger pg-small-alert">Username already taken, please try another one</span>
+          </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-2">Username:</label>
+        <div class="col-sm-9">
+          <input type="text" name="username" placeholder="Create Username" class="pg-form-control" required ngModel #username="ngModel">
         </div>
       </div>
     <br>
@@ -220,45 +245,21 @@
               <option value="">Real Estate Law</option>
               <option value="">Tax Law</option>
             </select>
-          <div class="input-group-append">
-            <button id="addArea" class="pg-add-btn btn-primary" type="button" (click)="addArea()">+ Add</button>
-          </div>
           </div>
         </div>
         <!-- template --> 
-        <div style="display:none" data-type="template" class="row form-group">
-          <div class="col-sm-1"></div>
-          <label class="col-sm-2"></label>
-          <div class="col-sm-9 input-group mb-3">
-            <select class="form-group input-group form-control">
-              <option value="">--Select area of expertise--</option>
-              <option value="">Admiralty (Maritime) Law</option>
-              <option value="">Bankruptcy Law</option>
-              <option value="">Business (Corporate) Law</option>
-              <option value="">Civil Rights Law</option>
-              <option value="">Criminal Law</option>
-              <option value="">Entertainment Law</option>
-              <option value="">Environmental Law</option>
-              <option value="">Family Law</option>
-              <option value="">Health Law</option>
-              <option value="">Immigration Law</option>
-              <option value="">Intellectual Property Law</option>
-              <option value="">International Law</option>
-              <option value="">Labor (Employment) Law</option>
-              <option value="">Military Law</option>
-              <option value="">Personal Injury Law</option>
-              <option value="">Real Estate Law</option>
-              <option value="">Tax Law</option>
-            </select>
-          <div class="input-group-append">
-            <button class="pg-add-btn btn-danger delete-btn" type="button" (click)="removeArea()">- Remove</button>
-          </div>
+        <div #parent></div>
+        <!-- end template --> 
+        <div class="row">
+          <div class="col-sm-3"></div>
+            <div class="col-sm-9 input-group mb-3">
+                <button id="addArea" class="pg-add-btn btn-primary" type="button" (click)="addArea()">+ Add</button>
           </div>
         </div>
-        <!-- end template --> 
-    </div>
+      </div>
+      <br>
       <div class="text-center">
-        <button class="btn btn-success">Create Account</button>
+        <button class="btn btn-success" type="submit" [disabled]="f.invalid">Create Account</button>
       </div>
       <br>
       <div class="text-center">

@@ -8,7 +8,7 @@ export class UserService {
 constructor() { }
 
 users = [
-	{_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com"},
+	{_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com", office:"Hello", address:"123 fake st", city:"boston", state:"MA", phone:"12345", area1:"hello", area2:"bye"},
 	{_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
 	{_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@hotmail.com"},
 	{_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
@@ -16,16 +16,9 @@ users = [
 
  // adds the user parameter instance to the local users array
   createUser(user) {
-    user._id = Math.floor(Math.random()*Math.floor(10000)).toString();
+    user._id = Math.floor(Math.random() * 10000).toString();
     this.users.push(user);
     return user;
-  }
-// returns the user in local users array whose _id matches the userId parameter
-  findUserById(userId) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        return this.users[x]; }
-    }
   }
 // returns the user in local users array whose username matches the parameter username
   findUserByUsername(username) { 
@@ -34,6 +27,13 @@ users = [
         return this.users[x]; }
     }
    }
+// returns the user in local users array whose _id matches the userId parameter
+  findUserById(userId) {
+    for (let x = 0; x < this.users.length; x++) {
+      if (this.users[x]._id === userId) {
+        return this.users[x]; }
+    }
+  }
 // returns the user whose username and password match the username and password parameters
   findUserByCredentials(username, password) { 
     for (let x = 0; x < this.users.length; x++) {

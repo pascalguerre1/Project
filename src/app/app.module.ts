@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 
 import { Routing } from './app.routing';
 import { UserService } from './services/user.service.client';
+import { TemplateComponent } from './components/user/register/template/template.component';
 
 
 
@@ -18,6 +19,7 @@ import { UserService } from './services/user.service.client';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    TemplateComponent,
     ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { UserService } from './services/user.service.client';
     FormsModule
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, TemplateComponent]
 })
 export class AppModule { }

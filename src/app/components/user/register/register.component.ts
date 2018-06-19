@@ -1,42 +1,105 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import{ NgForm } from '@angular/forms';
 import { UserService } from '../../../services/user.service.client';
 import { Router } from '@angular/router';
+import { TemplateComponent } from './template/template.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
-})
+  styleUrls: ['./register.component.css'],
+ })
 export class RegisterComponent implements OnInit {
 
-	area: boolean;
+  @ViewChild('parent', { read: ViewContainerRef })    container: ViewContainerRef;
+  @ViewChild('f') registerForm: NgForm;
 
-  constructor() { }
+  email: string;
+  confirmEmail: string;
+  password: string;
+  confirmPassword: string;
+  username: string;
+  emailError: boolean;
+  passwordError: boolean;
+  usernameError: boolean;
 
-  ngOnInit() {
-  	// this.area = false;
-  }
+
+
+  constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router) { }
+
+  ngOnInit() {}
 
   addArea(){
-  	// this.area = true;
-  	var currArea = document.querySelector('#addToArea'); // select the div to include new field
-	var tempNode = <HTMLElement>document.querySelector("div[data-type='template']").cloneNode(true); //clone the template field
-	tempNode.style.display = ""; // makes the new field visible
-	currArea.appendChild(tempNode); // append the new field to the div
-	console.log(tempNode)
+    var comp = this._cfr.resolveComponentFactory(TemplateComponent);// check and resolve the component
+    var templateComponent = this.container.createComponent(comp);// Create component inside container
+    templateComponent.instance._ref = templateComponent
   }
 
-  removeArea(){
-  	// this.area = false;
-  	console.log('hello');
-  	// var areaList = document.querySelector('#addToArea')
-  	// 	if(e.target.classList.contains('delete-btn')){
-			// var area = e.target.parentNode.parentNode.parentNode;
-			// areaList.removeChild(area);
-  	// 	}
+  register(){
+
+    this.email = this.registerForm.value.email;
+    this.confirmEmail = this.registerForm.value.confirmEmail;
+    this.password = this.registerForm.value.password;
+    this.confirmPassword = this.registerForm.value.confirmPassword;
+    this.username = this.registerForm.value.username;
+
+    if (this.email !== this.confirmEmail){
+      this.emailError = true;
+    } else {
+        if (this.password !== this.confirmPassword){
+        this.passwordError = true;
+        this.emailError = false;
+        } else {
+            this.passwordError = false;
+            const user = this.userService.findUserByUsername(this.username);
+            if(user!=undefined){
+              this.usernameError =true;
+            } else {
+              this.emailError = false;
+              this.passwordError = false;
+              this.usernameError =false;
+              const newUser = {
+                _id:"",
+                username: this.username,
+                password: this.password,
+                firstName: "",
+                lastName:"",
+                email:"",
+              }
+            }
+        }
+
+      }
+
+
+
+    // if (this.password !== this.confirmEmail) {
+    //   this.passwordError = true;
+    //   this.emailError = false;
+    // } else {
+    //   this.passwordError = false;
+    //   const user: User = this.userService.findUserByUsername(this.username)
+    //   if(user){
+    //     this.usernameError = true;
+    //   } else {
+    //     this.passwordError = false;
+    //     this.usernameError = false;
+    //     const newUser: User = {
+    //     _id: "",
+    //   username: this.username,
+    //   password: this.password,
+    //   firstName: "",
+    //   lastName: "",
+    //   email: "",
+    //     };
+    //     this.userService.createUser(newUser);
+    //     var id: string = this.userService.findUserByUsername(this.username)._id
+    //     this.router.navigate(['user', id]);
+    //   }
+    // }
+
   }
 
-  register(){}
+
 
 }

@@ -40,7 +40,7 @@
     padding-bottom: 40px; 
   padding-top:25px;
 }
-.pg-small-alert{padding: 1px 1px}
+.pg-small-alert{padding: 4px 4px}
 label {
     font-weight: bold;
 }
@@ -103,7 +103,7 @@ ul.pg li:active > ul > li {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border: 1px solid transparent;
+  border: 1px solid;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
