@@ -66,12 +66,12 @@
               <div class="row">
                   <div class="col-sm-4">
                       <p class="radio-inline">
-                          <input type="radio" id="femaleRadio" name="gender" value="Female"> Female
+                          <input type="radio" id="femaleRadio" name="gender" [(ngModel)]="radioData" value="Female"> Female
                       </p>
                   </div>
                   <div class="col-sm-4">
                       <p class="radio-inline">
-                          <input type="radio" id="maleRadio" name="gender" value="Male"> Male
+                          <input type="radio" id="maleRadio" name="gender" [(ngModel)]="radioData" value="Male"> Male
                       </p>
                   </div>
               </div>
@@ -131,6 +131,9 @@
         </div>
       </div>
     <br>
+
+    <!-- Law office section-->
+    <div style="display: none">
       <h4 align="left">Law office information</h4>
       <div class="row form-group">
         <div class="col-sm-1"></div>
@@ -247,9 +250,7 @@
             </select>
           </div>
         </div>
-        <!-- template --> 
-        <div #parent></div>
-        <!-- end template --> 
+        <div #parent></div><!-- template --> 
         <div class="row">
           <div class="col-sm-3"></div>
             <div class="col-sm-9 input-group mb-3">
@@ -257,6 +258,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <!-- End law office section-->
+
       <br>
       <div class="text-center">
         <button class="btn btn-success" type="submit" [disabled]="f.invalid">Create Account</button>

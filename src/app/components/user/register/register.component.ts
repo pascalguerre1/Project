@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
   @ViewChild('parent', { read: ViewContainerRef })    container: ViewContainerRef;
   @ViewChild('f') registerForm: NgForm;
 
+  firstName: string;
+  lastName: string;
+  radioData: string = '';
   email: string;
   confirmEmail: string;
   password: string;
@@ -23,11 +26,9 @@ export class RegisterComponent implements OnInit {
   passwordError: boolean;
   usernameError: boolean;
 
-
-
   constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addArea(){
     var comp = this._cfr.resolveComponentFactory(TemplateComponent);// check and resolve the component
@@ -36,7 +37,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-
+    this.firstName = this.registerForm.value.firstName;
+    this.lastName = this.registerForm.value.lastName;
     this.email = this.registerForm.value.email;
     this.confirmEmail = this.registerForm.value.confirmEmail;
     this.password = this.registerForm.value.password;
@@ -45,61 +47,40 @@ export class RegisterComponent implements OnInit {
 
     if (this.email !== this.confirmEmail){
       this.emailError = true;
+      this.passwordError = false;
+      this.usernameError =false;
     } else {
         if (this.password !== this.confirmPassword){
-        this.passwordError = true;
-        this.emailError = false;
+          this.passwordError = true;
+          this.emailError = false;
+          this.usernameError =false;
         } else {
             this.passwordError = false;
             const user = this.userService.findUserByUsername(this.username);
             if(user!=undefined){
               this.usernameError =true;
-            } else {
               this.emailError = false;
               this.passwordError = false;
-              this.usernameError =false;
-              const newUser = {
-                _id:"",
-                username: this.username,
-                password: this.password,
-                firstName: "",
-                lastName:"",
-                email:"",
+            } else {
+                this.emailError = false;
+                this.passwordError = false;
+                this.usernameError =false;
+                const newUser = {
+                  _id:"",
+                  username: this.username,
+                  password: this.password,
+                  firstName: this.firstName,
+                  lastName: this.lastName,
+                  email: this.email,
+                  gender: this.radioData,
+                };
+                this.userService.createUser(newUser);
+                console.log(this.userService.createUser(newUser))
+                var id: string = this.userService.findUserByUsername(this.username)._id
+                this.router.navigate(['user', id]);
               }
-            }
-        }
-
+          }
       }
-
-
-
-    // if (this.password !== this.confirmEmail) {
-    //   this.passwordError = true;
-    //   this.emailError = false;
-    // } else {
-    //   this.passwordError = false;
-    //   const user: User = this.userService.findUserByUsername(this.username)
-    //   if(user){
-    //     this.usernameError = true;
-    //   } else {
-    //     this.passwordError = false;
-    //     this.usernameError = false;
-    //     const newUser: User = {
-    //     _id: "",
-    //   username: this.username,
-    //   password: this.password,
-    //   firstName: "",
-    //   lastName: "",
-    //   email: "",
-    //     };
-    //     this.userService.createUser(newUser);
-    //     var id: string = this.userService.findUserByUsername(this.username)._id
-    //     this.router.navigate(['user', id]);
-    //   }
-    // }
-
   }
-
-
 
 }

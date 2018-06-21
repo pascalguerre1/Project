@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { Routing } from './app.routing';
 import { UserService } from './services/user.service.client';
 import { TemplateComponent } from './components/user/register/template/template.component';
+import { RecoveryComponent } from './components/user/recovery/recovery.component';
 
 
 
@@ -20,6 +21,7 @@ import { TemplateComponent } from './components/user/register/template/template.
     RegisterComponent,
     ProfileComponent,
     TemplateComponent,
+    RecoveryComponent,
     ],
   imports: [
     BrowserModule,
