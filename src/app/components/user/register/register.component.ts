@@ -3,6 +3,7 @@ import{ NgForm } from '@angular/forms';
 import { UserService } from '../../../services/user.service.client';
 import { Router } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
+import { User } from '../../../models/user.model.client'
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('parent', { read: ViewContainerRef })    container: ViewContainerRef;
   @ViewChild('f') registerForm: NgForm;
-
+  
   firstName: string;
   lastName: string;
   radioData: string = '';
@@ -22,9 +23,18 @@ export class RegisterComponent implements OnInit {
   password: string;
   confirmPassword: string;
   username: string;
+  // office: string;
+  // address: string;
+  // city: string;
+  // state: string;
+  // phone: string;
+  // area1: string;
+  // area2: string;
+  // area3: string;
   emailError: boolean;
   passwordError: boolean;
   usernameError: boolean;
+
 
   constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router) { }
 
@@ -44,7 +54,14 @@ export class RegisterComponent implements OnInit {
     this.password = this.registerForm.value.password;
     this.confirmPassword = this.registerForm.value.confirmPassword;
     this.username = this.registerForm.value.username;
-
+    // this.office = this.registerForm.value.office;
+    // this.address = this.registerForm.value.address;
+    // this.city = this.registerForm.value.city;
+    // this.state = this.registerForm.value.state;
+    // this.phone = this.registerForm.value.phone;
+    // this.area1 = this.registerForm.value.area1;
+    // this.area2 = this.registerForm.value.area2;
+    // this.area3 = this.registerForm.value.area3;
     if (this.email !== this.confirmEmail){
       this.emailError = true;
       this.passwordError = false;

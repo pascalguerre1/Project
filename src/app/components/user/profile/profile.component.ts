@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service.client';
 import { ActivatedRoute} from '@angular/router';
 import { NgModule } from '@angular/core';
-import { User } from '../../models/user.model.client'
+import { User } from '../../../models/user.model.client'
 
 @Component({
   selector: 'app-profile',

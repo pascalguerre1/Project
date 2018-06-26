@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import{ NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { UserService } from '../../../services/user.service.client';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../services/shared.service.client';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
 	password: string;
 	errorFlag: boolean;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
   }
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   	var user = this.userService.findUserByCredentials(this.username, this.password);
   	if( user != undefined){
   		this.errorFlag = false;
+      this.sharedService.user = user;
   		this.router.navigate(['/user/'+ user._id]);
   	} else {
   		this.errorFlag = true;

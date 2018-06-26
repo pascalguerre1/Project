@@ -1,0 +1,39 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand flex-column flex-md-row fixed-top">
+  <a class="navbar-brand" href="/">Logo</a>
+  <div class="pg-scrollable">
+    <ul class="navbar-nav flex-row pg">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">About&nbsp;us</a>
+      </li>
+      <li *ngIf="!sharedService.user" class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li *ngIf="!sharedService.user" class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="sharedService.user" class="nav-item">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/">My&nbsp;Profile</a>
+        <ul>
+          <li class="dropdown-menu">
+            <a class="dropdown-item" href="/">Account&nbsp;settings</a>
+            <a class="dropdown-item" href="/">Log&nbsp;out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li *ngIf="!sharedService.user" class="nav-item">
+      <a class="nav-link" routerLink="/register">Are&nbsp;you&nbsp;an&nbsp;attorney?</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/"><i class="fab fa-facebook"></i> FaceBook</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/"><i class="fab fa-twitter"></i> Twitter</a>
+    </li>
+  </ul>
+</nav>

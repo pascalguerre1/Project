@@ -6,6 +6,8 @@ import { Component, OnInit, } from '@angular/core';
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent {
+	
+	constructor(){}
 
   	_ref:any;
 
