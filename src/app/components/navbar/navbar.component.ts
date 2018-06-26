@@ -9,9 +9,18 @@ import { SharedService } from '../../services/shared.service.client';
 })
 export class NavbarComponent implements OnInit {
 
+  attorneyRegs: boolean;
+
   constructor(public sharedService: SharedService) { }
 
   ngOnInit() {
   }
 
+  attRegs(){
+  	this.sharedService.attorneyRegs = true;
+  }
+
+  regs(){
+  	this.sharedService.attorneyRegs = false;
+  }
 }

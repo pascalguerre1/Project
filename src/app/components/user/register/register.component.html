@@ -1,6 +1,7 @@
 <div id="body">
   <div class="container pg-border pg-margin-top">
-    <h2 class="alert alert-success" align="center">Register</h2>
+    <h2 *ngIf="!this.sharedService.attorneyRegs" class="alert alert-success" align="center">Register</h2>
+    <h2 *ngIf="this.sharedService.attorneyRegs" class="alert alert-success" align="center">Register as an attorney</h2>
     <form (ngSubmit)="register()" #f="ngForm">
       <h4 align="left">Personal information</h4>
       <div class="row form-group">
@@ -91,7 +92,7 @@
     <br>
 
     <!-- Law office section-->
-    <div style="display: none">
+    <div *ngIf="this.sharedService.attorneyRegs">
       <h4 align="left">Law office information</h4>
       <div class="row form-group">
         <div class="col-sm-1"></div>
@@ -179,6 +180,13 @@
         <label class="col-sm-2">Phone Number:</label>
         <div class="col-sm-9">
           <input type="phone" name="phone" class="pg-form-control">
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-2">Web Site:</label>
+        <div class="col-sm-9">
+          <input type="site" name="site" class="pg-form-control">
         </div>
       </div>
       <div id="addToArea">

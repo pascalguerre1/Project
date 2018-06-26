@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  regs(){
+    this.sharedService.attorneyRegs = false;
+  }
+
   login(){
   	this.username = this.loginForm.value.username;
   	this.password = this.loginForm.value.password;
