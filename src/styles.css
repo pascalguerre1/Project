@@ -1,54 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
-.b-img{
+.b-img {
     background-image: url(app/image/abstractBldg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
 }
-.pg-border{
-    border-style: solid;
+#test-img {
+    background-image: url(app/image/glacier.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.pg-border {
+  border-style: solid;
   border-width: 0px; 
   padding: 30px;
   background-color: white;
   width: 85%;
 }
-.pg-margin-top{
+.pg-margin-top {
     margin-top: 150px;
 }
-.btn {padding:5px 60px 5px 60px;
+.btn {
+  padding:5px 60px 5px 60px;
   box-shadow: 3px 3px 5px grey;
 }
-.pg-text-white{color:white;margin-bottom: 0px}
-
-.pg-vertical-line{border-left:1px solid #ccc;
+.pg-text-white {
+  color:white;
+  margin-bottom: 0px
+}
+.pg-vertical-line {
+  border-left:1px solid #ccc;
   padding-left:1.5em;
   height:100%;
 }
-
-.pg-vertical-line2{border-right:1px solid #ccc;
+.pg-vertical-line2 {
+  border-right:1px solid #ccc;
   padding-left:.5em;
   padding-right:.1em;
   height:100%;
 }
-
-.pg-footer{
+.pg-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 50px;
     line-height: 60px;
 }
-.pg-footer-padding{
-    padding-bottom: 40px; 
+.pg-footer-padding {
+  padding-bottom: 40px; 
   padding-top:25px;
 }
-.pg-small-alert{padding: 4px 4px}
+.pg-small-alert {
+  padding: 4px 4px
+}
 label {
     font-weight: bold;
 }
+
 /*to make navbar menu scrollable on smallscreens*/
-.pg{
+.pg {
     overflow-x:auto;
     -webkit-overflow-scrolling: touch; 
 }
@@ -74,6 +87,8 @@ ul.pg > li > ul li{
 ul.pg li:active > ul > li {
     display: block;
 }
+/* end to make navbar menu scrollable on smallscreens*/
+
 /*to help footer stay at the bottom*/
 #container {
    min-height:100%;
@@ -82,6 +97,8 @@ ul.pg li:active > ul > li {
 #body {
    padding-bottom:345px;   /* Height of the footer */
 }
+/*end to help footer stay at the bottom*/
+
 /*to help display input of register page in the same line as label*/
 .pg-form-control {
   display: inline;
@@ -119,12 +136,12 @@ ul.pg li:active > ul > li {
   border-color: #007bff;
 }
 
-/*2.for auto complete search list*/
+/* for auto complete search list*/
 .ui-autocomplete {
-max-height: 100px;
-overflow-y: auto;
+  max-height: 100px;
+  overflow-y: auto;
 /* prevent horizontal scrollbar */
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 /* IE 6 doesn't support max-height
 * we use height instead, but this forces the menu to always be this tall
@@ -132,6 +149,8 @@ overflow-x: hidden;
 * html .ui-autocomplete {
 height: 100px;
 }
+/* end for auto complete search list*/
+
 
 img {
 /*    border-radius: 50%;*/
@@ -139,4 +158,40 @@ img {
     width: 100%;
 }
 
+/*to show element still needed to be worked on*/
 .pg-nolink{background-color: #808000; color: black}
+/*end to show element still needed to be worked on*/
+
+/*horizontal line*/
+h4 {
+  overflow: hidden;
+  text-align: center;
+}
+h4:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 40%;
+}
+
+h4:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+h4:before {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 40%;
+}
+h4:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+/*end horizontal line*/

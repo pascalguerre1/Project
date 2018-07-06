@@ -9,14 +9,13 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { TemplateComponent } from './components/user/register/template/template.component';
-import { RecoveryComponent } from './components/user/recovery/recovery.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
 
 //services
 import { UserService } from './services/user.service.client';
 import { SharedService } from './services/shared.service.client';
-import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -27,7 +26,6 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     ProfileComponent,
     TemplateComponent,
-    RecoveryComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
@@ -35,9 +33,10 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     Routing,
-    FormsModule
+    FormsModule,
   ],
   providers: [UserService, SharedService],
-  bootstrap: [AppComponent, TemplateComponent]
+  entryComponents: [AppComponent, TemplateComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
