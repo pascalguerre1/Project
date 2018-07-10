@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TemplateComponent } from './template/template.component';
 import { User } from '../../../models/user.model.client'
 import { SharedService } from '../../../services/shared.service.client';
+declare var $: any;
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ import { SharedService } from '../../../services/shared.service.client';
  })
 export class RegisterComponent implements OnInit {
 
-    states = [
+   states = [
           {name: "Alabama", value: "AL"},
           {name: "Alaska", value: "AK"},
           {name: "Arizona", value: "AZ"},
@@ -68,7 +69,7 @@ export class RegisterComponent implements OnInit {
    ];
    stateValue = null;
 
-    areas = [
+   areas = [
           {name: "Admiralty (Maritime) Law"},
           {name: "Bankruptcy Law"},
           {name: "Business (Corporate) Law"},
@@ -84,8 +85,8 @@ export class RegisterComponent implements OnInit {
           {name: "Personal Injury Law"},
           {name: "Real Estate Law"},           
           {name: "Tax Law"},  
-   ];            
-  area1Value = null;
+  ];            
+   area1Value = null;
 
 
   @ViewChild('parent', { read: ViewContainerRef })    container: ViewContainerRef;
@@ -113,20 +114,24 @@ export class RegisterComponent implements OnInit {
   usernameError: boolean;
 
 
+  selectedValues: any[];
+
   constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() { 
-
   }
 
   addArea(){
-    var comp = this._cfr.resolveComponentFactory(TemplateComponent);// check and resolve the component
-    var templateComponent = this.container.createComponent(comp);// Create component inside container
-    templateComponent.instance._ref = templateComponent;
-    console.log(templateComponent.instance._ref.instance.areaValue.value);
-  }
-
-
+    var numItems = $('.maxArea').length
+    console.log(numItems)
+    if (numItems < 2) {
+      this.sharedService.maxAreaError = false;
+      var comp = this._cfr.resolveComponentFactory(TemplateComponent);// check and resolve the component
+      var templateComponent = this.container.createComponent(comp);// Create component inside container
+      templateComponent.instance._ref = templateComponent;}
+      else { 
+        this.sharedService.maxAreaError = true;
+      }
   }
 
   register(){
@@ -145,9 +150,8 @@ export class RegisterComponent implements OnInit {
     this.phone = this.registerForm.value.phone;
     this.site = this.registerForm.value.site;
     this.area1 = this.registerForm.value.area1;
-    this.area2 = this.registerForm.value.area;
-    // console.log(this.templateComponent);
-    this.area3 = this.registerForm.value.area3;
+    this.selectedValues = this.sharedService.practiceAreas;
+    this.selectedValues.push(this.area1);
     if (this.email !== this.confirmEmail){
       this.emailError = true;
       this.passwordError = false;
@@ -182,9 +186,7 @@ export class RegisterComponent implements OnInit {
                   state: this.state,
                   phone: this.phone,
                   site: this.site,
-                  area1: this.area1,
-                  area2: this.area2,
-                  area3: this.area3,
+                  selectedValues: this.selectedValues
                 };
                 this.userService.createUser(newUser);
                 console.log(this.userService.createUser(newUser))

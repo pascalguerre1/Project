@@ -4,4 +4,6 @@ import { Injectable } from '@angular/core';
 export class SharedService {
    user: any;
    attorneyRegs: boolean;
+   practiceAreas: any[] = [];
+   maxAreaError: boolean;
 }

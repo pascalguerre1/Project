@@ -4,6 +4,7 @@ import { ActivatedRoute} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { User } from '../../../models/user.model.client'
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -22,8 +23,7 @@ export class ProfileComponent implements OnInit {
   	this.activatedRoute.params.subscribe(params => {
   	this.uid = params['uid'];
   	this.user = this.userService.findUserById(this.uid);	
-  	})
-
+  	});
   }
 
 }

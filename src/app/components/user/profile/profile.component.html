@@ -1,6 +1,7 @@
 <div id="body">
   <div class="container pg-border pg-margin-top">
   	<div class="row">
+
   		<div class="col-md-3">
         <div>
   			   <img [src]="user.image" alt="profile pic">
@@ -9,8 +10,9 @@
             <a class="pg-nolink" href="">Edit</a>
         </div>
   		</div>
-  		<div class="col-md-7 pg-vertical-line pg-vertical-line2 d-md-flex">	
-  			<div>
+
+  		<div class="col-md-7 pg-vertical-line pg-vertical-line2 d-md-flex">
+  			<div class="container">
           <label>Name</label>
           <p>{{user.firstName}} {{user.lastName}}</p>
           <label>Email</label>
@@ -22,7 +24,7 @@
             <label>Office Information</label>
             <p>{{user.office}} <br> {{user.address}} {{user.city}}, {{user.state}} <br>Tel: {{user.phone}} <br> {{user.site}}</p>
             <label>Area of expertise</label>
-            <p>{{user.area1}} {{user.area2}} {{user.area3}}</p>
+            <p>{{user.selectedValues[0]}} <br> {{user.selectedValues[1]}} <br> {{user.selectedValues[2]}}</p>
           </div>
           <!-- end law office section -->        
           <label>About me</label>
@@ -30,6 +32,7 @@
           <a class="text-center pg-nolink" href="" data-toggle="modal" data-target="#bioModal">Edit Bio</a>
   			</div>
   		</div>
+
   		<div class="col-md-2">	
   				<div>
   					<img [src]="user.badge" alt="badge pic">
@@ -42,6 +45,7 @@
             <p style="font-size: 12px">Earn badges everytime someone "like" or comments on your reviews</p>
           </div>
   		</div>
+
   	</div>
   </div>
 </div>
@@ -54,7 +58,7 @@
         <h5 class="modal-title">Edit Biography</h5>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="update()">
+        <form>
           <div class="form-group">
             <textarea class="form-control" type="text" name="bio" [(ngModel)]="user.bio" rows="5">
             </textarea>
