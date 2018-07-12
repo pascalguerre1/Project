@@ -16,6 +16,8 @@ import { HomeComponent } from './components/home/home.component';
 //services
 import { UserService } from './services/user.service.client';
 import { SharedService } from './services/shared.service.client';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 
@@ -29,6 +31,8 @@ import { SharedService } from './services/shared.service.client';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
+    AboutComponent,
+    ContactComponent,
     ],
   imports: [
     BrowserModule,

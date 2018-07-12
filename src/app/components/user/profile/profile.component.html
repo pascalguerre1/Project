@@ -1,5 +1,5 @@
 <div id="body">
-  <div class="container pg-border pg-margin-top">
+  <div class="pg-profile-style">
   	<div class="row">
 
   		<div class="col-md-3">
@@ -7,11 +7,14 @@
   			   <img [src]="user.image" alt="profile pic">
         </div>
         <div class="text-center">
-            <a class="pg-nolink" href="">Edit</a>
+            <a class="pg-nolink" href="">Edit Image</a>
+        </div>
+        <div class="text-center">
+            <p><b>{{user.username}}</b></p>
         </div>
   		</div>
 
-  		<div class="col-md-7 pg-vertical-line pg-vertical-line2 d-md-flex">
+  		<div class="col-md-6 pg-vertical-line pg-vertical-line2 d-md-flex">
   			<div class="container">
           <label>Name</label>
           <p>{{user.firstName}} {{user.lastName}}</p>
@@ -33,13 +36,13 @@
   			</div>
   		</div>
 
-  		<div class="col-md-2">	
+  		<div class="col-md-3">	
   				<div>
   					<img [src]="user.badge" alt="badge pic">
   				</div>
           <br>
           <div>
-            <p class="text-center">{{user.bcount}}</p>
+            <p class="text-center"><b>{{user.bcount}}</b></p>
           </div>
           <div>
             <p style="font-size: 12px">Earn badges everytime someone "like" or comments on your reviews</p>
@@ -51,7 +54,7 @@
 </div>
 
 <!-- Bio Modals -->
-<div class="modal fade" id="bioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="bioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -71,4 +74,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

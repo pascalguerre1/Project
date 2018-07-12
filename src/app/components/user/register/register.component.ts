@@ -178,7 +178,7 @@ export class RegisterComponent implements OnInit {
                   password: this.password,
                   firstName: this.firstName,
                   lastName: this.lastName,
-                  email: this.email,
+                  email: this.email,             
                   gender: this.radioData,
                   office: this.office,
                   address: this.address,
@@ -186,7 +186,9 @@ export class RegisterComponent implements OnInit {
                   state: this.state,
                   phone: this.phone,
                   site: this.site,
-                  selectedValues: this.selectedValues
+                  selectedValues: this.selectedValues,
+                  image: './assets/uploads/avatar.png',
+                  badge: './assets/uploads/badge.png',  
                 };
                 this.userService.createUser(newUser);
                 console.log(this.userService.createUser(newUser))

@@ -5,7 +5,6 @@ export class User {
 	firstName: string;
 	lastName: string;
 	email: string;
-	bio?: string;
 	radioData?: string = '';
 	office?: string;
 	address?: string;
@@ -14,8 +13,12 @@ export class User {
 	phone?: string;
 	site?: string;
 	selectedValues?: string[];
+	image?: string;
+	badge?: string;
+	bio?: string;
+	bcount?: string;
 
-	constructor(_id, username, password, firstName, lastName, email, gender, office, address, city, state, phone, site) {
+	constructor(_id, username, password, firstName, lastName, email, gender, office, address, city, state, phone, site, selectedValues, image, badge, bio, bcount) {
 		this._id = _id;
 		this.username = username;
 		this.password = password;
@@ -29,5 +32,10 @@ export class User {
 		this.state = state;
 		this.phone = phone;
 		this.site = site;
+		this.selectedValues = selectedValues;
+		this.image = image;
+		this.badge = badge;
+		this.bio = bio;
+		this.bcount = bcount;
 	}
 }

@@ -6,13 +6,6 @@
     background-position: center;
     background-attachment: fixed;
 }
-#test-img {
-    background-image: url(app/image/glacier.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
 .pg-border {
   border-style: solid;
   border-width: 0px; 
@@ -22,6 +15,14 @@
 }
 .pg-margin-top {
     margin-top: 150px;
+}
+.pg-profile-style {
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
 }
 .btn {
   padding:5px 60px 5px 60px;

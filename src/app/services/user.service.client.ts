@@ -44,20 +44,20 @@ users = [
     }
    }
 // updates the user in local users array whose _id matches the userId parameter
-  updateUser(userId: string, user: User) { 
-    var olduser = this.findUserById(userId);
-    var index = this.users.indexOf(olduser);
-    this.users[index].username = user.username;
-    this.users[index].password = user.password;
-    this.users[index].firstName = user.firstName;
-    this.users[index].lastName = user.lastName;
-    this.users[index].email = user.email;
-   }
+  // updateUser(userId: string, user: User) { 
+  //   var olduser = this.findUserById(userId);
+  //   var index = this.users.indexOf(olduser);
+  //   this.users[index].username = user.username;
+  //   this.users[index].password = user.password;
+  //   this.users[index].firstName = user.firstName;
+  //   this.users[index].lastName = user.lastName;
+  //   this.users[index].email = user.email;
+  //  }
 // removes the user whose _id matches the userId parameter
-  deleteUser(userId: string) { 
-    var olduser = this.findUserById(userId);
-    var index = this.users.indexOf(olduser);
-    this.users.splice(index,1);
-   }
+  // deleteUser(userId: string) { 
+  //   var olduser = this.findUserById(userId);
+  //   var index = this.users.indexOf(olduser);
+  //   this.users.splice(index,1);
+  //  }
 
 }

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand flex-column flex-md-row fixed-top">
-  <a class="navbar-brand pg-nolink" href="/">Logo</a>
+  <a class="navbar-brand" href="/">Logo</a>
   <div class="pg-scrollable">
     <ul class="navbar-nav flex-row pg">
       <li class="nav-item">
-        <a class="nav-link pg-nolink" href="/">Home</a>
+        <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link pg-nolink" routerLink="#">About&nbsp;us</a>
+        <a class="nav-link" routerLink="/about">About&nbsp;us</a>
       </li>
       <li *ngIf="!sharedService.user" class="nav-item">
         <a class="nav-link" (click)="regs()" routerLink="/register">Register</a>
