@@ -18,6 +18,7 @@ import { UserService } from './services/user.service.client';
 import { SharedService } from './services/shared.service.client';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ReviewComponent } from './components/review/review.component';
 
 
 
@@ -33,6 +34,7 @@ import { ContactComponent } from './components/contact/contact.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
+    ReviewComponent,
     ],
   imports: [
     BrowserModule,

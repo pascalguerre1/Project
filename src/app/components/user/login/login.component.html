@@ -15,7 +15,7 @@
             <div class ="alert alert-warning pg-small-alert" *ngIf ="password.invalid && password.touched">Please enter password</div>
             <input type="password" name="password" placeholder="Password" class="form-control" required ngModel #password="ngModel">
           </div>
-          <a class="pg-nolink" routerLink="#">Forgot Password?</a><br/>
+          <!-- <a class="pg-nolink" routerLink="#">Forgot Password?</a><br/> -->
           <br>
           <div class="text-center">
             <button class="btn btn-primary" [disabled]="f.invalid" type ="submit">Sign in</button>

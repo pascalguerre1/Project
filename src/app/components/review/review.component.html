@@ -1,0 +1,117 @@
+<div id="body">
+  <div class="pg-profile-style">
+  	<div class="row">
+
+  		<div class="col-md-3">
+        <div>
+  			   <img [src]="user.image" alt="profile pic">
+        </div>
+        <div class="text-center">
+            <p><b>{{user.firstName}} {{user.lastName}}</b></p>
+        </div>
+  		</div>
+
+  		<div class="col-md-6 pg-vertical-line pg-vertical-line2 d-md-flex">
+	  		<div class="row container">
+	  		  <div class="col-sm-6">
+	         	<label>Office Name</label>
+	          	<p>{{user.firstName}} {{user.lastName}}</p>
+	          </div>
+	          <div class="col-sm-6">
+	          	<label>Email</label>
+	          	<p>{{user.email}}</p>
+	          </div>
+	          	<div class="col-sm-6">
+		            <label>Office Address</label>
+		            <p>{{user.address}} <br> {{user.city}}, {{user.state}} <br>Tel: {{user.phone}} <br> {{user.site}}</p>
+	        	</div>
+	        	<div class="col-sm-6">
+		            <label>Area of expertise</label>
+		            <p>{{user.selectedValues[0]}} <br> {{user.selectedValues[1]}} <br> {{user.selectedValues[2]}}</p>
+	            </div>
+	            <div class="col-sm-12">
+	  				<button class="btn btn-block btn-success col-12">Write a Review for this attorney</button>
+	  			</div>
+	  		</div>
+	  		<br>
+  		</div>
+
+  		<div class="col-md-3">
+  			<div class="text-center">
+	  			<h5 class="">Overall Rating:</h5>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+			</div>
+			<br>
+			<ol class="custom">
+				<li><span class="fa fa-star checked"></span>: <a href="">4 review(s)</a></li>
+				<li><span class="fa fa-star checked"></span>: <a href="">10 review(s)</a></li>
+				<li><span class="fa fa-star checked"></span>: <a href="">3 review(s)</a></li>
+				<li><span class="fa fa-star checked"></span>: <a href="">1 review(s)</a></li>
+				<li><span class="fa fa-star checked"></span>: <a href="">0 review(s)</a></li>
+			</ol>
+          <br>
+          <div>
+            <p class="text-center"><b><a href="">18 Reviews</a></b></p>
+          </div>
+  		</div>
+
+  	</div>
+  </div>
+
+<!-- individual reviews -->
+  <div class="pg-profile-style">
+  	<div class="row">
+
+  		<div class="col-md-3 text-center">
+        <div>
+  			<img style="width: 50%" [src]="user.image" alt="profile pic">
+        </div>
+        <div class="text-center">
+            <p><b>{{user.firstName}} {{user.lastName}}</b></p>
+        </div>
+         <div>
+  			<img style="width: 25%" [src]="user.badge" alt="badge pic">
+  		</div>
+        <div class="text-center">
+            <p>{{user.bcount}}</p>
+        </div> 		
+  		</div>
+
+  		<div class="col-md-9 pg-vertical-line pg-vertical-line2 d-md-flex">
+	  		<div class="row container">
+	  		  <div class="col-sm-8">
+	         	<label>Rating:</label>
+	         	<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+	          </div>
+	          <div class="col-sm-4 float-right">
+	          	<p>Posted: July 19, 2018</p>
+	          </div>
+	          <div class="col-sm-12">
+  			     <textarea class="form-control" rows="7" id="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				</textarea>
+	  		  </div>
+	  		  <div class="col-sm-10">
+	         	 <a href="">Leave a comment</a>
+	          </div>
+	  		  <div class="col-sm-2 float-right">
+	         	 <a href=""><span class="fa fa-thumbs-up"></span></a>
+	         	 <a href=""><span class="fa fa-share-alt"></span></a>
+	          </div>	          
+	  		</div>
+	  		<br>
+  		</div>
+
+  	</div>
+  </div>
+
+
+
+</div>

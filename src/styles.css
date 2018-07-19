@@ -196,3 +196,26 @@ h4:before {
   margin-left: -50%;
 }
 /*end horizontal line*/
+
+/*star rating*/
+.checked {
+    color: orange;
+}
+/*remove "." after number in order list*/
+ol.custom {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ol.custom > li {
+  counter-increment: customlistcounter;
+}
+
+ol.custom > li:before {
+  content: counter(customlistcounter) " ";
+  width: 3em;
+}
+
+ol.custom:first-child {
+  counter-reset: customlistcounter;
+}

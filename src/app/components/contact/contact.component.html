@@ -14,20 +14,18 @@
             <input type="email" name="email" placeholder="" class="form-control" required ngModel #email="ngModel">
           </div>
           <div class="form-group">
-  			<label>Message</label>
-  			<textarea class="form-control" rows="5" id="message"></textarea>
-		  </div>
-
+  			     <label>Message</label>
+  			     <textarea class="form-control" rows="5" id="message"></textarea>
+		      </div>
           <br>
           <div class="text-center">
             <button class="btn btn-primary" [disabled]="f.invalid" type ="submit">Submit</button>
           </div>
-        <br>
+          <br>
           <div class="text-center">
             Not a member? <a (click)="regs()" routerLink="/register">Register Now!</a>
           </div>
         </form>
-
-
+        
   </div>
 </div>

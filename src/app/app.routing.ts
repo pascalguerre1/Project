@@ -6,6 +6,7 @@ import {ProfileComponent} from "./components/user/profile/profile.component";
 import {HomeComponent} from './components/home/home.component';
 import {AboutComponent} from './components/about/about.component';
 import {ContactComponent} from './components/contact/contact.component';
+import {ReviewComponent} from './components/review/review.component';
 
 // Import all other components here 
 
@@ -16,6 +17,7 @@ const APP_ROUTES : Routes = [
   { path : 'user/:uid' , component: ProfileComponent},
   { path : 'about' , component: AboutComponent},
   { path : 'contact' , component: ContactComponent},
+  { path : 'user/:uid/reviews' , component: ReviewComponent},
     // so on
 ];
 
