@@ -113,6 +113,8 @@ export class RegisterComponent implements OnInit {
   passwordError: boolean;
   usernameError: boolean;
 
+  attorneyRegs: boolean;
+
 
   selectedValues: any[];
 
@@ -132,6 +134,10 @@ export class RegisterComponent implements OnInit {
       else { 
         this.sharedService.maxAreaError = true;
       }
+  }
+
+  attRegs(){
+    this.sharedService.attorneyRegs = true;
   }
 
   register(){

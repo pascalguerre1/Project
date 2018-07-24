@@ -7,6 +7,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AboutComponent} from './components/about/about.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {ReviewComponent} from './components/review/review.component';
+import {SearchComponent} from './components/search/search.component';
 
 // Import all other components here 
 
@@ -18,6 +19,7 @@ const APP_ROUTES : Routes = [
   { path : 'about' , component: AboutComponent},
   { path : 'contact' , component: ContactComponent},
   { path : 'user/:uid/reviews' , component: ReviewComponent},
+  { path : 'user/:uid/search' , component: SearchComponent},  
     // so on
 ];
 

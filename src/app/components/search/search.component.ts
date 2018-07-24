@@ -5,13 +5,13 @@ import { NgModule } from '@angular/core';
 import { User } from '../../models/user.model.client'
 
 @Component({
-  selector: 'app-review',
-  templateUrl: './review.component.html',
-  styleUrls: ['./review.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class ReviewComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
-	uid: string;
+  uid: string;
   user: User;
 
   constructor(private userService: UserService, 

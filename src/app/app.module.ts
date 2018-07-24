@@ -19,6 +19,7 @@ import { SharedService } from './services/shared.service.client';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -35,6 +36,7 @@ import { ReviewComponent } from './components/review/review.component';
     AboutComponent,
     ContactComponent,
     ReviewComponent,
+    SearchComponent,
     ],
   imports: [
     BrowserModule,

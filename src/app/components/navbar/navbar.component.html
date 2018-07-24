@@ -15,20 +15,17 @@
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <li *ngIf="sharedService.user" class="nav-item">
-        <a class="nav-link dropdown-toggle pg-nolink" data-toggle="dropdown" href="/">My&nbsp;Profile</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/">My&nbsp;Profile</a>
         <ul>
           <li class="dropdown-menu">
-            <a class="dropdown-item pg-nolink" routerLink="#">Account&nbsp;settings</a>
-            <a class="dropdown-item pg-nolink" routerLink="#">Log&nbsp;out</a>
+            <a class="dropdown-item" routerLink="#">Account&nbsp;settings</a>
+            <a class="dropdown-item" routerLink="#">Log&nbsp;out</a>
           </li>
         </ul>
       </li>
     </ul>
   </div>
   <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-    <li *ngIf="!sharedService.user" class="nav-item">
-      <a class="nav-link" (click)="attRegs()" routerLink="/register">Register&nbsp;as&nbsp;an&nbsp;attorney</a>
-    </li>
 <!--     <li class="nav-item">
       <a class="nav-link pg-nolink" routerLink="#"><i class="fab fa-facebook"></i> FaceBook</a>
     </li>
@@ -36,4 +33,36 @@
       <a class="nav-link pg-nolink" routerLink="#"><i class="fab fa-twitter"></i> Twitter</a>
     </li> -->
   </ul>
+    <div class="navbar">
+      <span class="navbar-brand" style="font-size:25px;cursor:pointer" (click)="openNav()">&#9776; Search</span>
+    </div>
+    <div id="mySidenav" class="row sidenav">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <div class="col-10">
+        <p>Name</p>
+          <input type="text" name="name" placeholder="Lawyer name, or firm" class="form-control" ngModel #name="ngModel">
+
+        <p>City</p>
+          <input type="text" name="city" class="form-control" ngModel #city="ngModel">
+
+        <p>State</p>
+        <select class="form-group input-group form-control" name="state" [(ngModel)]="stateValue">
+              <option value="{{state.value}}" *ngFor="let state of states">{{state.name}}</option>
+        </select>
+        <p>Pratice Area</p>
+        <select class="form-group input-group form-control" name="area1" [(ngModel)]="area1Value">
+          <option value="{{area.name}}" *ngFor="let area of areas">{{area.name}}</option>
+        </select>
+        <p>Rating</p>
+        <form action="/action_page.php" method="get">
+          <input type="checkbox" name="vehicle" value="Bike"> 5 Stars<br>
+          <input type="checkbox" name="vehicle" value="Car" checked> 4 Stars<br>
+          <input type="checkbox" name="vehicle" value="Car" checked> 3 Stars<br>
+          <input type="checkbox" name="vehicle" value="Car" checked> 2 Stars<br>
+          <input type="checkbox" name="vehicle" value="Car" checked> 1 Star<br>                       
+        </form>
+        <br>
+        <button class="btn btn-success">Search</button>
+      </div>
+  </div>
 </nav>

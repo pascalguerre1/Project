@@ -20,7 +20,7 @@
     margin-top: 100px;
     margin-left: 10px;
     margin-right: 10px;
-    padding-top: 10px;
+    padding-top: 15px;
     padding-bottom: 10px;
     background-color: white;
 }
@@ -218,4 +218,97 @@ ol.custom > li:before {
 
 ol.custom:first-child {
   counter-reset: customlistcounter;
+}
+/*  end of remove "." after number in order list*/
+
+/*put item at bottom of a div*/
+.comment {
+  position: relative;
+/*  height: 300px;*/
+}
+.comment p {
+/*  position: absolute;*/
+  bottom: 0;
+}
+/* end of put item at bottom of a div*/
+
+/*center item and justify left*/
+.wrap {
+    float: left;
+    position: relative;
+    left: 50%;
+}
+.content {
+    float: left;
+    position: relative;
+    left: -50%;
+}
+/* end of center item and justify left*/
+
+/*sidenav bar*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav p {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav input {
+    margin-left:32px;
+    color: #818181;
+}
+.sidenav form {
+    color: #818181;
+}
+.sidenav select {
+    margin-left: 32px;
+}
+.sidenav button {
+    margin-left: 55px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* end of sidenav bar*/
+
+.pg-contact :hover {
+    color: grey;
 }

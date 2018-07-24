@@ -159,5 +159,10 @@
         Already a member? <a routerLink="/login">Sign in here</a>
       </div>
     </form>
+    <br>
+    <div *ngIf="!this.sharedService.attorneyRegs" class="text-center">
+      <a (click)="attRegs()" routerLink="/register">Click here </a>to register as an attorney
+    </div>
+
   </div>
 </div>
