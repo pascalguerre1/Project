@@ -118,7 +118,7 @@ export class RegisterComponent implements OnInit {
 
   selectedValues: any[];
 
-  constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router, private sharedService: SharedService) { }
+  constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router, public sharedService: SharedService) { }
 
   ngOnInit() { 
   }

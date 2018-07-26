@@ -11,10 +11,10 @@
   border-width: 0px; 
   padding: 30px;
   background-color: white;
-  width: 85%;
+  width: 100%;
 }
 .pg-margin-top {
-    margin-top: 150px;
+    margin-top: 180px;
 }
 .pg-profile-style {
     margin-top: 100px;
@@ -268,10 +268,11 @@ ol.custom:first-child {
     transition: 0.3s;
 }
 
-.sidenav p {
+.sidenav label {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: normal;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -279,6 +280,7 @@ ol.custom:first-child {
 
 .sidenav input {
     margin-left:32px;
+    margin-bottom:0px;
     color: #818181;
 }
 .sidenav form {

@@ -6,6 +6,7 @@ export class User {
 	lastName: string;
 	email: string;
 	radioData?: string = '';
+	gender?: string;   //to be removed
 	office?: string;
 	address?: string;
 	city?: string;

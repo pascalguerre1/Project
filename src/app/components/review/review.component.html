@@ -2,9 +2,9 @@
   <div class="pg-profile-style">
   	<div class="row">
 
-  		<div class="col-md-3">
+  		<div class="col-md-3 text-center">
         <div>
-  			   <img [src]="user.image" alt="profile pic">
+  			   <img style="width: 75%" [src]="user.image" alt="profile pic">
         </div>
         <div class="text-center">
             <p><b>{{user.firstName}} {{user.lastName}}</b></p>
@@ -46,17 +46,19 @@
 				<span class="fa fa-star"></span>
 			</div>
 			<br>
-			<ol class="custom">
-				<li><span class="fa fa-star checked"></span>: <a routerLink="">4 review(s)</a></li>
-				<li><span class="fa fa-star checked"></span>: <a routerLink="">10 review(s)</a></li>
-				<li><span class="fa fa-star checked"></span>: <a routerLink="">3 review(s)</a></li>
-				<li><span class="fa fa-star checked"></span>: <a routerLink="">1 review(s)</a></li>
-				<li><span class="fa fa-star checked"></span>: <a routerLink="">0 review(s)</a></li>
-			</ol>
+			<div>
+            	<p class="text-center"><b><a routerLink="">18 Reviews</a></b></p>
+            </div>
+			<div class="wrap">
+				<ol class="content custom">
+					<li><span class="fa fa-star checked"></span>: <a routerLink="">4 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="">10 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="">3 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="">1 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="">0 review(s)</a></li>
+				</ol>
+			</div>
           <br>
-          <div>
-            <p class="text-center"><b><a routerLink="">18 Reviews</a></b></p>
-          </div>
   		</div>
 
   	</div>
@@ -68,7 +70,7 @@
 
   		<div class="col-md-3 text-center">
         <div>
-  			<img style="width: 50%" [src]="user.image" alt="profile pic">
+  			<img style="width: 40%" [src]="user.image" alt="profile pic">
         </div>
         <div class="text-center">
             <p><b>{{user.firstName}} {{user.lastName}}</b></p>
@@ -90,6 +92,8 @@
 				<span class="fa fa-star"></span>
 				<span class="fa fa-star"></span>
 				<span class="fa fa-star"></span>
+				<label>  &nbsp;&nbsp;&nbsp;&nbsp;Cost:</label>
+				<span>$5K - $10K</span>
 	          </div>
 	          <div class="col-sm-4 float-right">
 	          	<p>Posted: July 19, 2018</p>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -11,5 +12,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+
+openNav() {
+  document.getElementById("mySidenav").style.width = "300px";
+}
 
 }

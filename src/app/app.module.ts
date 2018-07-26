@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routing } from './app.routing';
+import { HttpModule } from '@angular/http';
 
 //components
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { SearchComponent } from './components/search/search.component';
     BrowserModule,
     Routing,
     FormsModule,
+    HttpModule
   ],
   providers: [UserService, SharedService],
   entryComponents: [AppComponent, TemplateComponent],

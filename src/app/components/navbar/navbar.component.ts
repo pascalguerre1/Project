@@ -87,14 +87,6 @@ export class NavbarComponent implements OnInit {
    ];            
    area1Value = null;
 
-   ratings = [
-    {name: "5 Stars"},
-    {name: "4 Stars"},
-    {name: "3 Stars"},
-    {name: "2 Stars"},
-    {name: "1 Stars"},
-];            
- rateValue = null;
  
   constructor(@Inject(DOCUMENT) document, public sharedService: SharedService) { }
 

@@ -15,5 +15,13 @@ reviews = [
 	];
 
 
+ // adds the user parameter instance to the local users array
+  createReview(userId, review) {
+    review._id = Math.floor(Math.random() * 10000).toString();
+    review.reviewerId= userId;
+    this.reviews.push(review);
+    return review;
+  }
+
 
 }

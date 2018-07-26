@@ -1,143 +1,42 @@
 module.exports = function(app){
 
-	var userModel = require('../models/user/user.model.server.js')
-	var passport = require('passport');
-	var LocalStrategy = require('passport-local').Strategy;
-	var bcrypt = require("bcrypt-nodejs");
-
-	app.get('/api/user/', findUser); //combined find user by credential with find all users
-	app.get('/api/user/:uid', findUserById);
-	app.post('/api/user/', createUser);
-	app.put('/api/user/:uid', updateUser);
-	app.delete('/api/user/:uid', deleteUser);
-	app.post ('/api/register', register);
-	app.post ('/api/login', passport.authenticate('local'), login);
-	app.post('/api/logout', logout);
-	app.post('/api/loggedIn', loggedin);
-	passport.serializeUser(serializeUser);
-	passport.deserializeUser(deserializeUser);
-	passport.use(new LocalStrategy(localStrategy));
+	var users = [
+	{_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@gmail.com", gender:"Male", bio:"Lorem ipsum", image:"https://www.ustitleseries.net/assets/profile_avatar-8f9ebff986868f54e6d7fd3befa117ccc0e67ef50580d254b3a77d3e7b409eef.png", badge:"https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png", bcount:"14 badges", office:"Hello", address:"123 fake st", city:"boston", state:"MA", phone:"12345", site:"www.123.com", selectedValues: ["Entertainment Law", "Intellectual Property Law", "Bankruptcy Law"]},
+	{_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email: "bob@whatever.com"},
+	{_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email: "charly@hotmail.com"},
+	{_id: "456", username: "shiyu", password: "shiyu", firstName: "Shiyu", lastName: "Wang", email: "swang@ulem.org"}
+	];
 
 
-
-	function localStrategy(username, password, done) {
-		 userModel.findUserByUsername(username).then(
-		 	(user) => {
-		 		if(user && bcrypt.compareSync(password, user.password)) {
-                    return done(null, user);
-                } else {
-                    return done(null, false);
-                }
-		 	}
-		 )
-	}
-
-
-	function login(req, res) {
-   		var user = req.user;
-   		res.json(user);
-	}
-
-	function logout(req, res) {
-	   req.logOut();
-	   res.sendStatus(200);
-	}
-
-	function loggedin(req, res) {
-		if (req.isAuthenticated()){
-			res.send(req.user);
-		} else {
-			res.send('0');
-		}
-	}
-
-	function serializeUser(user, done) {
-   	 done(null, user);
-	}
-
-	function deserializeUser(user, done) {
-	    userModel.findUserById(user._id).then(
-            function(user){
-                done(null, user);
-            },
-            function(err){
-                done(err, null);
-            }
-        );
-	}	
-
-	function register (req, res) {
-	    var user = req.body;
-	    user.password = bcrypt.hashSync(user.password);
-	    userModel.createUser(user).then(
-            function(user){
-               req.login(user, function(err) {
-                   res.json(user);
-               });
-	        }
-	    );
-	}
-
-	//find user by given Id
-	function findUser(req, res){
-		const username = req.query['username'];
-		const password = req.query['password'];
-		//find user by credentials
-		if(username && password){
-			userModel.findUserByCredentials(username, password).then(
-				data => {
-					res.json(data);
-				}
-			)
-			return;
-		} 
-		//find user by username
-		if(username) {
-			userModel.findUserByUsername(username).then(
-				data => {
-					res.json(data);
-				}
-			);
-     		return;
-		}
-		else { res.json(users); }
-	}
-
+	// find user by given id
+	app.get('/api/user/:uid', findUserById);//path to run function
 	function findUserById(req, res){
-		var uid = req.params['uid'];
-		userModel.findUserById(uid).then(
-			data => {
-				res.json(data);
-			}
-		)
+		var uid = req.params['uid']; //get route info from url
+	    for (let x = 0; x < users.length; x++) {
+	      if (users[x]._id === uid) {
+	        res.json(users[x]);//sending data back to client side in json format
+	        return;
+	      }
+	    }
 	}
 
-	function createUser(req, res){
-		var user = req.body;
-		userModel.createUser(user).then(
-			(data)=>{
-				res.json(data);
-			}
-		)
+	// find all users and find users by credentials
+	app.get('/api/user', findUser);
+	function findUser(req, res){
+		const username = req.query["username"];//get route parameter after '?' from url
+		const password = req.query["password"];//get route parameter after '?' from url
+		if(username && password){
+			var user;
+			for (let x = 0; x < users.length; x++) {
+	      		if (users[x].username === username && users[x].password === password) {
+	        		user = users[x]; //sending data back to client side in json format
+	        	}      
+	    	}
+	    	res.json(user);		
+		}
+		else {
+			res.json(users);
+		}
 	}
 
-
-	function updateUser(req, res){
-		var uid = req.params['uid'];
-		var user = req.body;
-		userModel.updateUser(uid, user).then(
-			data => {
-				res.json(data);
-			}
-		);
-	}
-
-	function deleteUser(req, res){
-		var uid = req.params['uid'];
-		userModel.deleteUser(uid).then(
-			data => {
-				res.json(data);
-			}
-		);
-	}
 }
