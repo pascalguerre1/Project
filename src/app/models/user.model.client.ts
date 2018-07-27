@@ -18,8 +18,9 @@ export class User {
 	badge?: string;
 	bio?: string;
 	bcount?: string;
+	role?: string;
 
-	constructor(_id, username, password, firstName, lastName, email, gender, office, address, city, state, phone, site, selectedValues, image, badge, bio, bcount) {
+	constructor(_id, username, password, firstName, lastName, email, gender, office, address, city, state, phone, site, selectedValues, image, badge, bio, bcount, role) {
 		this._id = _id;
 		this.username = username;
 		this.password = password;
@@ -38,5 +39,6 @@ export class User {
 		this.badge = badge;
 		this.bio = bio;
 		this.bcount = bcount;
+		this.role = role;
 	}
 }

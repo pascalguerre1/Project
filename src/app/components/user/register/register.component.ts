@@ -158,6 +158,7 @@ export class RegisterComponent implements OnInit {
     this.area1 = this.registerForm.value.area1;
     this.selectedValues = this.sharedService.practiceAreas;
     this.selectedValues.push(this.area1);
+
     if (this.email !== this.confirmEmail){
       this.emailError = true;
       this.passwordError = false;
@@ -169,12 +170,13 @@ export class RegisterComponent implements OnInit {
           this.usernameError =false;
         } else {
             this.passwordError = false;
-            const user = this.userService.findUserByUsername(this.username);
-            if(user!=undefined){
-              this.usernameError =true;
-              this.emailError = false;
-              this.passwordError = false;
-            } else {
+            const user = this.userService.findUserByUsername(this.username).subscribe(
+              (user:User)=>{
+                this.usernameError =true;
+                this.emailError = false;
+                this.passwordError = false;                
+              },
+              (error:any)=>{
                 this.emailError = false;
                 this.passwordError = false;
                 this.usernameError =false;
@@ -196,13 +198,20 @@ export class RegisterComponent implements OnInit {
                   image: './assets/uploads/avatar.png',
                   badge: './assets/uploads/badge.png',  
                 };
-                this.userService.createUser(newUser);
-                console.log(this.userService.createUser(newUser))
-                var id: string = this.userService.findUserByUsername(this.username)._id
-                this.router.navigate(['user', id]);
+                this.userService.createUser(newUser).subscribe(
+                  (user: User) =>{
+                    var id: string = user._id;
+                    this.router.navigate(['user', id]); 
+                  },
+                  (error: Error) => {
+                    this.usernameError = true;
+                  }
+                )                
               }
+            )
           }
       }
+
   }
 
 }

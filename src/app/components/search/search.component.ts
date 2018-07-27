@@ -18,10 +18,15 @@ export class SearchComponent implements OnInit {
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-  	this.activatedRoute.params.subscribe(params => {
-  	this.uid = params['uid'];
-  	this.user = this.userService.findUserById(this.uid);
-  	});
+    this.activatedRoute.params.subscribe(params => {
+    this.uid = params['uid'];
+    this.userService.findUserById(this.uid).subscribe(
+      (user:User)=>{
+        this.user = user;
+        console.log(this.user)
+      }
+    )
+    });
   }
 
 }
