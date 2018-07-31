@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../../services/user.service.client';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { User } from '../../../models/user.model.client'
+import { NgForm } from '@angular/forms';
+declare var jQuery: any;
 
 
 @Component({
@@ -11,12 +13,19 @@ import { User } from '../../../models/user.model.client'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+    @ViewChild('f') profileForm: NgForm;
   
   uid: string;
   user: User;
-  
 
-  constructor(private userService: UserService, 
+  username: string;
+  firstName: string = "";
+  lastName: string = "";
+  email: string = "";
+  bio: string = "";
+
+  constructor(private router: Router, private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,10 +34,21 @@ export class ProfileComponent implements OnInit {
   	this.userService.findUserById(this.uid).subscribe(
       (user:User)=>{
         this.user = user;
-        console.log(this.user)
       }
     )
   	});
+  }
+
+    update() {
+    this.firstName = this.profileForm.value.firstName;
+    this.lastName = this.profileForm.value.lastName;
+    this.email = this.profileForm.value.email;
+    this.bio = this.profileForm.value.bio;
+    this.userService.updateUser(this.uid, this.user).subscribe(
+        (user: User) => {
+          jQuery('#profileModal').modal('hide');
+        }
+    );
   }
 
 }

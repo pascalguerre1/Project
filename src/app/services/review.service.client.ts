@@ -1,27 +1,67 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model.client';
+import { Review } from '../models/review.model.client';
 import { SharedService } from './shared.service.client';
+import { map } from "rxjs/operators";
+import { Http, Response } from '@angular/http';
+import { environment } from '../../environments/environment'
 
 // injecting service into module
 @Injectable()
 
 export class ReviewService {
+  baseUrl = environment.baseUrl;
 
-constructor() { }
+constructor(private http: Http) { }
 
-reviews = [
-	{_id: "123", reviewerId: "456", targetReviewId: "789", posted:"Aug 2, 2018", like:"5", shared:"7"},
-	{_id: "123", reviewerId: "754", targetReviewId: "175", posted:"Aug 3, 2018", like:"1", shared:"2"},
-	];
-
-
- // adds the user parameter instance to the local users array
-  createReview(userId, review) {
-    review._id = Math.floor(Math.random() * 10000).toString();
-    review.reviewerId= userId;
-    this.reviews.push(review);
-    return review;
+  // adds the review
+  createReview(userId: string, review: Review) {
+    const url = this.baseUrl+'/api/user/'+userId+'/review';; 
+    return this.http.post(url, review).pipe(map(
+      (response: Response) => {
+        return response.json();
+      }
+    ))      
   }
 
+// returns the review by user
+  findReviewByUser(userId: string) {
+    const url = this.baseUrl + '/api/user/'+userId+'/review'; 
+    return this.http.get(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      }
+    )) 
+   }
+
+   // returns the review by id 
+  findReviewById(reviewId: string) {
+    const url = this.baseUrl+'/api/review/'+reviewId;
+    return this.http.get(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      }
+    ))      
+  }
+
+// updates the review 
+  updateReview(reviewId: string, review: Review) { 
+    const url = this.baseUrl + '/api/review/'+ reviewId;
+    return this.http.put(url, review).pipe(map(
+      (response: Response) => {
+        return response.json();
+      }
+     ))
+   }
+
+ // removes the review 
+  deleteReview(reviewId: string) { 
+    const url = this.baseUrl + '/api/review/'+ reviewId;
+    return this.http.delete(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      }
+     ))
+   }
 
 }
