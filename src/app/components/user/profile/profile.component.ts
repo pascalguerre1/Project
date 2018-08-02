@@ -4,6 +4,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { User } from '../../../models/user.model.client'
 import { NgForm } from '@angular/forms';
+import { environment } from '../../../../environments/environment';
 declare var jQuery: any;
 
 
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit {
   
   uid: string;
   user: User;
-
+  baseUrl: string = "";
   username: string;
   firstName: string = "";
   lastName: string = "";
@@ -29,6 +30,7 @@ export class ProfileComponent implements OnInit {
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.baseUrl = environment.baseUrl;
   	this.activatedRoute.params.subscribe(params => {
   	this.uid = params['uid'];
   	this.userService.findUserById(this.uid).subscribe(

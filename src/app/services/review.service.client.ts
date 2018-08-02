@@ -16,7 +16,7 @@ constructor(private http: Http) { }
 
   // adds the review
   createReview(userId: string, review: Review) {
-    const url = this.baseUrl+'/api/user/'+userId+'/review';; 
+    const url = this.baseUrl+'/api/user/'+userId+'/review'; 
     return this.http.post(url, review).pipe(map(
       (response: Response) => {
         return response.json();

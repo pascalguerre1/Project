@@ -70,4 +70,15 @@ constructor(private http: Http) { }
      ))
    }
 
+  // returns all user2
+  findUser2(user: User) {
+    const url = this.baseUrl+'/api/search'; 
+    return this.http.get(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      },
+      console.log('hi')
+    )) 
+   }
+
 }

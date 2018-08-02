@@ -19,7 +19,8 @@ const APP_ROUTES : Routes = [
   { path : 'about' , component: AboutComponent},
   { path : 'contact' , component: ContactComponent},
   { path : 'user/:uid/reviews' , component: ReviewComponent},
-  { path : 'user/:uid/search' , component: SearchComponent},  
+  // { path : 'user/:uid/search' , component: SearchComponent},
+  { path : 'search' , component: SearchComponent},  
     // so on
 ];
 

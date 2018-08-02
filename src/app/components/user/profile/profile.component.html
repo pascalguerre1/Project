@@ -7,7 +7,7 @@
   			   <img style="width: 80%" [src]="user.image" alt="profile pic">
         </div>
         <div class="text-center">
-            <a href="">Edit Image</a>
+            <a class="text-center" href="" data-toggle="modal" data-target="#imageModal" data-backdrop="static" data-keyboard="false">Edit Image</a>
         </div>
         <div class="text-center">
             <p><b>{{user.username}}</b></p>
@@ -126,6 +126,28 @@
             <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="ngOnInit()">Cancel</button>
             <button class="btn btn-success" type="submit" form="profileForm">Save</button>
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Modals -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload New Image</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <form ngNoForm action="{{baseUrl}}/api/user/{{user._id}}/upload" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+              <input class="form-control" type="file" name="image">
+          </div>
+          <button type="submit" class="btn btn-success btn-block">Upload</button>
         </form>
       </div>
     </div>

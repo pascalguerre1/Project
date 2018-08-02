@@ -30,7 +30,7 @@
 		            <p>{{user.selectedValues[0]}} <br> {{user.selectedValues[1]}} <br> {{user.selectedValues[2]}}</p>
 	            </div>
 	            <div class="col-sm-12">
-	  				<button class="btn btn-block btn-success col-12">Write a Review for this attorney</button>
+	  				<button class="btn btn-block btn-success col-12" data-toggle="modal" data-target="#reviewModal" data-backdrop="static" data-keyboard="false">Write a Review for this attorney</button>
 	  			</div>
 	  		</div>
 	  		<br>
@@ -103,7 +103,7 @@
 				</p>
 	  		  </div>
 	  		  <div class="col-sm-10">
-	         	 <a routerLink="">Leave a comment</a>
+	         	 <a data-toggle="modal" data-target="#commentModal" data-backdrop="static" data-keyboard="false" href="">Leave a comment</a>
 	          </div>
 	  		  <div class="col-sm-2 float-right">
 	         	 <a routerLink=""><span class="fa fa-thumbs-up"></span></a>: 14 likes
@@ -117,5 +117,83 @@
   </div>
 
 
+
+<!-- Review Modals -->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Write a Review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  id="reviewForm" #f="ngForm">
+          <div>
+            <label>Rating:</label>
+            	<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+          </div>
+
+            <div>
+	           <label class="col-form-label">Responsiveness:</label>
+		       <select  style="display: inline-flex;" name="responsiveness" [(ngModel)]="responsivenessValue">
+		             <option value="{{responsiveness.value}}" *ngFor="let responsiveness of resp">{{responsiveness.name}}</option>
+		       </select>
+	        </div>
+
+	        <div>
+	           <label class="col-form-label">Cost:</label>
+		       <select  name="cost" [(ngModel)]="costValue">
+		             <option value="{{cost.value}}" *ngFor="let cost of costs">{{cost.name}}</option>
+		       </select>
+	        </div>
+          <br>
+          <div class="form-group">
+            <label>Comments</label>
+            <textarea class="form-control" type="text" name="comments" rows="5" >
+            </textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
+            <button class="btn btn-success" type="submit" form="reviewForm">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Comment Modals -->
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Leave a Comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  id="commentForm" #f="ngForm">
+          <div class="form-group">
+            <label>Comments</label>
+            <textarea class="form-control" type="text" name="comments" rows="5" >
+            </textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
+            <button class="btn btn-success" type="submit" form="commentForm">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>

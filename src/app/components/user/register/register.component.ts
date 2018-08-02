@@ -107,8 +107,6 @@ export class RegisterComponent implements OnInit {
   phone: string;
   site: string;
   area1: string;
-  area2: string;
-  area3: string;
   emailError: boolean;
   passwordError: boolean;
   usernameError: boolean;

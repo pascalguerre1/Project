@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   uid: string;
   user: User;
+  
 
   constructor(private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
@@ -20,9 +21,9 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
     this.uid = params['uid'];
-    this.userService.findUserById(this.uid).subscribe(
+    this.userService.findUser2(this.user).subscribe(
       (user:User)=>{
-        this.user = user;
+        this.user = user;//the list of all user2
         console.log(this.user)
       }
     )
