@@ -132,15 +132,15 @@
         <form  id="reviewForm" #f="ngForm">
           <div>
             <label>Rating:</label>
-            	<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
+            <a *ngFor="let item of starList; let i=index " (click)="setStar(i)" style="cursor:pointer;">
+              <span *ngIf="item" class="fa fa-star"></span>    
+              <span *ngIf="!item" class="fa fa-star checked"></span>
+            </a>
+            {{rating}} stars
           </div>
 
-            <div>
-	           <label class="col-form-label">Responsiveness:</label>
+          <div>
+	         <label class="col-form-label">Responsiveness:</label>
 		       <select  style="display: inline-flex;" name="responsiveness" [(ngModel)]="responsivenessValue">
 		             <option value="{{responsiveness.value}}" *ngFor="let responsiveness of resp">{{responsiveness.name}}</option>
 		       </select>

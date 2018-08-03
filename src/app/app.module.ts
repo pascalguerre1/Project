@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routing } from './app.routing';
 import { HttpModule } from '@angular/http';
+import { SearchPipe } from './search.pipe';
 
 //components
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { SearchComponent } from './components/search/search.component';
     ContactComponent,
     ReviewComponent,
     SearchComponent,
+    SearchPipe,
     ],
   imports: [
     BrowserModule,

@@ -1,6 +1,10 @@
 <div id="body">
 
-  <div class="pg-profile-style" *ngFor="let user of user">
+	<input class="pg-profile-style" type="text" [(ngModel)]="firstName" placeholder="Search Name"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="city" placeholder="Search city"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="state" placeholder="Search state"/>
+
+  <div class="pg-profile-style" *ngFor="let user of user | attorneyFilter:firstName:lastName | attorneyFilter:city | attorneyFilter:state;">
 
   	<div class="row">
 
