@@ -1,13 +1,13 @@
 <div id="body">
 
-	<input class="pg-profile-style" type="text" [(ngModel)]="firstName" placeholder="Search Name"/>
-	<input class="pg-profile-style" type="text" [(ngModel)]="city" placeholder="Search city"/>
-	<input class="pg-profile-style" type="text" [(ngModel)]="state" placeholder="Search state"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.name" placeholder="Search Name"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.city" placeholder="Search city"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.state" placeholder="Search state"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.area" placeholder="Search area"/>
 
-  <div class="pg-profile-style" *ngFor="let user of user | attorneyFilter:firstName:lastName | attorneyFilter:city | attorneyFilter:state;">
+  	<div class="pg-profile-style" *ngFor="let user of user | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area;">
 
   	<div class="row">
-
   		<div class="col-md-3 text-center">
 	        <div>
 	  			<img style="width: 30%" [src]="user.image" alt="profile pic">
@@ -17,7 +17,6 @@
 	            <p><b>{{user.firstName}} {{user.lastName}}</b></p>
 	        </div>
 		</div>
-
   		<div class="col-md-6 pg-vertical-line pg-vertical-line2 d-md-flex">
 	  		<div class="row container">
 	          	<div class="col-sm-6">
@@ -30,7 +29,6 @@
 	            </div>
 	  		</div>
   		</div>
-
   		  <div class="col-md-3">
   			<div class="text-center">
 	  			<h5 class="">Overall Rating:</h5>
@@ -45,9 +43,8 @@
             <p class="text-center"><b><a routerLink="">18 Reviews</a></b></p>
           </div>
   		</div>
-
   	</div>
 
-  </div>
+    </div>
 
 </div>

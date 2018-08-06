@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand flex-column flex-md-row fixed-top">
-  <a class="navbar-brand" href="/">Logo</a>
+  <a class="navbar-brand" href="/">appJustice</a>
   <div class="pg-scrollable">
     <ul class="navbar-nav flex-row pg">
       <li class="nav-item">
@@ -31,35 +31,6 @@
     <div class="navbar">
       <span class="navbar-brand" style="font-size:25px;cursor:pointer" (click)="openNav()">&#9776; Search</span>
     </div>
-    <div id="mySidenav" class="row sidenav">
-      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <div class="col-10">
+    <app-sidenavbar></app-sidenavbar>
 
-        <label class="col-form-label">Name</label>
-          <input type="text" name="name" placeholder="Lawyer name, or firm" class="form-control" ngModel #name="ngModel">
-        <br>
-        <label class="col-form-label">City</label>
-          <input type="text" name="city" class="form-control" ngModel #city="ngModel">
-        <br>
-        <label class="col-form-label">State</label>
-        <select class="form-group input-group form-control" name="state" [(ngModel)]="stateValue">
-              <option value="{{state.value}}" *ngFor="let state of states">{{state.name}}</option>
-        </select>
-        <label class="col-form-label">Pratice Area</label>
-        <select class="form-group input-group form-control" name="area1" [(ngModel)]="area1Value">
-          <option value="{{area.name}}" *ngFor="let area of areas">{{area.name}}</option>
-        </select>
-        <label class="col-form-label">Rating</label>
-        <form ngNoForm action="/action_page.php" method="get">
-          <input type="checkbox" name="rating" value="5 Stars"> 5 Stars<br>
-          <input type="checkbox" name="rating" value="4 Stars" checked> 4 Stars<br>
-          <input type="checkbox" name="rating" value="3 Stars" checked> 3 Stars<br>
-          <input type="checkbox" name="rating" value="2 Stars" checked> 2 Stars<br>
-          <input type="checkbox" name="rating" value="1 Star" checked> 1 Star<br>            
-        </form>
-
-        <br>
-        <button class="btn btn-success">Search</button>
-      </div>
-  </div>
 </nav>

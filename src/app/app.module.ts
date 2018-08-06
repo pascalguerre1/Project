@@ -22,6 +22,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
 import { SearchComponent } from './components/search/search.component';
+import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 
 
 
@@ -40,6 +41,7 @@ import { SearchComponent } from './components/search/search.component';
     ReviewComponent,
     SearchComponent,
     SearchPipe,
+    SidenavbarComponent,
     ],
   imports: [
     BrowserModule,

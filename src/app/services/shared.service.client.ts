@@ -6,4 +6,11 @@ export class SharedService {
    attorneyRegs: boolean;
    practiceAreas: any[] = [];
    maxAreaError: boolean;
+   item: any = {
+   	name: "",
+   	city: "",
+   	state:"",
+   	area:""
+   };
+
 }
