@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 
 //services
 import { UserService } from './services/user.service.client';
+import { ReviewService } from './services/review.service.client';
 import { SharedService } from './services/shared.service.client';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -49,7 +50,7 @@ import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.componen
     FormsModule,
     HttpModule
   ],
-  providers: [UserService, SharedService],
+  providers: [ReviewService, UserService, SharedService],
   entryComponents: [AppComponent, TemplateComponent],
   bootstrap: [AppComponent]
 })

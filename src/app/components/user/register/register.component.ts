@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
    areas = [
           {name: "Admiralty (Maritime) Law"},
           {name: "Bankruptcy Law"},
-          {name: "Business (Corporate) Law"},
+          {name: "Business Law"},
           {name: "Civil Rights Law"},
           {name: "Criminal Law"},
           {name: "Entertainment Law"},
@@ -111,14 +111,15 @@ export class RegisterComponent implements OnInit {
   passwordError: boolean;
   usernameError: boolean;
 
-  attorneyRegs: boolean;
+  attorneyRegs: boolean = false;
 
 
   selectedValues: any[];
 
   constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router, public sharedService: SharedService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
+   this.sharedService.attorneyRegs = false; 
   }
 
   addArea(){
@@ -169,42 +170,68 @@ export class RegisterComponent implements OnInit {
         } else {
             this.passwordError = false;
             const user = this.userService.findUserByUsername(this.username).subscribe(
-              (user:User)=>{
-                this.usernameError =true;
-                this.emailError = false;
-                this.passwordError = false;                
-              },
-              (error:any)=>{
-                this.emailError = false;
-                this.passwordError = false;
-                this.usernameError =false;
-                const newUser = {
-                  _id:"",
-                  username: this.username,
-                  password: this.password,
-                  firstName: this.firstName,
-                  lastName: this.lastName,
-                  email: this.email,             
-                  gender: this.radioData,
-                  office: this.office,
-                  address: this.address,
-                  city: this.city,
-                  state: this.state,
-                  phone: this.phone,
-                  site: this.site,
-                  selectedValues: this.selectedValues,
-                  image: './assets/uploads/avatar.png',
-                  badge: './assets/uploads/badge.png',  
-                };
-                this.userService.createUser(newUser).subscribe(
-                  (user: User) =>{
-                    var id: string = user._id;
-                    this.router.navigate(['user', id]); 
-                  },
-                  (error: Error) => {
-                    this.usernameError = true;
+              (user: any) => {
+                  if (!user) {
+                    if(this.sharedService.attorneyRegs === true){
+                      const newUser: User = {
+                        role:"attn",
+                        username: this.username,
+                        password: this.password,
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        email: this.email,             
+                        gender: this.radioData,
+                        office: this.office,
+                        address: this.address,
+                        city: this.city,
+                        state: this.state,
+                        phone: this.phone,
+                        site: this.site,
+                        selectedValues: this.selectedValues,
+                        image: './assets/uploads/avatar.png',
+                        badge: './assets/uploads/badge.png',  
+                      };                    
+                      this.userService.createUser(newUser)
+                      .subscribe(
+                          (user: any) => {
+                            this.emailError = false;
+                            this.passwordError = false;
+                            this.usernameError =false;
+                            var id: string = user._id;
+                            this.router.navigate(['user', id]);                               
+                          });
+                    } else {
+                      const newUser: User = {
+                        username: this.username,
+                        password: this.password,
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        email: this.email,             
+                        gender: this.radioData,
+                        office: this.office,
+                        address: this.address,
+                        city: this.city,
+                        state: this.state,
+                        phone: this.phone,
+                        site: this.site,
+                        selectedValues: this.selectedValues,
+                        image: './assets/uploads/avatar.png',
+                        badge: './assets/uploads/badge.png',  
+                      };                    
+                      this.userService.createUser(newUser)
+                      .subscribe(
+                          (user: any) => {
+                            this.emailError = false;
+                            this.passwordError = false;
+                            this.usernameError =false;
+                            var id: string = user._id;
+                            this.router.navigate(['user', id]);                               
+                          });
+                    }
+                  } 
+                  else {
+                      this.usernameError = true;
                   }
-                )                
               }
             )
           }

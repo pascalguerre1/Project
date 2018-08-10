@@ -34,6 +34,7 @@ constructor(private http: Http) { }
 // returns the user in local users array whose _id matches the userId parameter
   findUserById(userId: string) {
     const url = this.baseUrl+'/api/user/'+userId;
+    console.log(url)
     return this.http.get(url).pipe(map(
       (response: Response) => {
         return response.json();
@@ -79,5 +80,15 @@ constructor(private http: Http) { }
       },
     )) 
    }
+
+    // returns all user2
+    findUser2ById(userId2: string) {//
+    const url = this.baseUrl+'/api/reviews/'+userId2; //
+    return this.http.get(url).pipe(map(//
+      (response: Response) => {//
+        return response.json();//
+      },//
+    )) //
+   }//
 
 }

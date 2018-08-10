@@ -24,12 +24,12 @@
           <p>{{user.gender}}</p>
 
           <!-- law office section -->
-<!--           <div>
+          <div *ngIf="this.user.role === 'attn'">
             <label>Office Information</label>
             <p>{{user.office}} <br> {{user.address}} {{user.city}}, {{user.state}} <br>Tel: {{user.phone}} <br> {{user.site}}</p>
             <label>Area of expertise</label>
             <p>{{user.selectedValues[0]}} <br> {{user.selectedValues[1]}} <br> {{user.selectedValues[2]}}</p>
-          </div> -->
+          </div>
           <!-- end law office section -->   
                
           <label>About me</label>
@@ -40,15 +40,16 @@
 
   		<div class="col-md-4">
 
-                  <!-- law office section -->
-<!--         <div class="text-center">
+        <!-- law office section -->
+    <div *ngIf="this.user.role === 'attn'">
+        <div class="text-center">
           <h5 class="">Overall Rating:</h5>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
-      </div>
+        </div>
       <br>
       <div>
         <p class="text-center"><b><a href="">18 Reviews</a></b></p>
@@ -61,33 +62,35 @@
           <li><span class="fa fa-star checked"></span>: <a href="">1 review(s)</a></li>
           <li><span class="fa fa-star checked"></span>: <a href="">0 review(s)</a></li>
         </ol>
-      </div> -->
-          <!-- end law office section -->   
-
-			<div class="text-center">
-				<img style="width: 50%" [src]="user.badge" alt="badge pic">
-			</div>
-      <br>
-      <div>
-        <p class="text-center"><b>{{user.bcount}}</b></p>
       </div>
-      <br>
-       <div class="text-center">
-         Reviews written: 5
-       </div>
-       <div class="text-center">
-         "Like" received: 10
-       </div>
-       <div class="text-center">
-         "comment" received: 4
-       </div>
-       <hr>
-      <div class="comment text-center ">
-        <p style="font-size: 12px">Earn badges everytime someone "like" or comments on your reviews</p>
+    </div>
+          <!-- end law office section -->   
+      <div *ngIf="this.user.role !== 'attn'">
+  			<div class="text-center">
+  				<img style="width: 50%" [src]="user.badge" alt="badge pic">
+  			</div>
+        <br>
+        <div>
+          <p class="text-center"><b>{{user.bcount}}</b></p>
+        </div>
+        <br>
+         <div class="text-center">
+           Reviews written: 5
+         </div>
+         <div class="text-center">
+           "Like" received: 10
+         </div>
+         <div class="text-center">
+           "comment" received: 4
+         </div>
+         <hr>
+        <div class="comment text-center ">
+          <p style="font-size: 12px">Earn badges everytime someone "like" or comments on your reviews</p>
+        </div>
       </div>
 
   		</div>
-
+    
   	</div>
   </div>
 

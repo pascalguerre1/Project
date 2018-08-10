@@ -12,7 +12,7 @@ export class TemplateComponent {
   areas = [
             {name: "Admiralty (Maritime) Law"},
             {name: "Bankruptcy Law"},
-            {name: "Business (Corporate) Law"},
+            {name: "Business Law"},
             {name: "Civil Rights Law"},
             {name: "Criminal Law"},
             {name: "Entertainment Law"},

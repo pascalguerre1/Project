@@ -1,9 +1,11 @@
 export class Review {
-	_id: string;
+	_id?: string;
 	reviewerId: string;
 	targetReviewId: string;
-	posted: string;
-	cost?: string[];
+	rating:number;
+	comments: string;
+	posted?: string;
+	cost?: string;
 	like?: string;
 	shared?: string;
 

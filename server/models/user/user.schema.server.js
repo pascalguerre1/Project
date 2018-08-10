@@ -7,8 +7,18 @@ var UserSchema = mongoose.Schema({
 	lastName: String,
 	email: String,
 	image: String,
+	badge:String,
 	bio: String,
-	role:{type: String, default: 'user', enum:['user', 'user2', 'admin']},
+	bcount: String,
+	office: String,
+	address: String,
+	city: String,
+	state: String,
+	phone: String,
+	site: String,
+	gender: String,
+	selectedValues:[],
+	role:{type: String, default: 'user', enum:['user', 'attn', 'admin']},
 	dateCreated: {type: Date, default: Date.now}
 }, {collection:'user'})
 

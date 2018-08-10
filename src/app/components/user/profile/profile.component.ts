@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { User } from '../../../models/user.model.client'
 import { NgForm } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
+import { SharedService } from '../../../services/shared.service.client';
 declare var jQuery: any;
 
 
@@ -26,7 +27,7 @@ export class ProfileComponent implements OnInit {
   email: string = "";
   bio: string = "";
 
-  constructor(private router: Router, private userService: UserService, 
+  constructor(public sharedService: SharedService, private router: Router, private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

@@ -19,7 +19,7 @@ export class SearchPipe implements PipeTransform {
       transform(value: any, filterName: string, filterCity: string, filterState: string, filterArea: string){
         if (value && value.length){
             return value.filter(item =>{
-            	let name = item.firstName+' '+item.lastName
+            	let name = item.firstName+' '+item.lastName+' '+item.office
                 if (filterName && name.toLowerCase().indexOf(filterName.toLowerCase()) === -1){
                     return false;
                 }

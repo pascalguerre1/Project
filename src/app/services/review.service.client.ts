@@ -15,8 +15,8 @@ export class ReviewService {
 constructor(private http: Http) { }
 
   // adds the review
-  createReview(userId: string, review: Review) {
-    const url = this.baseUrl+'/api/user/'+userId+'/review'; 
+  createReview(userId: string, userId2:string, review: Review) {
+    const url = this.baseUrl+'/api/user/'+userId+'/reviews'+userId2; 
     return this.http.post(url, review).pipe(map(
       (response: Response) => {
         return response.json();
@@ -24,9 +24,9 @@ constructor(private http: Http) { }
     ))      
   }
 
-// returns the review by user
-  findReviewByUser(userId: string) {
-    const url = this.baseUrl + '/api/user/'+userId+'/review'; 
+// returns the review by user2
+  findReviewByUser2(userId2: string) {
+    const url = this.baseUrl + '/api/user/reviews/'+userId2; 
     return this.http.get(url).pipe(map(
       (response: Response) => {
         return response.json();

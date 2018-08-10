@@ -24,7 +24,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     var item = this.sharedService.item
-    console.log(item);
     this.activatedRoute.params.subscribe(params => {
     this.userService.findUser2().subscribe(
       (user:User)=>{
