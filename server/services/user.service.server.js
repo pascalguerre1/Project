@@ -75,13 +75,13 @@ module.exports = function(app){
 	app.post('/api/user', createUser);//path to run function
 	function createUser(req, res){
 		var user = req.body;
-	    userModel.createUser(user).then(//
-            function(user){//
-               req.login(user, function(err) {//
-                   res.json(user);//
-               });//
-	        }//
-	    );//
+	    userModel.createUser(user).then(
+            function(user){
+               req.login(user, function(err) {
+                   res.json(user);
+               });
+	        }
+	    );
 
 	}
 	// find user by given id
