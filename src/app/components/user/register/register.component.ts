@@ -92,6 +92,8 @@ export class RegisterComponent implements OnInit {
   @ViewChild('parent', { read: ViewContainerRef })    container: ViewContainerRef;
   @ViewChild('f') registerForm: NgForm;
   
+  user: User;
+
   firstName: string;
   lastName: string;
   radioData: string = '';
@@ -199,7 +201,6 @@ export class RegisterComponent implements OnInit {
                             this.passwordError = false;
                             this.usernameError = false;
                             this.sharedService.user = user;
-                            // var id: string = user._id;
                             this.router.navigate(['user']);                               
                           });
 
@@ -229,7 +230,6 @@ export class RegisterComponent implements OnInit {
                             this.passwordError = false;
                             this.usernameError = false;
                             this.sharedService.user = user;
-                            // var id: string = user._id;
                             this.router.navigate(['user']);                               
                           });
 

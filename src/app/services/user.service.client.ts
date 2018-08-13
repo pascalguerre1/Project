@@ -73,12 +73,13 @@ constructor(private router: Router, private sharedService: SharedService, privat
 
  // adds the user parameter instance to the local users array
   createUser(user: User) {
+   this.options.withCredentials = true;
     const url = this.baseUrl+'/api/user'; 
-    return this.http.post(url, user).pipe(map(
+    return this.http.post(url, user, this.options).pipe(map(
       (response: Response) => {
         return response.json();
       }
-    ))      
+    ))    
   }
 // returns the user in local users array whose username matches the parameter username
   findUserByUsername(username: string) {
