@@ -24,6 +24,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
 import { SearchComponent } from './components/search/search.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { AdminGuard } from './services/adminGuard.service';
 
 
 
@@ -50,7 +52,7 @@ import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.componen
     FormsModule,
     HttpModule
   ],
-  providers: [ReviewService, UserService, SharedService],
+  providers: [ReviewService, UserService, SharedService, AuthGuard, AdminGuard],
   entryComponents: [AppComponent, TemplateComponent],
   bootstrap: [AppComponent]
 })

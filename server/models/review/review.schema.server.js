@@ -3,9 +3,13 @@
 var mongoose = require('mongoose');
 
 var ReviewSchema = mongoose.Schema({
-	_id: String,
 	reviewerId: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
+	reviewerUsername: String,
+	reviewerImage: String,
+	reviewerBadge: String,
+	reviewerBcount: String,
 	targetReviewId: String,
+	responsiveness: String,
 	rating:Number,
 	comments: String,
 	cost: String,

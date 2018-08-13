@@ -190,16 +190,19 @@ export class RegisterComponent implements OnInit {
                         selectedValues: this.selectedValues,
                         image: './assets/uploads/avatar.png',
                         badge: './assets/uploads/badge.png',  
-                      };                    
+                      }; 
+
                       this.userService.createUser(newUser)
                       .subscribe(
                           (user: any) => {
                             this.emailError = false;
                             this.passwordError = false;
-                            this.usernameError =false;
-                            var id: string = user._id;
-                            this.router.navigate(['user', id]);                               
+                            this.usernameError = false;
+                            this.sharedService.user = user;
+                            // var id: string = user._id;
+                            this.router.navigate(['user']);                               
                           });
+
                     } else {
                       const newUser: User = {
                         username: this.username,
@@ -217,16 +220,19 @@ export class RegisterComponent implements OnInit {
                         selectedValues: this.selectedValues,
                         image: './assets/uploads/avatar.png',
                         badge: './assets/uploads/badge.png',  
-                      };                    
+                      };  
+
                       this.userService.createUser(newUser)
                       .subscribe(
                           (user: any) => {
                             this.emailError = false;
                             this.passwordError = false;
-                            this.usernameError =false;
-                            var id: string = user._id;
-                            this.router.navigate(['user', id]);                               
+                            this.usernameError = false;
+                            this.sharedService.user = user;
+                            // var id: string = user._id;
+                            this.router.navigate(['user']);                               
                           });
+
                     }
                   } 
                   else {

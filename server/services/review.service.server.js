@@ -3,8 +3,8 @@ module.exports = function(app){
 	const reviewModel = require('../models/review/review.model.server');
 	
 	var reviews = [
-	{_id: "123", reviewerId: "5b6d926e21d9e62ec835863c", targetReviewId: "5b6d92fc21d9e62ec8358641", rating: "2", posted:"Aug 2, 2018", comments: "hello", cost:"$50k-$80k", like:"5", shared:"7"},
-	{_id: "123", reviewerId: "5b6d92a221d9e62ec835863d", targetReviewId: "5b6d92fc21d9e62ec8358641", rating: "2", posted:"Aug 3, 2018", comments: "hello", cost:"$50k-$80k", like:"1", shared:"2"},
+	{_id: "123", reviewerId: "5b6e1e9f4e7912e94e13b330", reviewerUsername: "hi", reviewerImage:"https://www.ustitleseries.net/assets/profile_avatar-8f9ebff986868f54e6d7fd3befa117ccc0e67ef50580d254b3a77d3e7b409eef.png", reviewerBadge:"https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png", reviewerBcount:"19 badges", targetReviewId: "5b6e1ed44e7912e94e13b332", rating: "2", posted:"Aug 2, 2018", comments: "hello", cost:"$50k-$80k", like:"5", shared:"7"},
+	{_id: "123", reviewerId: "5b6e1e854e7912e94e13b32f", reviewerUsername: "shiyu", reviewerImage:"https://www.ustitleseries.net/assets/profile_avatar-8f9ebff986868f54e6d7fd3befa117ccc0e67ef50580d254b3a77d3e7b409eef.png", reviewerBadge:"https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png", reviewerBcount:"2 badges", targetReviewId: "5b6e1ed44e7912e94e13b332", rating: "2", posted:"Aug 3, 2018", comments: "hello", cost:"$50k-$80k", like:"1", shared:"2"},
 	];
 
 

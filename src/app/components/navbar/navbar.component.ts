@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject, Output,EventEmitter } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { SharedService } from '../../services/shared.service.client';
+import { Router} from '@angular/router';
+import { UserService } from '../../services/user.service.client'
 declare var $: any;
 
 
@@ -14,7 +16,7 @@ export class NavbarComponent implements OnInit {
   attorneyRegs: boolean;
 
 
-  constructor(@Inject(DOCUMENT) document, public sharedService: SharedService) { }
+  constructor(@Inject(DOCUMENT) document, public sharedService: SharedService,  private router: Router, private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -31,5 +33,13 @@ export class NavbarComponent implements OnInit {
     document.getElementById("mySidenav").style.width = "300px";
 }
 
+
+  logout(){
+   this.userService.logout().subscribe(
+     (data: any) => {
+       this.router.navigate(['/login'])
+     }
+   );
+  }
 
 }

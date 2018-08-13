@@ -314,3 +314,13 @@ ol.custom:first-child {
 .pg-contact :hover {
     color: grey;
 }
+
+/*animation*/
+.animate-bottom{
+  position: relative;
+  animation: animatebottom 0.5s;
+}
+@keyframes animatebottom {
+  from{bottom:-300px; opacity: 0;}
+  to{bottom: 0; opacity: 1;}
+}

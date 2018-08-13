@@ -24,7 +24,7 @@ export class SidenavbarComponent implements OnInit {
   twoStar: boolean;
   oneStar: boolean;
 
-     states = [
+states = [
           {name: "Alabama", value: "AL"},
           {name: "Alaska", value: "AK"},
           {name: "Arizona", value: "AZ"},
@@ -77,7 +77,6 @@ export class SidenavbarComponent implements OnInit {
           {name: "Wisconsin", value: "WI"},
           {name: "Wyoming", value: "WY"},
    ];
-   // stateValue = null;
 
     areas = [
         {name: "Admiralty (Maritime) Law"},
@@ -96,11 +95,13 @@ export class SidenavbarComponent implements OnInit {
         {name: "Real Estate Law"},           
         {name: "Tax Law"},  
    ];            
-   // area1Value = null;
+ 
+
  
   constructor(@Inject(DOCUMENT) document, public sharedService: SharedService, private router: Router) { }
 
   ngOnInit() {
+
   }
 
   attRegs(){
@@ -128,7 +129,6 @@ export class SidenavbarComponent implements OnInit {
       oneStar: this.oneStar
     }
     this.sharedService.item = item;
-    console.log(item)
     this.closeNav();
     this.router.navigate(['/search']);
   }

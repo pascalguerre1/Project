@@ -1,19 +1,19 @@
-
-
 var mongoose = require('mongoose');
 var ReviewSchema = require('./review.schema.server.js');
 var ReviewModel = mongoose.model('ReviewModel', ReviewSchema);
 
-ReviewModel.createReviewForUser = createReviewForUser;
-ReviewModel.findAllReviewsForUser2 = findAllReviewsForUser2;
+
+
 // ReviewModel.findReviewById = findReviewById;
 // WebsiteModel.updateWebsite = updateWebsite;
 // WebsiteModel.deleteWebsite = deleteWebsite;
 
+ReviewModel.createReviewForUser = createReviewForUser;
 function createReviewForUser(review){
 	return ReviewModel.create(review);
 }
 
+ReviewModel.findAllReviewsForUser2 = findAllReviewsForUser2;
 function findAllReviewsForUser2(uid2){
 	return ReviewModel.find({targetReviewId: uid2});
 }

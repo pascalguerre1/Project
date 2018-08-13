@@ -6,6 +6,9 @@ import { NgModule } from '@angular/core';
 import { User } from '../../models/user.model.client';
 import { Review } from '../../models/review.model.client';
 import { NgForm } from '@angular/forms';
+import { SharedService } from '../../services/shared.service.client';
+declare var jQuery: any;
+
 
 @Component({
   selector: 'app-review',
@@ -16,11 +19,14 @@ export class ReviewComponent implements OnInit {
 
 @ViewChild('f') reviewForm: NgForm;
 
-  uid2:string;//
-  user2: User;//
 
 	uid: string;
   user: User;
+
+  uid2:string;
+  user2: User;
+
+  anonymousUser: boolean;
   reviews: Review[];
 
 
@@ -44,30 +50,26 @@ export class ReviewComponent implements OnInit {
    costValue = null;
 
 
-  constructor(private router: Router, private reviewService: ReviewService, private userService: UserService, 
+  constructor(public sharedService: SharedService, private router: Router, private reviewService: ReviewService, private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
+    if(!this.user){
+      this.anonymousUser = true;
+    } else {
+      this.anonymousUser = false;
+    }
     this.activatedRoute.params.subscribe(params => {
-    this.uid = params['uid'];
-    this.uid2 =params['uid2']//
-    this.userService.findUserById(this.uid).subscribe(
-      (user:User)=>{
-        this.user = user;
-        console.log(this.user)
+    this.uid2 =params['uid2'];
+    this.userService.findUser2ById(this.uid2).subscribe(
+      (user2:User)=>{
+        this.user2 = user2;
       }
     )
-
-    this.userService.findUser2ById(this.uid2).subscribe(//
-      (user2:User)=>{//
-        this.user2 = user2;//
-      }//
-    )//
-
     this.reviewService.findReviewByUser2(this.uid2).subscribe(
       (reviews:Review[])=>{
         this.reviews = reviews;
-        console.log(this.reviews)
       }
     )
 
@@ -102,15 +104,21 @@ responsiveness: string;
 
   const newReview: Review = {
     rating: this.rating,
-    reviewerId: this.uid,
+    reviewerId: this.user._id,
+    reviewerUsername: this.user.username,
+    reviewerImage: this.user.image,
+    reviewerBadge: this.user.badge,
+    reviewerBcount: this.user.bcount,
     targetReviewId: this.uid2,
     cost: this.cost,
+    responsiveness: this.responsiveness,
     comments: this.comments,
   };
-  console.log(newReview)
-  this.reviewService.createReview(this.uid, this.uid2, newReview).subscribe(
+  this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
-      this.router.navigate(['user', this.uid, 'reviews', this.uid2]) //will combine it to user/123/reviews/555
+      jQuery('#reviewModal').modal('hide');
+      this.router.navigateByUrl('/about', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['user/reviews/', this.uid2]));
     }
   )
 }

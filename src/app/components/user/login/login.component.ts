@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
   login(){
   	this.username = this.loginForm.value.username;
   	this.password = this.loginForm.value.password;
-  	this.userService.findUserByCredentials(this.username, this.password).subscribe(//'subscribe' waits for the function finduserbycredential to run then do the following 2 steps.
+  	this.userService.login(this.username, this.password).subscribe(//'subscribe' waits for the function finduserbycredential to run then do the following 2 steps.
       (user: User) => { //if the response from the function is a user then run the code below
         this.errorFlag = false;
         this.sharedService.user = user;
-        this.router.navigate(['/user/'+ user._id]);        
+        this.router.navigate(['user']);        
       },
       (error: any) =>{//if the response from the function is an error then run the code below
         this.errorFlag = true;

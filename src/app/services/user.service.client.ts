@@ -2,16 +2,74 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model.client';
 import { SharedService } from './shared.service.client';
 import { map } from "rxjs/operators";
-import { Http, Response } from '@angular/http';
-import { environment } from '../../environments/environment'
+import { Http, Response, RequestOptions } from '@angular/http';
+import { environment } from '../../environments/environment';
+import { Router} from '@angular/router';
 
 // injecting service into module
 @Injectable()
 
 export class UserService {
   baseUrl = environment.baseUrl;
+  options: RequestOptions = new RequestOptions();
 
-constructor(private http: Http) { }
+constructor(private router: Router, private sharedService: SharedService, private http: Http) { }
+
+    login(username: string, password: string) {
+        this.options.withCredentials = true;
+        const credentials = {
+            username: username,
+            password: password
+        };
+        this.options.withCredentials = true;
+        return this.http.post(this.baseUrl + '/api/login', credentials, this.options).pipe(map(
+            (response: Response) => {
+                return response.json();
+            }
+        ));
+    }
+
+  logout(){
+    this.options.withCredentials = true;
+    return this.http.post(this.baseUrl + '/api/logout', '', this.options).pipe(map(
+     (res: Response) => {
+       this.sharedService.user = null;
+       return res;
+     }
+   ));
+  }
+
+  loggedIn() {
+   this.options.withCredentials = true;
+   return this.http.post(this.baseUrl + '/api/loggedIn', '', this.options).pipe(map(
+     (res: Response) => {
+       const user = res.json();
+       if (user !== 0) {
+         this.sharedService.user = user; // setting user so as to share with all components
+         return true;
+       } else {
+         this.router.navigate(['/login']);
+         return false;
+       }
+     }
+   ));
+  }
+
+    adminLoggedIn() {
+        this.options.withCredentials = true;
+        return this.http.post(this.baseUrl + '/api/loggedIn', '', this.options).pipe(map(
+            (res: Response) => {
+                const user = res.json();
+                if (user !== 0 && user.role == 'admin') {
+                    this.sharedService.user = user;
+                    return true;
+                } else {
+                    this.router.navigate(['/login']);
+                    return false;
+                }
+            }
+        ));
+    }
 
  // adds the user parameter instance to the local users array
   createUser(user: User) {
@@ -82,13 +140,13 @@ constructor(private http: Http) { }
    }
 
     // returns all user2
-    findUser2ById(userId2: string) {//
-    const url = this.baseUrl+'/api/reviews/'+userId2; //
-    return this.http.get(url).pipe(map(//
-      (response: Response) => {//
-        return response.json();//
-      },//
-    )) //
-   }//
+    findUser2ById(userId2: string) {
+    const url = this.baseUrl+'/api/reviews/'+userId2; 
+    return this.http.get(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      },
+    )) 
+   }
 
 }

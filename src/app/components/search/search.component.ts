@@ -12,8 +12,8 @@ import { SharedService } from '../../services/shared.service.client'
 })
 export class SearchComponent implements OnInit {
 
-  uid: string;
-  user: User;
+  user:User;
+  user2: User;
   filterCity: string;
   filterState: string;
 
@@ -23,11 +23,12 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.sharedService.user;
     var item = this.sharedService.item
     this.activatedRoute.params.subscribe(params => {
     this.userService.findUser2().subscribe(
-      (user:User)=>{
-        this.user = user;//the list of all user2
+      (user2:User)=>{
+        this.user2 = user2;//the list of all user2
       }
     )
    });

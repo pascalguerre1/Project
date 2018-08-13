@@ -1,13 +1,13 @@
 <div id="body">
 
-	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.name" placeholder="Search Name"/>
-	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.city" placeholder="Search city"/>
-	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.state" placeholder="Search state"/>
-	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.area" placeholder="Search area"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.name" placeholder="Search by Name"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.city" placeholder="Search by City"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.state" placeholder="Search by State"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.area" placeholder="Search by Practice area"/>
 
-  	<div class="pg-profile-style" *ngFor="let user of user | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area;">
+  	<div class="pg-profile-style" *ngFor="let user of user2 | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area;">
 
-  	<div class="row">
+  	<div class="row animate-bottom">
   		<div class="col-md-3 text-center">
 	        <div>
 	  			<img style="width: 30%" [src]="user.image" alt="profile pic">

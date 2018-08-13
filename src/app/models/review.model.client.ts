@@ -2,7 +2,12 @@ export class Review {
 	_id?: string;
 	reviewerId: string;
 	targetReviewId: string;
+	reviewerUsername: string;
+	reviewerImage: string;
+	reviewerBadge: string;
+	reviewerBcount: string;
 	rating:number;
+	responsiveness?: string;
 	comments: string;
 	posted?: string;
 	cost?: string;
