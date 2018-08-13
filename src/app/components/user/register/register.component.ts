@@ -86,7 +86,7 @@ export class RegisterComponent implements OnInit {
           {name: "Real Estate Law"},           
           {name: "Tax Law"},  
   ];            
-   area1Value = null;
+   // area1Value = null;
 
 
   @ViewChild('parent', { read: ViewContainerRef })    container: ViewContainerRef;
