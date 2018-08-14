@@ -1,0 +1,61 @@
+<div id="body" class="animate-bottom">
+    <div class="pg-profile-style">
+        <div class="container">
+            <h3>Message list</h3>
+            <!-- search bar -->
+            <input class="form-control form-control-lg" type="text" placeholder="Search messages" [(ngModel)]="this.sharedService.item.name" placeholder="Search">
+            <!-- Users -->
+            <br>
+            <ul class="list-group list-group-flush">
+                <div *ngFor="let user of users | attorneyFilter: this.sharedService.item.name">
+                    <li class="list-group-item">
+                        <div  class="row">
+                            <div class="col-3">
+                                <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
+                                <p><b>Email: </b>{{user.email}}</p>
+                            </div>
+                            <div class="col-9">
+                                <p><b>Message: </b>{{user.bio}}</p>
+                                <button *ngIf="sharedService.user && sharedService.user.role =='admin'" class="btn btn-outline-primary" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope-square fa-lg"></i></button>
+                                <button *ngIf="sharedService.user && sharedService.user.role =='admin'" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Remove Modal -->
+                    <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Message</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Sorry, this feature is not yet available
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Email Modal -->
+                    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Reply to message</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Sorry, this feature is not yet available
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>

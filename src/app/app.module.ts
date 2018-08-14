@@ -26,6 +26,8 @@ import { SearchComponent } from './components/search/search.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminGuard } from './services/adminGuard.service';
+import { UserlistComponent } from './components/userlist/userlist.component';
+import { MessagelistComponent } from './components/messagelist/messagelist.component';
 
 
 
@@ -45,6 +47,8 @@ import { AdminGuard } from './services/adminGuard.service';
     SearchComponent,
     SearchPipe,
     SidenavbarComponent,
+    UserlistComponent,
+    MessagelistComponent,
     ],
   imports: [
     BrowserModule,

@@ -150,4 +150,15 @@ constructor(private router: Router, private sharedService: SharedService, privat
     )) 
    }
 
+
+  // returns all users
+  findAllUsers() {
+    const url = this.baseUrl+'/api/user'; 
+    return this.http.get(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      },
+    )) 
+   }
+
 }
