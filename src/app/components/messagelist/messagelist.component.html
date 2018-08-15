@@ -7,17 +7,17 @@
             <!-- Users -->
             <br>
             <ul class="list-group list-group-flush">
-                <div *ngFor="let user of users | attorneyFilter: this.sharedService.item.name">
+                <div *ngFor="let messages of messages | attorneyFilter: this.sharedService.item.name">
                     <li class="list-group-item">
                         <div  class="row">
                             <div class="col-3">
-                                <p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
-                                <p><b>Email: </b>{{user.email}}</p>
+                                <p><b>Name: </b>{{messages.name}}</p>
+                                <p><b>Email: </b>{{messages.email}}</p>
                             </div>
                             <div class="col-9">
-                                <p><b>Message: </b>{{user.bio}}</p>
+                                <p><b>Message: </b>{{messages.message}}</p>
                                 <button *ngIf="sharedService.user && sharedService.user.role =='admin'" class="btn btn-outline-primary" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope-square fa-lg"></i></button>
-                                <button *ngIf="sharedService.user && sharedService.user.role =='admin'" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                                <button *ngIf="sharedService.user && sharedService.user.role =='admin'" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
                             </div>
                         </div>
                     </li>
@@ -32,7 +32,7 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                Sorry, this feature is not yet available
+                                 Sorry, this feature is not yet available
                               </div>
                             </div>
                         </div>

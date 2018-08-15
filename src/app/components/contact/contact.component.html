@@ -2,7 +2,7 @@
   <div class="container pg-border pg-margin-top">
   	<h2 class="text-center">Contact Us</h2>
 
-        <form  #f="ngForm">
+        <form (ngSubmit)="create()" #f="ngForm">
           <div class="form-group">
             <label>Name</label>
             <div class ="alert alert-warning pg-small-alert" *ngIf ="name.invalid && name.touched">Please enter your name</div>
@@ -15,7 +15,7 @@
           </div>
           <div class="form-group">
   			     <label>Message</label>
-  			     <textarea class="form-control" rows="5" id="message"></textarea>
+  			     <textarea class="form-control" rows="5" name="message" ngModel #message="ngModel"></textarea>
 		      </div>
           <br>
           <div class="text-center">

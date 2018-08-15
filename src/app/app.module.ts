@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserService } from './services/user.service.client';
 import { ReviewService } from './services/review.service.client';
 import { SharedService } from './services/shared.service.client';
+import { MessageService } from './services/message.service.client';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
@@ -56,7 +57,7 @@ import { MessagelistComponent } from './components/messagelist/messagelist.compo
     FormsModule,
     HttpModule
   ],
-  providers: [ReviewService, UserService, SharedService, AuthGuard, AdminGuard],
+  providers: [ReviewService, UserService, SharedService, AuthGuard, AdminGuard, MessageService],
   entryComponents: [AppComponent, TemplateComponent],
   bootstrap: [AppComponent]
 })
