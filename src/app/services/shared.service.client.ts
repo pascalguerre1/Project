@@ -12,6 +12,11 @@ export class SharedService {
    	state:"",
    	area: ""
    };
+   item1: any = {
+     name: "",
+     email: "",
+     message:"",
+   };
 
 
      states = [

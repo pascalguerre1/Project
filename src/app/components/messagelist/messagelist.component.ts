@@ -16,8 +16,9 @@ declare var jQuery: any;
 export class MessagelistComponent implements OnInit {
 
   user: User;
-  message:string;
-  messages: Message;
+  selectedMessage:string;
+  messages: Message[];
+  message: Message;
 
 
   constructor(private userService: UserService, 
@@ -27,11 +28,27 @@ export class MessagelistComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user;
+    this.activatedRoute.params.subscribe(params => {
     this.messageService.findAllMessages().subscribe(
-      (messages:Message)=>{
+      (messages:Message[])=>{
         this.messages = messages;
       }
     )
+    });
+  }
+
+
+  select(message: Message) {
+    this.selectedMessage = message._id
+  }
+
+  remove() {
+      this.messageService.deleteMessage(this.selectedMessage).subscribe(
+          (res: any) => {
+              jQuery('#removeModal').modal('hide');
+              this.ngOnInit();
+          }
+      )
   }
 
 }

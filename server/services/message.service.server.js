@@ -25,7 +25,7 @@ module.exports = function(app){
 	}
 
 	// find message by given id
-	app.get('/api/message/', findMessageById);
+	app.get('/api/message/:mid', findMessageById);
 	function findMessageById(req, res){
 		var mid = req.params['mid']
 		messageModel.findMessageById(mid).then(
@@ -35,10 +35,10 @@ module.exports = function(app){
 		);
 	}
 	// delete message
-	app.get('/api/message/', deleteMessage); 
+	app.delete('/api/message/:mid', deleteMessage); 
 	function deleteMessage(req, res){
 		var mid = req.params['mid'];
-		messageodel.deleteMessage(mid).then(
+		messageModel.deleteMessage(mid).then(
 			data => {
 				res.json(data);
 			}

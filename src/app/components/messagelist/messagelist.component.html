@@ -3,21 +3,24 @@
         <div class="container">
             <h3>Message list</h3>
             <!-- search bar -->
-            <input class="form-control form-control-lg" type="text" placeholder="Search messages" [(ngModel)]="this.sharedService.item.name" placeholder="Search">
+            <input class="form-control form-control-lg" type="text" placeholder="Search" [(ngModel)]="this.sharedService.item1.name">
             <!-- Users -->
             <br>
             <ul class="list-group list-group-flush">
-                <div *ngFor="let messages of messages | attorneyFilter: this.sharedService.item.name">
+                <div *ngFor="let message of messages | messageFilter: this.sharedService.item1.name">
                     <li class="list-group-item">
                         <div  class="row">
                             <div class="col-3">
-                                <p><b>Name: </b>{{messages.name}}</p>
-                                <p><b>Email: </b>{{messages.email}}</p>
+                                <p><b>Name: </b>{{message.name}}</p>
+                                <p><b>Email: </b>{{message.email}}</p>
                             </div>
-                            <div class="col-9">
-                                <p><b>Message: </b>{{messages.message}}</p>
+                            <div class="col-5">
+                                <p><b>Message: </b>{{message.message}}</p>
                                 <button *ngIf="sharedService.user && sharedService.user.role =='admin'" class="btn btn-outline-primary" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope-square fa-lg"></i></button>
-                                <button *ngIf="sharedService.user && sharedService.user.role =='admin'" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                                <button *ngIf="sharedService.user && sharedService.user.role =='admin'" (click)="select(message)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
+                            </div>
+                            <div class="col-4 float-right">
+                                Received: {{message.dateCreated}}
                             </div>
                         </div>
                     </li>
@@ -32,7 +35,11 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                 Sorry, this feature is not yet available
+                                 Are you sure you want to delete this message?
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" (click)="remove()" class="btn btn-danger">Delete</button>
                               </div>
                             </div>
                         </div>

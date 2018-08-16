@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routing } from './app.routing';
 import { HttpModule } from '@angular/http';
 import { SearchPipe } from './search.pipe';
+import { MessagePipe } from './message.pipe';
 
 //components
 import { AppComponent } from './app.component';
@@ -50,6 +51,7 @@ import { MessagelistComponent } from './components/messagelist/messagelist.compo
     SidenavbarComponent,
     UserlistComponent,
     MessagelistComponent,
+    MessagePipe
     ],
   imports: [
     BrowserModule,

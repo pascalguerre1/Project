@@ -15,12 +15,15 @@
 		                        <h6>{{user.username}}</h6>
 		                        <h6><i>({{user.role}})</i></h6>   
 		                    </div>
-		                    <div class="col-10">
+		                    <div class="col-5">
 		                    	<p><b>Name: </b>{{user.firstName}} {{user.lastName}}</p>
 		                        <p><b>Email: </b>{{user.email}}</p>
 		                        <button *ngIf="sharedService.user && sharedService.user.role =='admin'" class="btn btn-outline-primary" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope-square fa-lg"></i></button>
 		                        <button *ngIf="sharedService.user && sharedService.user.role =='admin'" (click)="select(user)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
 		                    </div>
+		                    <div class="col-4 float-right">
+                                User Since: {{user.dateCreated}}
+                            </div>
 		                </div>
 		            </li>
 		            <!-- Remove Modal -->
