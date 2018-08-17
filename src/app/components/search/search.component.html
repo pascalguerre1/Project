@@ -1,0 +1,50 @@
+<div id="body">
+
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.name" placeholder="Search by Name"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.city" placeholder="Search by City"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.state" placeholder="Search by State"/>
+	<input class="pg-profile-style" type="text" [(ngModel)]="this.sharedService.item.area" placeholder="Search by Practice area"/>
+
+  	<div class="pg-profile-style" *ngFor="let user of user2 | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area;">
+
+  	<div class="row animate-bottom">
+  		<div class="col-md-3 text-center">
+	        <div>
+	  			<img style="width: 30%" [src]="user.image" alt="profile pic">
+	        </div>
+	        <br>
+	        <div class="text-center">
+	            <p><b>{{user.firstName}} {{user.lastName}}</b></p>
+	        </div>
+		</div>
+  		<div class="col-md-6 pg-vertical-line pg-vertical-line2 d-md-flex">
+	  		<div class="row container">
+	          	<div class="col-sm-6">
+		            <label>Office Address</label>
+		            <p>{{user.office}} <br> {{user.address}} <br> {{user.city}}, {{user.state}} <br>Tel: {{user.phone}} <br> {{user.site}}</p>
+	        	</div>
+	        	<div class="col-sm-6">
+		            <label>Area of expertise</label>
+		            <p>{{user.selectedValues[0]}} <br> {{user.selectedValues[1]}} <br> {{user.selectedValues[2]}}</p>
+	            </div>
+	  		</div>
+  		</div>
+  		  <div class="col-md-3">
+  			<div class="text-center">
+	  			<h5 class="">Overall Rating:</h5>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+			</div>
+			<br>
+          <div>
+            <p class="text-center"><b><a routerLink="/user/reviews/{{user._id}}">18 Reviews</a></b></p>
+          </div>
+  		</div>
+  	</div>
+
+    </div>
+
+</div>

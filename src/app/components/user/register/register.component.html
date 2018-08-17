@@ -1,0 +1,168 @@
+<div id="body">
+  <div class="container pg-border pg-margin-top">
+    <h2 *ngIf="!this.sharedService.attorneyRegs" class="alert alert-success" align="center">Register</h2>
+    <h2 *ngIf="this.sharedService.attorneyRegs" class="alert alert-success" align="center">Register as an attorney</h2>
+    <form (ngSubmit)="register()" #f="ngForm">
+      <h4 align="left">Personal&nbsp;information</h4>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label" style="">First Name:</label>
+        <div class="col-sm-9">
+          <input type="text" name="firstName" class="pg-form-control" required ngModel #firstName="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Last Name:</label>
+        <div class="col-sm-9">
+          <input type="text" name="lastName" class="pg-form-control" required ngModel #lastName="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+          <label class="col-sm-3">Gender:</label>
+          <div class="col-sm-9">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <p class="radio-inline">
+                          <input type="radio" id="femaleRadio" name="gender" [(ngModel)]="radioData" value="Female"> Female
+                      </p>
+                  </div>
+                  <div class="col-sm-4">
+                      <p class="radio-inline">
+                          <input type="radio" id="maleRadio" name="gender" [(ngModel)]="radioData" value="Male"> Male
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="emailError" class="alert alert-danger pg-small-alert">Emails don't match</span>
+          </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Email:</label>
+        <div class="col-sm-9">
+          <input type="email" name="email" placeholder="example@email.com" class="pg-form-control" required ngModel #email="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Email Conf:</label>
+        <div class="col-sm-9">
+          <input type="email" name="confirmEmail" placeholder="Confirm Email" class="pg-form-control" required ngModel #confirmEmail="ngModel">
+        </div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="passwordError" class="alert alert-danger pg-small-alert">Passwords don't match</span>
+          </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Password:</label>
+        <div class="col-sm-9">
+          <input type="password" name="password" placeholder="Password" class="pg-form-control" required ngModel #password="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Password Conf:</label>
+        <div class="col-sm-9">
+          <input type="password" name="confirmPassword" placeholder="Confirm Password" class="pg-form-control" required ngModel #confirmPassword="ngModel">
+        </div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="usernameError" class="alert alert-danger pg-small-alert">Username already taken, please try another one</span>
+          </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Username:</label>
+        <div class="col-sm-9">
+          <input type="text" name="username" placeholder="Create Username" class="pg-form-control" required ngModel #username="ngModel">
+        </div>
+      </div>
+    <br>
+
+    <!-- Law office section-->
+    <div *ngIf="this.sharedService.attorneyRegs">
+      <h4 align="left">Law&nbsp;office&nbsp;information</h4>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Office Name:</label>
+        <div class="col-sm-9">
+          <input id="office" type="text" name="office" class="pg-form-control" ngModel #office="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Street Address:</label>
+        <div class="col-sm-9">
+          <input type="text" name="address" class="pg-form-control" ngModel #address="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">City:</label>
+        <div class="col-sm-9">
+          <input type="city" name="city" class="pg-form-control" ngModel  #city="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">State:</label>
+        <div class="col-sm-9">
+          <select class="form-group input-group form-control" name="state" [(ngModel)]="stateValue">
+            <option value="{{state.value}}" *ngFor="let state of states">{{state.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Telephone:</label>
+        <div class="col-sm-9">
+          <input type="phone" name="phone" class="pg-form-control" ngModel #phone="ngModel">
+        </div>
+      </div>
+      <div class="row form-group container-fluid">
+        <label class="col-sm-3 col-form-label">Website:</label>
+        <div class="col-sm-9">
+          <input type="site" name="site" class="pg-form-control" placeholder="http://" ngModel #site="ngModel">
+        </div>
+      </div>
+      <div id="addToArea">
+        <div class="row form-group container-fluid">
+          <label class="col-sm-3 col-form-label">Practice Area:</label>
+          <div class="col-sm-9 input-group mb-3">
+            <select class="form-group input-group form-control" name="area1" [(ngModel)]="area1Value">
+              <option value="{{area.name}}" *ngFor="let area of areas">{{area.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div #parent></div><!-- template --> 
+        <div class="row container-fluid">
+         <div class="col-sm-3"></div>
+          <div class="col-sm-9 mb-3">
+            <span *ngIf="this.sharedService.maxAreaError" class="alert alert-danger pg-small-alert">Maximum practice area reached</span>
+          </div>
+        </div>
+        <div class="row container-fluid">
+          <div class="col-sm-3"></div>
+            <div class="col-sm-9 input-group mb-3">
+                <button id="addArea" class="pg-add-btn btn-primary" type="button" (click)="addArea()">+ Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End law office section-->
+
+      <br>
+      <div class="text-center">
+        <button class="btn btn-success" type="submit" [disabled]="f.invalid">Create Account</button>
+      </div>
+      <br>
+      <div class="text-center">
+        Already a member? <a routerLink="/login">Sign in here</a>
+      </div>
+    </form>
+    <br>
+    <div *ngIf="!this.sharedService.attorneyRegs" class="text-center">
+      <a (click)="attRegs()" routerLink="/register">Click here </a>to register as an attorney
+    </div>
+
+  </div>
+</div>

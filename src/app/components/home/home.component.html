@@ -1,0 +1,63 @@
+<div id="body">
+<!-- search box -->
+    <div class="container pg-margin-top">
+        <div class="row">
+          <div class=" col-md-6 col-lg-3 d-none d-md-flex">
+          </div>
+            <div class="col-md-6 pg-border">
+                <div class="container">
+                    <label class="h3 text-primary text-center">Find top rated attorneys to represent you</label>
+                </div>
+                <form (ngSubmit)="search()">
+                    <div class="form-group">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Lawyer name or firm" [(ngModel)]="name" name="name">
+                        <div class="input-group-append">
+                            <button class="input-group-text" style="cursor:pointer;" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <div class="container text-center">
+                    <h4>OR</h4>
+                </div>
+                <br>
+                <div class="container text-center" style="padding-right: 20px; padding-left: 20px">
+                    <h5><a (click)="openNav()" routerLink="/">Not sure where to start? Click here to help narrow down your search</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+<!-- carousel -->
+    <div class=" text-center my-3">
+        <h5 style="background-color: white; margin-bottom: 0px; padding-bottom: 2px">Most popular practice area</h5>
+        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox">
+                <div class="carousel-item row no-gutters active">
+                    <div class="col-3 float-left" (click)="perInj()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/persInjury.jpg"><h5 class="perInj" style="background-color: white">Personal Injury</h5></a></div>
+                    <div class="col-3 float-left" (click)="realEst()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/realEstate.jpg"><h5 class="realEst"style="background-color: white">Real Estate</h5></a></div>
+                    <div class="col-3 float-left" (click)="tax()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/tax.jpg"><h5 class="tax" style="background-color: white">Tax</h5></a></div>
+                    <div class="col-3 float-left" (click)="bank()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/bankruptcy.jpg"><h5 class="bank"style="background-color: white">Bankruptcy</h5></a></div>
+                </div>
+                <div class="carousel-item row no-gutters">
+                    <div class="col-3 float-left" (click)="crim()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/criminal.jpg"><h5 class="crim"style="background-color: white">Criminal Law</h5></a></div>
+                    <div class="col-3 float-left" (click)="imm()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/immigration.jpg"><h5 class="imm"style="background-color: white">Immigration</h5></a></div>
+                    <div class="col-3 float-left" (click)="bus()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/business.jpg"><h5 class="bus" style="background-color: white">Business</h5></a></div>
+                    <div class="col-3 float-left" (click)="fam()"><a routerLink="/" style="text-decoration: none"><img class="img-fluid" src="./assets/uploads/family.jpg"><h5 class="fam" style="background-color: white">Family</h5></a></div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+</div>

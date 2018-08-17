@@ -1,0 +1,11 @@
+<div data-type="template" class="row form-group container-fluid maxArea">
+	<label class="col-sm-3"></label>
+	<div class="col-sm-9 input-group mb-3">
+	  <select class="form-group input-group form-control area" (change)="areaselect($event.target.value)" name="area" [(ngModel)]="areaValue">
+	  	<option value="{{area.name}}" *ngFor="let area of areas">{{area.name}}</option>
+	  </select>
+	<div class="input-group-append">
+	  <button class="pg-add-btn btn-outline-danger delete-btn" type="button" (click)="removeArea()">- Remove</button>
+	</div>
+	</div>
+</div>

@@ -1,0 +1,326 @@
+/* You can add global styles to this file, and also import other style files */
+.b-img {
+    background-image: url(app/image/abstractBldg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.pg-border {
+  border-style: solid;
+  border-width: 0px; 
+  padding: 30px;
+  background-color: white;
+  width: 100%;
+}
+.pg-margin-top {
+    margin-top: 180px;
+}
+.pg-profile-style {
+    margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+.btn {
+  padding:5px 60px 5px 60px;
+  box-shadow: 3px 3px 5px grey;
+}
+.pg-text-white {
+  color:white;
+  margin-bottom: 0px
+}
+.pg-vertical-line {
+  border-left:1px solid #ccc;
+  padding-left:1.5em;
+  height:100%;
+}
+.pg-vertical-line2 {
+  border-right:1px solid #ccc;
+  padding-left:.5em;
+  padding-right:.1em;
+  height:100%;
+}
+.pg-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 60px;
+}
+.pg-footer-padding {
+  padding-bottom: 40px; 
+  padding-top:25px;
+}
+.pg-small-alert {
+  padding: 4px 4px
+}
+label {
+    font-weight: bold;
+}
+
+/*to make navbar menu scrollable on smallscreens*/
+.pg {
+    overflow-x:auto;
+    -webkit-overflow-scrolling: touch; 
+}
+.pg-scrollable{
+    max-width: 100%;
+    height: 2.5rem;
+    margin-top: .25rem;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 1rem;
+}
+/*for dropdown menu on navbab*/
+ul.pg > li {
+    display :  inline-block;
+}
+ul.pg > li > ul{
+    position : absolute;
+}
+ul.pg > li > ul li{
+    display: none;
+}
+ul.pg li:active > ul > li {
+    display: block;
+}
+/* end to make navbar menu scrollable on smallscreens*/
+
+/*to help footer stay at the bottom*/
+#container {
+   min-height:100%;
+   position:relative;
+}
+#body {
+   padding-bottom:345px;   /* Height of the footer */
+}
+/*end to help footer stay at the bottom*/
+
+/*to help display input of register page in the same line as label*/
+.pg-form-control {
+  display: inline;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.pg-add-btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* for auto complete search list*/
+.ui-autocomplete {
+  max-height: 100px;
+  overflow-y: auto;
+/* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {
+height: 100px;
+}
+/* end for auto complete search list*/
+
+
+img {
+/*    border-radius: 50%;*/
+    height: auto;
+    width: 100%;
+}
+
+/*to show element still needed to be worked on*/
+.pg-nolink{background-color: #808000; color: black}
+/*end to show element still needed to be worked on*/
+
+/*horizontal line*/
+h4 {
+  overflow: hidden;
+  text-align: center;
+}
+h4:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 40%;
+}
+
+h4:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+h4:before {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 40%;
+}
+h4:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+/*end horizontal line*/
+
+/*star rating*/
+.checked {
+    color: orange;
+}
+/*remove "." after number in order list*/
+ol.custom {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+ol.custom > li {
+  counter-increment: customlistcounter;
+}
+
+ol.custom > li:before {
+  content: counter(customlistcounter) " ";
+  width: 3em;
+}
+
+ol.custom:first-child {
+  counter-reset: customlistcounter;
+}
+/*  end of remove "." after number in order list*/
+
+/*put item at bottom of a div*/
+.comment {
+  position: relative;
+/*  height: 300px;*/
+}
+.comment p {
+/*  position: absolute;*/
+  bottom: 0;
+}
+/* end of put item at bottom of a div*/
+
+/*center item and justify left*/
+.wrap {
+    float: left;
+    position: relative;
+    left: 50%;
+}
+.content {
+    float: left;
+    position: relative;
+    left: -50%;
+}
+/* end of center item and justify left*/
+
+/*sidenav bar*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav label {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: normal;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav input {
+    margin-left:32px;
+    margin-bottom:0px;
+    color: #818181;
+}
+.sidenav form {
+    color: #818181;
+}
+.sidenav select {
+    margin-left: 32px;
+}
+.sidenav button {
+    margin-left: 55px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* end of sidenav bar*/
+
+.pg-contact :hover {
+    color: grey;
+}
+
+/*animation*/
+.animate-bottom{
+  position: relative;
+  animation: animatebottom 0.5s;
+}
+@keyframes animatebottom {
+  from{bottom:-300px; opacity: 0;}
+  to{bottom: 0; opacity: 1;}
+}

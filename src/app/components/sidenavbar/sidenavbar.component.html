@@ -1,0 +1,30 @@
+<div id="mySidenav" class="row sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <div class="col-10">
+    <form (ngSubmit)="search()" id="SearchForm" #f="ngForm"><!-- -->
+      <label class="col-form-label">Name</label>
+        <input type="text" name="name" placeholder="Lawyer name, or firm" class="form-control" [(ngModel)]="name">
+      <br>
+      <label class="col-form-label">City</label>
+        <input type="text" name="city" class="form-control" [(ngModel)]="city">
+      <br>
+      <label class="col-form-label">State</label>
+      <select class="form-group input-group form-control" name="state" [(ngModel)]="stateValue">
+            <option value="{{state.value}}" *ngFor="let state of states">{{state.name}}</option>
+      </select>
+      <label class="col-form-label">Pratice Area</label>
+      <select class="form-group input-group form-control" name="area1" [(ngModel)]="area1Value">
+        <option value="{{area.name}}" *ngFor="let area of areas">{{area.name}}</option>
+      </select>
+      <label class="col-form-label">Rating</label>
+      <input type="checkbox" name="rating" value="5 Stars" checked [(ngModel)]="fiveStar"> 5 Stars<br>
+      <input type="checkbox" name="rating" value="4 Stars" [(ngModel)]="fourStar"> 4 Stars<br>
+      <input type="checkbox" name="rating" value="3 Stars" [(ngModel)]="threeStar"> 3 Stars<br>
+      <input type="checkbox" name="rating" value="2 Stars" [(ngModel)]="twoStar"> 2 Stars<br>
+      <input type="checkbox" name="rating" value="1 Star"  [(ngModel)]="oneStar"> 1 Star<br>
+      <br>            
+      <button class="btn btn-success" type="submit">Search</button>
+    </form><!-- -->
+    <br>     
+  </div>
+</div>

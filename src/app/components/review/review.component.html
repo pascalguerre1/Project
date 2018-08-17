@@ -1,0 +1,207 @@
+<div id="body" class="animate-bottom">
+  <div class="pg-profile-style">
+  	<div class="row">
+
+  		<div class="col-md-3 text-center">
+        <div>
+  			   <img style="width: 75%" [src]="user2.image" alt="profile pic">
+        </div>
+        <div class="text-center">
+            <p><b>{{user2.firstName}} {{user2.lastName}}</b></p>
+        </div>
+  		</div>
+
+  		<div class="col-md-6 pg-vertical-line pg-vertical-line2 d-md-flex">
+	  		<div class="row container">
+	  		  <div class="col-sm-6">
+	         	<label>Office Name</label>
+	          	<p>{{user2.firstName}} {{user2.lastName}}</p>
+	          </div>
+	          <div class="col-sm-6">
+	          	<label>Email</label>
+	          	<p>{{user2.email}}</p>
+	          </div>
+	          	<div class="col-sm-6">
+		            <label>Office Address</label>
+		            <p>{{user2.address}} <br> {{user2.city}}, {{user2.state}} <br>Tel: {{user2.phone}} <br> {{user2.site}}</p>
+	        	</div>
+	        	<div class="col-sm-6">
+		            <label>Area of expertise</label>
+		            <p>{{user2.selectedValues[0]}} <br> {{user2.selectedValues[1]}} <br> {{user2.selectedValues[2]}}</p>
+	            </div>
+	            <div class="col-sm-12">
+	  				<button *ngIf="!this.anonymousUser" class="btn btn-block btn-success col-12" data-toggle="modal" data-target="#reviewModal" data-backdrop="static" data-keyboard="false">Write a Review for this attorney</button>
+            <button *ngIf="this.anonymousUser" class="btn btn-block btn-success col-12" routerLink="/login" >Write a Review for this attorney</button>           
+	  			</div>
+	  		</div>
+	  		<br>
+  		</div>
+
+  		<div class="col-md-3">
+  			<div class="text-center">
+	  			<h5 class="">Overall Rating:</h5>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star checked"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+			</div>
+			<br>
+			<div>
+        <p class="text-center"><b><a routerLink="#">18 Reviews</a></b></p>
+      </div>
+			<div class="wrap">
+				<ol class="content custom">
+					<li><span class="fa fa-star checked"></span>: <a routerLink="#">4 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="#">10 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="#">3 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="#">1 review(s)</a></li>
+					<li><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+				</ol>
+			</div>
+          <br>
+  		</div>
+
+  	</div>
+  </div>
+
+<!-- individual reviews -->
+<div *ngFor="let review of reviews" style="box-sizing: 50%">
+
+    <div class="pg-profile-style">
+    	<div class="row">
+
+    		<div class="col-md-3 text-center">
+          <div>
+    			<img style="width: 40%" [src]="review.reviewerImage" alt="profile pic">
+          </div>
+          <div class="text-center">
+              <p><b>{{review.reviewerUsername}}</b></p>
+          </div>
+           <div>
+    			<img style="width: 25%" [src]="review.reviewerBadge" alt="badge pic">
+    		</div>
+          <div class="text-center">
+              <p>{{review.reviewerBcount}}</p>
+          </div> 		
+    		</div>
+
+    		<div class="col-md-9 pg-vertical-line pg-vertical-line2 d-md-flex">
+  	  		<div class="row container">
+  	  		  <div class="col-sm-8">
+  	         	<label>Rating:</label>
+  	         	<span class="fa fa-star checked"></span>
+      				<span class="fa fa-star checked"></span>
+      				<span class="fa fa-star"></span>
+      				<span class="fa fa-star"></span>
+      				<span class="fa fa-star"></span>
+      				<label>  &nbsp;&nbsp;&nbsp;&nbsp;Cost:</label>
+      				<span>{{review.cost}}</span>
+  	        </div>
+  	        <div class="col-sm-4 float-right">
+  	          	<p>posted: {{review.posted}}</p>
+  	        </div>
+            <div class="col-sm-8">
+              <label>Responsiveness:</label>
+              <span>{{review.responsiveness}}</span>
+            </div>
+  	        <div class="col-sm-12">
+    			     <p class="form-control" rows="7" id="message">{{review.comments}}</p>
+  	  		  </div>
+  	  		  <div class="col-sm-10">
+  	         	 <a data-toggle="modal" data-target="#commentModal" data-backdrop="static" data-keyboard="false" href="">Leave a comment</a>
+  	        </div>
+  	  		  <div class="col-sm-2 float-right">
+  	         	 <a routerLink="#"><span class="fa fa-thumbs-up"></span></a>: {{review.like}} &nbsp;
+  	         	 <a routerLink="#"><span class="fa fa-share-alt"></span></a>: {{review.shared}}
+  	       </div>	          
+  	  		</div>
+  	  		<br>
+    		</div>
+
+    	</div>
+    </div>
+  
+  </div>
+
+
+
+<!-- Review Modals -->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Write a Review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  (ngSubmit)="create()" id="reviewForm" #f="ngForm">
+          <div>
+            <label>Rating:</label>
+            <a *ngFor="let item of starList; let i=index " (click)="setStar(i)"  style="cursor:pointer;">
+              <span *ngIf="item" class="fa fa-star"></span>    
+              <span *ngIf="!item" class="fa fa-star checked"></span>
+            </a>
+            {{rating}} stars
+          </div>
+
+          <div>
+	         <label class="col-form-label">Responsiveness:</label>
+		       <select  style="display: inline-flex;" name="responsiveness" [(ngModel)]="responsivenessValue">
+		             <option value="{{responsiveness.value}}" *ngFor="let responsiveness of resp">{{responsiveness.name}}</option>
+		       </select>
+	        </div>
+
+	        <div>
+	           <label class="col-form-label">Cost:</label>
+		       <select  name="cost" [(ngModel)]="costValue">
+		             <option value="{{cost.value}}" *ngFor="let cost of costs">{{cost.name}}</option>
+		       </select>
+	        </div>
+          <br>
+          <div class="form-group">
+            <label>Comments</label>
+            <textarea class="form-control" type="text" name="comments" rows="5" ngModel #comments="ngModel" >
+            </textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
+            <button class="btn btn-success" type="submit" form="reviewForm">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Comment Modals -->
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Leave a Comment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  id="commentForm" #f="ngForm">
+          <div class="form-group">
+            <label>Sorry, this feature is not yet available</label>
+<!--             <textarea class="form-control" type="text" name="comments" rows="5" >
+            </textarea> -->
+          </div>
+<!--           <div class="text-center">
+            <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
+            <button class="btn btn-success" type="submit" form="commentForm">Submit</button>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

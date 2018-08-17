@@ -1,0 +1,35 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand flex-column flex-md-row fixed-top">
+  <a class="navbar-brand" routerLink="">appJustice</a>
+  <div class="pg-scrollable">
+    <ul class="navbar-nav flex-row pg">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About&nbsp;us</a>
+      </li>
+      <li *ngIf="!sharedService.user" class="nav-item">
+        <a class="nav-link" (click)="regs()" routerLink="/register">Register</a>
+      </li>
+      <li *ngIf="!sharedService.user" class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="sharedService.user" class="nav-item">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" routerLink="/user">My&nbsp;Profile</a>
+        <ul>
+          <li class="dropdown-menu">
+            <a class="dropdown-item" (click)="logout()" style="cursor:pointer;">Log&nbsp;out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex"></ul>
+  
+    <div class="navbar">
+      <span class="navbar-brand" style="font-size:25px;cursor:pointer" (click)="openNav()">&#9776; Search</span>
+    </div>
+    <app-sidenavbar></app-sidenavbar>
+
+</nav>

@@ -1,0 +1,43 @@
+<div id="body">
+  <div class="container pg-border pg-margin-top">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="alert alert-primary" align="center">Login</h2>
+        <div *ngIf="errorFlag" class ="alert alert-danger">Invalid username or password</div>
+        <form (ngSubmit)="login()" #f="ngForm">
+          <div class="form-group">
+            <label>Username</label>
+            <div class ="alert alert-warning pg-small-alert" *ngIf ="username.invalid && username.touched">Please enter username or email</div>
+            <input type="text" name="username" placeholder="Username or Email" class="form-control" required ngModel #username="ngModel">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class ="alert alert-warning pg-small-alert" *ngIf ="password.invalid && password.touched">Please enter password</div>
+            <input type="password" name="password" placeholder="Password" class="form-control" required ngModel #password="ngModel">
+          </div>
+          <!-- <a class="pg-nolink" routerLink="#">Forgot Password?</a><br/> -->
+          <br>
+          <div class="text-center">
+            <button class="btn btn-primary" [disabled]="f.invalid" type ="submit">Sign in</button>
+          </div>
+        <br>
+          <div class="text-center">
+            Not a member? <a (click)="regs()" routerLink="/register">Register Now!</a>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6 pg-vertical-line d-none d-md-flex">  
+        <div>
+          <div class="h3 text-primary text-center">
+            <i>appJustice</i> helps you make the right choice when looking for an attorney
+          </div>
+          <ul class="list-unstyled" style="margin:40px 0;">
+            <li>Avoid surprises by seeing what former or current clients are saying about their attorneys and how they rate them.</li><br/>
+            <li>The outcome of your case depends heavily on whether or not you've picked the right attorney to represent you, (<i>Logo.com</i>) gives you the tools to do that.</li><br/>
+            <li>Help fellow members of (<i>Logo.com</i>) by providing your own feedbacks and ratings about your legal experience with an attorney.</li><br/>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

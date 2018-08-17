@@ -1,0 +1,31 @@
+<div id="body">
+  <div class="container pg-border pg-margin-top">
+  	<h2 class="text-center">Contact Us</h2>
+
+        <form (ngSubmit)="create()" #f="ngForm">
+          <div class="form-group">
+            <label>Name</label>
+            <div class ="alert alert-warning pg-small-alert" *ngIf ="name.invalid && name.touched">Please enter your name</div>
+            <input type="text" name="name" placeholder="" class="form-control" required ngModel #name="ngModel">
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <div class ="alert alert-warning pg-small-alert" *ngIf ="email.invalid && email.touched">Please enter email</div>
+            <input type="email" name="email" placeholder="" class="form-control" required ngModel #email="ngModel">
+          </div>
+          <div class="form-group">
+  			     <label>Message</label>
+  			     <textarea class="form-control" rows="5" name="message" ngModel #message="ngModel"></textarea>
+		      </div>
+          <br>
+          <div class="text-center">
+            <button class="btn btn-primary" [disabled]="f.invalid" type ="submit">Send</button>
+          </div>
+          <br>
+          <div class="text-center">
+            Not a member? <a (click)="regs()" routerLink="/register">Register Now!</a>
+          </div>
+        </form>
+        
+  </div>
+</div>
