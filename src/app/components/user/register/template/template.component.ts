@@ -28,7 +28,7 @@ export class TemplateComponent {
      ];            
   areaValue = null;
 
-  selectedValue = null;
+  selectedValue = "";
 
   areaselect(selectedValue){
    if(!this.selectedValue) {

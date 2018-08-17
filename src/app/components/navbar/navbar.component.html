@@ -15,9 +15,10 @@
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <li *ngIf="sharedService.user" class="nav-item">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" routerLink="/user">My&nbsp;Profile</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >My&nbsp;Account</a>
         <ul>
           <li class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/user" style="cursor:pointer;">View profile</a>
             <a class="dropdown-item" (click)="logout()" style="cursor:pointer;">Log&nbsp;out</a>
           </li>
         </ul>

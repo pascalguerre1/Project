@@ -126,7 +126,6 @@ export class RegisterComponent implements OnInit {
 
   addArea(){
     var numItems = $('.maxArea').length
-    console.log(numItems)
     if (numItems < 2) {
       this.sharedService.maxAreaError = false;
       var comp = this._cfr.resolveComponentFactory(TemplateComponent);// check and resolve the component
@@ -138,6 +137,7 @@ export class RegisterComponent implements OnInit {
   }
 
   attRegs(){
+    this.sharedService.practiceAreas = [];
     this.sharedService.attorneyRegs = true;
   }
 
@@ -201,7 +201,8 @@ export class RegisterComponent implements OnInit {
                             this.passwordError = false;
                             this.usernameError = false;
                             this.sharedService.user = user;
-                            this.router.navigate(['user']);                               
+                            this.router.navigate(['user']); 
+                            console.log(this.selectedValues)                              
                           });
 
                     } else {
