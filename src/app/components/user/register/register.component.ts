@@ -191,7 +191,8 @@ export class RegisterComponent implements OnInit {
                         site: this.site,
                         selectedValues: this.selectedValues,
                         image: './assets/uploads/avatar.png',
-                        badge: './assets/uploads/badge.png',  
+                        badge: './assets/uploads/badge.png',
+                        dateCreated: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()  
                       }; 
 
                       this.userService.createUser(newUser)
@@ -221,7 +222,8 @@ export class RegisterComponent implements OnInit {
                         site: this.site,
                         selectedValues: this.selectedValues,
                         image: './assets/uploads/avatar.png',
-                        badge: './assets/uploads/badge.png',  
+                        badge: './assets/uploads/badge.png',
+                        dateCreated: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()  
                       };  
 
                       this.userService.createUser(newUser)

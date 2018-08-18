@@ -3,6 +3,7 @@ export class Message {
 	name: string;
 	email: string;
 	message: string;
+	dateCreated: string;
 
 	constructor(_id, name, email, message) {
 		this._id = _id;

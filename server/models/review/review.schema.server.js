@@ -10,12 +10,12 @@ var ReviewSchema = mongoose.Schema({
 	reviewerBcount: String,
 	targetReviewId: String,
 	responsiveness: String,
-	rating:Number,
+	rating: Number,
 	comments: String,
 	cost: String,
 	like: String,
 	shared: String,
-	posted: {type: Date, default: Date.now},
+	posted: String,	
 }, {collection:'review'})
 
 module.exports = ReviewSchema;

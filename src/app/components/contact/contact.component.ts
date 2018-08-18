@@ -35,6 +35,7 @@ export class ContactComponent implements OnInit {
 		name: this.name,
 		email: this.email,
 		message: this.message,
+    dateCreated: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()
 	};
 	this.messageService.createMessage(newMessage).subscribe(
 		(message: Message) =>{

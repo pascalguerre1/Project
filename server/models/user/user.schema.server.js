@@ -19,7 +19,7 @@ var UserSchema = mongoose.Schema({
 	gender: String,
 	selectedValues:[],
 	role:{type: String, default: 'user', enum:['user', 'attn', 'admin']},
-	dateCreated: {type: Date, default: Date.now}
+	dateCreated: String,
 }, {collection:'user'})
 
 module.exports = UserSchema;

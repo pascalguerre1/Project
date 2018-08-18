@@ -68,21 +68,21 @@
 <!-- individual reviews -->
 <div *ngFor="let review of reviews" style="box-sizing: 50%">
 
-    <div class="pg-profile-style">
+    <div class="pg-review-style">
     	<div class="row">
 
     		<div class="col-md-3 text-center">
           <div>
-    			<img style="width: 40%" [src]="review.reviewerImage" alt="profile pic">
+    			 <img style="width: 30%" [src]="review.reviewerImage" alt="profile pic">
           </div>
           <div class="text-center">
-              <p><b>{{review.reviewerUsername}}</b></p>
+            <p>{{review.reviewerUsername}}</p>
           </div>
-           <div>
-    			<img style="width: 25%" [src]="review.reviewerBadge" alt="badge pic">
-    		</div>
-          <div class="text-center">
-              <p>{{review.reviewerBcount}}</p>
+          <div>
+    			 <img style="width: 15%" [src]="review.reviewerBadge" alt="badge pic">
+    		  </div>
+          <div class="text-center" style="font-size: 12px">
+            <p>{{review.reviewerBcount}}</p>
           </div> 		
     		</div>
 
@@ -123,7 +123,6 @@
     </div>
   
   </div>
-
 
 
 <!-- Review Modals -->

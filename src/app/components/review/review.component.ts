@@ -113,7 +113,9 @@ responsiveness: string;
     cost: this.cost,
     responsiveness: this.responsiveness,
     comments: this.comments,
+    posted: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()
   };
+  console.log(newReview)
   this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
       jQuery('#reviewModal').modal('hide');
