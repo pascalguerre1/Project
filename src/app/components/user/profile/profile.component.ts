@@ -6,6 +6,8 @@ import { User } from '../../../models/user.model.client'
 import { NgForm } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 import { SharedService } from '../../../services/shared.service.client';
+import { ReviewService } from '../../../services/review.service.client';
+import { Review } from '../../../models/review.model.client';
 declare var jQuery: any;
 
 
@@ -95,12 +97,14 @@ export class ProfileComponent implements OnInit {
   area1Value = null;
 
   user: User;
+  uid2:string;
   firstName: string = "";
   lastName: string = "";
   email: string = "";
   bio: string = "";
+  reviews: Review[];
 
-  constructor(public sharedService: SharedService, private router: Router, private userService: UserService, 
+  constructor(private reviewService: ReviewService, public sharedService: SharedService, private router: Router, private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -110,6 +114,11 @@ export class ProfileComponent implements OnInit {
         this.sharedService.user = user;
         this.user = this.sharedService.user;      
       },
+    )
+    this.reviewService.findReviewByUser2(this.uid2).subscribe(
+      (reviews:Review[])=>{
+        this.reviews = reviews;
+      }
     )
   }
 

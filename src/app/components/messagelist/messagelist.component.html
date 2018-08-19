@@ -7,19 +7,19 @@
             <!-- Users -->
             <br>
             <ul class="list-group list-group-flush">
-                <div *ngFor="let message of messages | messageFilter: this.sharedService.item1.name">
+                <div *ngFor="let message of messages?.reverse() | messageFilter: this.sharedService.item1.name">
                     <li class="list-group-item">
                         <div  class="row">
                             <div class="col-3">
                                 <p><b>Name: </b>{{message.name}}</p>
                                 <p><b>Email: </b>{{message.email}}</p>
                             </div>
-                            <div class="col-5">
+                            <div class="col-6">
                                 <p><b>Message: </b>{{message.message}}</p>
                                 <button *ngIf="sharedService.user && sharedService.user.role =='admin'" class="btn btn-outline-primary" data-toggle="modal" data-target="#emailModal"><i class="fas fa-envelope-square fa-lg"></i></button>
                                 <button *ngIf="sharedService.user && sharedService.user.role =='admin'" (click)="select(message)" data-toggle="modal" data-target="#removeModal" class="btn btn-outline-danger"><i class="far fa-trash-alt fa-lg"></i></button>
                             </div>
-                            <div class="col-4 float-right">
+                            <div class="col-3 float-right" style="font-size: 12px">
                                 Received: {{message.dateCreated}}
                             </div>
                         </div>

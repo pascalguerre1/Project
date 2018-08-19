@@ -6,7 +6,6 @@ var ReviewModel = mongoose.model('ReviewModel', ReviewSchema);
 
 // ReviewModel.findReviewById = findReviewById;
 // WebsiteModel.updateWebsite = updateWebsite;
-// WebsiteModel.deleteWebsite = deleteWebsite;
 
 ReviewModel.createReviewForUser = createReviewForUser;
 function createReviewForUser(review){
@@ -26,8 +25,9 @@ function findAllReviewsForUser2(uid2){
 // 	return WebsiteModel.update({_id: wid}, website);
 // }
 
-// function deleteWebsite(wid){
-// 	return WebsiteModel.remove({_id: wid});
-// }
+ReviewModel.deleteReview = deleteReview;
+function deleteReview(rid){
+	return ReviewModel.remove({_id: rid});
+}
 
 module.exports = ReviewModel;

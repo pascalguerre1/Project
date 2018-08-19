@@ -70,6 +70,7 @@ export class ReviewComponent implements OnInit {
     this.reviewService.findReviewByUser2(this.uid2).subscribe(
       (reviews:Review[])=>{
         this.reviews = reviews;
+        console.log(this.reviews.length)
       }
     )
 
@@ -115,7 +116,6 @@ responsiveness: string;
     comments: this.comments,
     posted: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()
   };
-  console.log(newReview)
   this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
       jQuery('#reviewModal').modal('hide');
@@ -124,5 +124,21 @@ responsiveness: string;
     }
   )
 }
+
+selectedReview:string;
+
+  select(review: Review) {
+    this.selectedReview = review._id
+    console.log(this.selectedReview)
+  }
+
+    remove() {
+      this.reviewService.deleteReview(this.selectedReview).subscribe(
+          (res: any) => {
+              jQuery('#removeModal').modal('hide');
+              this.ngOnInit();
+          }
+      )
+  }
 
 }

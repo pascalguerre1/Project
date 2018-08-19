@@ -17,6 +17,7 @@ var UserSchema = mongoose.Schema({
 	phone: String,
 	site: String,
 	gender: String,
+	reviewCount:String,
 	selectedValues:[],
 	role:{type: String, default: 'user', enum:['user', 'attn', 'admin']},
 	dateCreated: String,

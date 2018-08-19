@@ -2,8 +2,10 @@ import { Component, OnInit, } from '@angular/core';
 import { UserService } from '../../services/user.service.client';
 import { ActivatedRoute} from '@angular/router';
 import { NgModule } from '@angular/core';
-import { User } from '../../models/user.model.client'
-import { SharedService } from '../../services/shared.service.client'
+import { User } from '../../models/user.model.client';
+import { SharedService } from '../../services/shared.service.client';
+import { ReviewService } from '../../services/review.service.client';
+import { Review } from '../../models/review.model.client';
 
 @Component({
   selector: 'app-search',
@@ -16,8 +18,10 @@ export class SearchComponent implements OnInit {
   user2: User[];
   filterCity: string;
   filterState: string;
+  uid2:string;
+  reviews: Review[];
 
-  constructor(private userService: UserService, 
+  constructor(private reviewService: ReviewService, private userService: UserService, 
   	private activatedRoute: ActivatedRoute,
     public sharedService: SharedService) { 
   }
@@ -29,6 +33,13 @@ export class SearchComponent implements OnInit {
     this.userService.findUser2().subscribe(
       (user2:User[])=>{
         this.user2 = user2;//the list of all user2
+        for (let x=0; x<this.user2.length; x++){
+          this.reviewService.findReviewByUser2(this.user2[x]._id).subscribe(
+            (reviews:Review[])=>{
+              this.user2[x].reviewCount = reviews.length;
+            }
+          )
+        }
       }
     )
    });
