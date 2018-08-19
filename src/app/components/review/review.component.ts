@@ -8,6 +8,7 @@ import { Review } from '../../models/review.model.client';
 import { NgForm } from '@angular/forms';
 import { SharedService } from '../../services/shared.service.client';
 declare var jQuery: any;
+declare var $: any;
 
 
 @Component({
@@ -61,27 +62,25 @@ export class ReviewComponent implements OnInit {
       this.anonymousUser = false;
     }
     this.activatedRoute.params.subscribe(params => {
-    this.uid2 =params['uid2'];
-    this.userService.findUser2ById(this.uid2).subscribe(
-      (user2:User)=>{
-        this.user2 = user2;
-      }
-    )
-    this.reviewService.findReviewByUser2(this.uid2).subscribe(
-      (reviews:Review[])=>{
-        this.reviews = reviews;
-        console.log(this.reviews.length)
-      }
-    )
-
+      this.uid2 =params['uid2'];
+      this.userService.findUser2ById(this.uid2).subscribe(
+        (user2:User)=>{
+          this.user2 = user2;
+        }
+      )
+      this.reviewService.findReviewByUser2(this.uid2).subscribe(
+        (reviews:Review[])=>{
+          this.reviews = reviews;
+          console.log(this.reviews.length)
+        }
+      )
     });
   }
 
 
 starList: boolean[] = [true,true,true,true,true];    // create a list which contains status of 5 stars
 rating:number;  
-//Create a function which receives the value counting of stars click, and according to that value we do change the value of that star in list.
-setStar(data:any){
+setStar(data:any){   //Create a function which receives the value counting of stars click, and according to that value we do change the value of that star in list.
       this.rating=data+1;                               
       for(var i=0;i<=4;i++){  
         if(i<=data){  
@@ -97,12 +96,10 @@ setStar(data:any){
 comments: string;
 cost: string;
 responsiveness: string;
-
  create(){
   this.comments = this.reviewForm.value.comments;
   this.cost = this.reviewForm.value.cost;
   this.responsiveness = this.reviewForm.value.responsiveness;
-
   const newReview: Review = {
     rating: this.rating,
     reviewerId: this.user._id,
@@ -126,10 +123,8 @@ responsiveness: string;
 }
 
 selectedReview:string;
-
   select(review: Review) {
     this.selectedReview = review._id
-    console.log(this.selectedReview)
   }
 
     remove() {
@@ -140,5 +135,9 @@ selectedReview:string;
           }
       )
   }
+
+toggle(){
+  $("#panel").slideToggle("fast");
+}
 
 }

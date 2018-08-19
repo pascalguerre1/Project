@@ -41,6 +41,7 @@
 			<br>
           <div>
             <p class="text-center"><b><a routerLink="/user/reviews/{{user._id}}">{{user.reviewCount}} Reviews</a></b></p>
+            <p *ngIf="user.reviewCount === 0" class="text-center" style="font-size: 12px">Be the first to write a review for this attorney</p>
           </div>
   		</div>
   	</div>

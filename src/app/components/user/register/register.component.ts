@@ -202,8 +202,7 @@ export class RegisterComponent implements OnInit {
                             this.passwordError = false;
                             this.usernameError = false;
                             this.sharedService.user = user;
-                            this.router.navigate(['user']); 
-                            console.log(this.selectedValues)                              
+                            this.router.navigate(['user']);                            
                           });
 
                     } else {

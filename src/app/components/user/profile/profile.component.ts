@@ -9,6 +9,7 @@ import { SharedService } from '../../../services/shared.service.client';
 import { ReviewService } from '../../../services/review.service.client';
 import { Review } from '../../../models/review.model.client';
 declare var jQuery: any;
+declare var $: any;
 
 
 @Component({

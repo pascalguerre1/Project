@@ -21,18 +21,22 @@
 	          	<label>Email</label>
 	          	<p>{{user2.email}}</p>
 	          </div>
-	          	<div class="col-sm-6">
-		            <label>Office Address</label>
-		            <p>{{user2.address}} <br> {{user2.city}}, {{user2.state}} <br>Tel: {{user2.phone}} <br> {{user2.site}}</p>
+	          <div class="col-sm-6">
+		          <label>Office Address</label>
+		          <p>{{user2.address}} <br> {{user2.city}}, {{user2.state}} <br>Tel: {{user2.phone}} <br> {{user2.site}}</p>
 	        	</div>
 	        	<div class="col-sm-6">
-		            <label>Area of expertise</label>
-		            <p>{{user2.selectedValues[0]}} <br> {{user2.selectedValues[1]}} <br> {{user2.selectedValues[2]}}</p>
-	            </div>
-	            <div class="col-sm-12">
-	  				<button *ngIf="!this.anonymousUser" class="btn btn-block btn-success col-12" data-toggle="modal" data-target="#reviewModal" data-backdrop="static" data-keyboard="false">Write a Review for this attorney</button>
-            <button *ngIf="this.anonymousUser" class="btn btn-block btn-success col-12" routerLink="/login" >Write a Review for this attorney</button>           
-	  			</div>
+		          <label>Area of expertise</label>
+		          <p>{{user2.selectedValues[0]}} <br> {{user2.selectedValues[1]}} <br> {{user2.selectedValues[2]}}</p>
+	          </div>
+            <div *ngIf="user2.bio" class="col-sm-12">
+              <label id="flip" (click)="toggle()" style="cursor:pointer;">About this attorney</label>
+              <p id="panel">{{user2.bio}}</p>
+            </div>
+	          <div class="col-sm-12">
+	  				  <button *ngIf="!this.anonymousUser" class="btn btn-block btn-success col-12" data-toggle="modal" data-target="#reviewModal" data-backdrop="static" data-keyboard="false">Write a Review for this attorney</button>
+              <button *ngIf="this.anonymousUser" class="btn btn-block btn-success col-12" routerLink="/login" >Write a Review for this attorney</button>           
+	  			  </div>
 	  		</div>
 	  		<br>
   		</div>
