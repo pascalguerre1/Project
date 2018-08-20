@@ -30,6 +30,12 @@ export class ReviewComponent implements OnInit {
   anonymousUser: boolean;
   reviews: Review[];
 
+  count0star:number;
+  count1star:number;
+  count2star:number;  
+  count3star:number;
+  count4star:number;
+  count5star:number;
 
      resp = [
           {name: "Poor", value: "Poor"},
@@ -72,6 +78,26 @@ export class ReviewComponent implements OnInit {
         (reviews:Review[])=>{
           this.reviews = reviews;
           console.log(this.reviews.length)
+
+        for (let x=0; x<this.reviews.length; x++){//to get the count for each rating
+          if(reviews[x].rating === 1){
+            this.count1star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 2){
+            this.count2star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 3){
+            this.count3star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 4){
+            this.count4star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 5){
+            this.count5star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+
+        }
+
         }
       )
     });
@@ -100,6 +126,7 @@ responsiveness: string;
   this.comments = this.reviewForm.value.comments;
   this.cost = this.reviewForm.value.cost;
   this.responsiveness = this.reviewForm.value.responsiveness;
+  if(this.comments && this.cost && this.responsiveness && this.rating){ //to validate the modal form
   const newReview: Review = {
     rating: this.rating,
     reviewerId: this.user._id,
@@ -113,13 +140,16 @@ responsiveness: string;
     comments: this.comments,
     posted: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()
   };
+  console.log(newReview)
   this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
       jQuery('#reviewModal').modal('hide');
       this.router.navigateByUrl('/about', {skipLocationChange: true}).then(()=>
       this.router.navigate(['user/reviews/', this.uid2]));
     }
-  )
+  )}else{
+    alert('Some fields are still missing')
+  }
 }
 
 selectedReview:string;

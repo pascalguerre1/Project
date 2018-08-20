@@ -56,11 +56,16 @@
       </div>
 			<div class="wrap">
 				<ol class="content custom" style="padding-left: 0px">
-					<li><span class="fa fa-star checked"></span>: <a routerLink="#">4 review(s)</a></li>
-					<li><span class="fa fa-star checked"></span>: <a routerLink="#">10 review(s)</a></li>
-					<li><span class="fa fa-star checked"></span>: <a routerLink="#">3 review(s)</a></li>
-					<li><span class="fa fa-star checked"></span>: <a routerLink="#">1 review(s)</a></li>
-					<li><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+					<li *ngIf="count1star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count1star}} review(s)</a></li>
+          <li *ngIf="!count1star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>          
+					<li *ngIf="count2star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count2star}} review(s)</a></li>
+          <li *ngIf="!count2star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+          <li *ngIf="count3star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count3star}} review(s)</a></li>
+          <li *ngIf="!count3star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+          <li *ngIf="count4star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count4star}} review(s)</a></li>
+          <li *ngIf="!count4star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+          <li *ngIf="count5star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count5star}} review(s)</a></li>
+          <li *ngIf="!count5star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
 				</ol>
 			</div>
           <br>
@@ -93,12 +98,42 @@
     		<div class="col-md-9 pg-vertical-line pg-vertical-line2 d-md-flex">
   	  		<div class="row container">
   	  		  <div class="col-sm-12">
-  	         	<label>Rating:</label>
-  	         	<span class="fa fa-star checked"></span>
-      				<span class="fa fa-star checked"></span>
-      				<span class="fa fa-star"></span>
-      				<span class="fa fa-star"></span>
-      				<span class="fa fa-star"></span>
+              <label>Rating:</label>
+              <a *ngIf="review.rating === 1">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>    
+              </a> 
+              <a *ngIf="review.rating === 2">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>    
+              </a> 
+              <a *ngIf="review.rating === 3">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>    
+              </a> 
+              <a *ngIf="review.rating === 4">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>    
+              </a> 
+              <a *ngIf="review.rating === 5">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>    
+              </a> 
       				&nbsp;&nbsp;|<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cost:</label>
       				<span>{{review.cost}}</span>
               &nbsp;&nbsp;|<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsiveness:</label>
@@ -138,10 +173,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <form  (ngSubmit)="create()" id="reviewForm" #f="ngForm">
+          <form  (ngSubmit)="create()" #f="ngForm">
             <div>
               <label>Rating:</label>
-              <a *ngFor="let item of starList; let i=index " (click)="setStar(i)"  style="cursor:pointer;">
+              <a *ngFor="let item of starList; let i=index " (click)="setStar(i)" style="cursor:pointer;" name="rating" [(ngModel)]="rating">
                 <span *ngIf="item" class="fa fa-star"></span>    
                 <span *ngIf="!item" class="fa fa-star checked"></span>
               </a>
@@ -170,7 +205,7 @@
             </div>
             <div class="text-center">
               <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
-              <button class="btn btn-success" type="submit" form="reviewForm">Submit</button>
+              <button class="btn btn-success" type="submit">Submit</button>
             </div>
           </form>
         </div>
