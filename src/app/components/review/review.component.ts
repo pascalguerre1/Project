@@ -36,6 +36,10 @@ export class ReviewComponent implements OnInit {
   count3star:number;
   count4star:number;
   count5star:number;
+  potentialRating:number;
+  overallRating:number;
+
+  attn:User;
 
      resp = [
           {name: "Poor", value: "Poor"},
@@ -74,11 +78,10 @@ export class ReviewComponent implements OnInit {
           this.user2 = user2;
         }
       )
+
       this.reviewService.findReviewByUser2(this.uid2).subscribe(
         (reviews:Review[])=>{
           this.reviews = reviews;
-          console.log(this.reviews.length)
-
         for (let x=0; x<this.reviews.length; x++){//to get the count for each rating
           if(reviews[x].rating === 1){
             this.count1star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
@@ -95,10 +98,30 @@ export class ReviewComponent implements OnInit {
           if(reviews[x].rating === 5){
             this.count5star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
           }
-
         }
-
+        // if there's no stars  chhange the count to 0 to allow overrating calculation
+        if (!this.count1star){
+          this.count1star = 0
         }
+        if (!this.count2star){
+          this.count2star = 0
+        }
+        if (!this.count3star){
+          this.count3star = 0
+        }
+        if (!this.count4star){
+          this.count4star = 0
+        }
+        if (!this.count5star){
+          this.count5star = 0
+        }
+        if(this.reviews.length !==0){//calculating overall rating
+          this.potentialRating = this.reviews.length*5
+          this.overallRating = Math.round(((this.count1star*1 + this.count2star*2 + this.count3star*3 + this.count4star*4 + this.count5star*5)*5)/this.potentialRating)
+        } else {
+          this.overallRating = 0
+        }
+        },
       )
     });
   }
@@ -140,17 +163,26 @@ responsiveness: string;
     comments: this.comments,
     posted: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()
   };
-  console.log(newReview)
   this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
       jQuery('#reviewModal').modal('hide');
-      this.router.navigateByUrl('/about', {skipLocationChange: true}).then(()=>
-      this.router.navigate(['user/reviews/', this.uid2]));
+      this.update();// update the overall rating for user2
     }
   )}else{
     alert('Some fields are still missing')
   }
 }
+
+
+  update() {
+    this.user2.overallRating = this.overallRating;
+    this.userService.updateUser(this.user2._id, this.user2).subscribe(
+      (user2: User) => {
+        this.router.navigateByUrl('/about', {skipLocationChange: true}).then(()=>
+        this.router.navigate(['user/reviews/', this.user2._id]));
+      }
+    );
+  }
 
 selectedReview:string;
   select(review: Review) {

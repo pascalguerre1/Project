@@ -43,13 +43,50 @@
 
   		<div class="col-md-3">
   			<div class="text-center">
-	  			<h5 class="">Overall Rating:</h5>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span>
-			</div>
+          <h5 class="">Overall Rating:</h5>
+          <a *ngIf="overallRating === 0">
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>    
+          </a> 
+          <a *ngIf="overallRating === 1">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>    
+          </a> 
+          <a *ngIf="overallRating === 2">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>    
+          </a> 
+          <a *ngIf="overallRating === 3">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>    
+          </a> 
+          <a *ngIf="overallRating === 4">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>    
+          </a> 
+          <a *ngIf="overallRating === 5">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>    
+          </a> 
+			  </div>
 			<br>
 			<div>
         <p class="text-center"><b><a routerLink="#">{{this.reviews.length}} Reviews</a></b></p>

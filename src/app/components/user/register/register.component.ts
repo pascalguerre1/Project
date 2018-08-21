@@ -137,7 +137,7 @@ export class RegisterComponent implements OnInit {
   }
 
   attRegs(){
-    this.sharedService.practiceAreas = [];
+    this.sharedService.practiceAreas = [];//clears out the practice area list from shared service
     this.sharedService.attorneyRegs = true;
   }
 
@@ -190,6 +190,7 @@ export class RegisterComponent implements OnInit {
                         phone: this.phone,
                         site: this.site,
                         selectedValues: this.selectedValues,
+                        overallRating: 0,
                         image: './assets/uploads/avatar.png',
                         badge: './assets/uploads/badge.png',
                         dateCreated: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()  

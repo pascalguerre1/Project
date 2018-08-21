@@ -21,6 +21,7 @@ export class User {
 	role?: string;
 	dateCreated: string;
 	reviewCount?: number;
+	overallRating?:number;
 
 	constructor(_id, username, password, firstName, lastName, email, gender, office, address, city, state, phone, site, selectedValues, image, badge, bio, bcount, role) {
 		this._id = _id;
