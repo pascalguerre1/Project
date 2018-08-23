@@ -191,6 +191,11 @@ export class RegisterComponent implements OnInit {
                         site: this.site,
                         selectedValues: this.selectedValues,
                         overallRating: 0,
+                        count1star: 0,
+                        count2star: 0,
+                        count3star: 0,
+                        count4star: 0,
+                        count5star: 0,
                         image: './assets/uploads/avatar.png',
                         badge: './assets/uploads/badge.png',
                         dateCreated: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()  

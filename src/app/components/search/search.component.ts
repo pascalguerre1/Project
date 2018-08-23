@@ -21,6 +21,15 @@ export class SearchComponent implements OnInit {
   uid2:string;
   reviews: Review[];
 
+  count0star:number;
+  count1star:number;
+  count2star:number;  
+  count3star:number;
+  count4star:number;
+  count5star:number;
+  potentialRating:number;
+  overallRating:number;
+
   constructor(private reviewService: ReviewService, private userService: UserService, 
   	private activatedRoute: ActivatedRoute,
     public sharedService: SharedService) { 
@@ -38,6 +47,48 @@ export class SearchComponent implements OnInit {
           this.reviewService.findReviewByUser2(this.user2[x]._id).subscribe(
             (reviews:Review[])=>{
               this.user2[x].reviewCount = reviews.length;
+              this.reviews = reviews;
+              for (let i=0; i<this.reviews.length; i++){//to get the count for each rating
+                if(reviews[i].rating === 1){
+                  this.user2[x].count1star = this.reviews.filter((obj) => obj.rating === reviews[i].rating).length
+                }
+                if(reviews[i].rating === 2){
+                  this.user2[x].count2star = this.reviews.filter((obj) => obj.rating === reviews[i].rating).length
+                }
+                if(reviews[i].rating === 3){
+                  this.user2[x].count3star = this.reviews.filter((obj) => obj.rating === reviews[i].rating).length
+                }
+                if(reviews[i].rating === 4){
+                  this.user2[x].count4star = this.reviews.filter((obj) => obj.rating === reviews[i].rating).length
+                }
+                if(reviews[i].rating === 5){
+                  this.user2[x].count5star = this.reviews.filter((obj) => obj.rating === reviews[i].rating).length
+                }
+              }
+              // if there's no stars  chhange the count to 0 to allow overrating calculation
+              if (!this.user2[x].count1star){
+                this.user2[x].count1star = 0
+              }
+              if (!this.user2[x].count2star){
+                this.user2[x].count2star = 0
+              }
+              if (!this.user2[x].count3star){
+                this.user2[x].count3star = 0
+              }
+              if (!this.user2[x].count4star){
+                this.user2[x].count4star = 0
+              }
+              if (!this.user2[x].count5star){
+                this.user2[x].count5star = 0
+              }
+              if(this.user2[x].reviewCount !==0){//calculating overall rating
+                this.potentialRating = this.user2[x].reviewCount*5
+                this.overallRating = Math.round(((this.user2[x].count1star*1 + this.user2[x].count2star*2 + this.user2[x].count3star*3 + this.user2[x].count4star*4 + this.user2[x].count5star*5)*5)/this.potentialRating)
+              } else {
+                this.overallRating = 0
+              }
+              this.user2[x].overallRating = this.overallRating;
+
             }
           )
         }

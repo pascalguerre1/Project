@@ -105,6 +105,16 @@ export class ProfileComponent implements OnInit {
   bio: string = "";
   reviews: Review[];
 
+
+  count0star:number;
+  count1star:number;
+  count2star:number;  
+  count3star:number;
+  count4star:number;
+  count5star:number;
+  potentialRating:number;
+  overallRating:number;
+
   constructor(private reviewService: ReviewService, public sharedService: SharedService, private router: Router, private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
 
@@ -116,9 +126,48 @@ export class ProfileComponent implements OnInit {
         this.user = this.sharedService.user;      
       },
     )
-    this.reviewService.findReviewByUser2(this.uid2).subscribe(
+    this.reviewService.findReviewByUser2(this.user._id).subscribe(
       (reviews:Review[])=>{
         this.reviews = reviews;
+        for (let x=0; x<this.reviews.length; x++){//to get the count for each rating
+          if(reviews[x].rating === 1){
+            this.count1star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 2){
+            this.count2star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 3){
+            this.count3star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 4){
+            this.count4star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+          if(reviews[x].rating === 5){
+            this.count5star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
+          }
+        }
+        // if there's no stars  chhange the count to 0 to allow overrating calculation
+        if (!this.count1star){
+          this.count1star = 0
+        }
+        if (!this.count2star){
+          this.count2star = 0
+        }
+        if (!this.count3star){
+          this.count3star = 0
+        }
+        if (!this.count4star){
+          this.count4star = 0
+        }
+        if (!this.count5star){
+          this.count5star = 0
+        }
+        if(this.reviews.length !==0){//calculating overall rating
+          this.potentialRating = this.reviews.length*5
+          this.overallRating = Math.round(((this.count1star*1 + this.count2star*2 + this.count3star*3 + this.count4star*4 + this.count5star*5)*5)/this.potentialRating)
+        } else {
+          this.overallRating = 0
+        }
       }
     )
   }

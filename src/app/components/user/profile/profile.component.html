@@ -38,42 +38,42 @@
         <div *ngIf="this.user.role === 'attn'">
             <div class="text-center">
               <h5 class="">Overall Rating:</h5>
-              <a *ngIf="user.overallRating === 0">
+              <a *ngIf="overallRating === 0">
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>    
               </a> 
-              <a *ngIf="user.overallRating === 1">
+              <a *ngIf="overallRating === 1">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>    
               </a> 
-              <a *ngIf="user.overallRating === 2">
+              <a *ngIf="overallRating === 2">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>    
               </a> 
-              <a *ngIf="user.overallRating === 3">
+              <a *ngIf="overallRating === 3">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>    
               </a> 
-              <a *ngIf="user.overallRating === 4">
+              <a *ngIf="overallRating === 4">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>    
               </a> 
-              <a *ngIf="user.overallRating === 5">
+              <a *ngIf="overallRating === 5">
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -87,11 +87,16 @@
           </div>
           <div class="wrap">
             <ol class="content custom" style="padding-left: 0px">
-              <li><span class="fa fa-star checked"></span>: <a routerLink="#">4 review(s)</a></li>
-              <li><span class="fa fa-star checked"></span>: <a routerLink="#">10 review(s)</a></li>
-              <li><span class="fa fa-star checked"></span>: <a routerLink="#">3 review(s)</a></li>
-              <li><span class="fa fa-star checked"></span>: <a routerLink="#">1 review(s)</a></li>
-              <li><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+              <li *ngIf="count1star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count1star}} review(s)</a></li>
+              <li *ngIf="!count1star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>          
+              <li *ngIf="count2star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count2star}} review(s)</a></li>
+              <li *ngIf="!count2star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+              <li *ngIf="count3star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count3star}} review(s)</a></li>
+              <li *ngIf="!count3star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+              <li *ngIf="count4star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count4star}} review(s)</a></li>
+              <li *ngIf="!count4star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
+              <li *ngIf="count5star"><span class="fa fa-star checked"></span>: <a routerLink="#">{{count5star}} review(s)</a></li>
+              <li *ngIf="!count5star"><span class="fa fa-star checked"></span>: <a routerLink="#">0 review(s)</a></li>
             </ol>
           </div>
         </div>

@@ -123,6 +123,7 @@ export class ReviewComponent implements OnInit {
         }
         },
       )
+      this.update();
     });
   }
 
@@ -166,7 +167,7 @@ responsiveness: string;
   this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
       jQuery('#reviewModal').modal('hide');
-      this.update();// update the overall rating for user2
+      this.ngOnInit();// update the overall rating for user2
     }
   )}else{
     alert('Some fields are still missing')

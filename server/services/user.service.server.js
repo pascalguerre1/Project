@@ -110,7 +110,6 @@ module.exports = function(app){
 	}
 	// update user
 	app.put('/api/user/:uid', updateUser);//path to run function
-
 	function updateUser(req, res){
 		var uid = req.params['uid'];
 		var user = req.body;
