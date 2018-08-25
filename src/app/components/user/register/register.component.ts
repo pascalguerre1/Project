@@ -226,6 +226,7 @@ export class RegisterComponent implements OnInit {
                         phone: this.phone,
                         site: this.site,
                         selectedValues: this.selectedValues,
+                        bcount:0,
                         image: './assets/uploads/avatar.png',
                         badge: './assets/uploads/badge.png',
                         dateCreated: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()  

@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+/*.pg-small {
+    width: 88%;
+    height: 88%;
+    margin: 0;
+    padding: 0;
+}*/
+
 .b-img {
     background-image: url(app/image/abstractBldg.jpg);
     background-size: cover;
@@ -18,19 +25,43 @@
 }
 .pg-profile-style {
     margin-top: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
     padding-top: 15px;
     padding-bottom: 10px;
     background-color: white;
 }
+.pg-empty-style {
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    background-color: none;
+}
 .pg-review-style {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
     padding-top: 15px;
     padding-bottom: 10px;
     background-color: white;
+}
+.pg-grey-style {
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    background-color: grey;
+}
+.pg-red-style {
+    margin-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    background-color: #ffcccc;
 }
 .btn {
   padding:5px 60px 5px 60px;
@@ -333,13 +364,23 @@ ol.custom:first-child {
   to{bottom: 0; opacity: 1;}
 }
 
-/*sliding toggle*/
+/*sliding toggle for about me profile*/
 #panel, #flip {
     padding: 5px;
     background-color: #e5eecc;
     border: solid 1px #c3c3c3;
 }
-
 #panel {
     display: none;
 }
+
+/*tocenter form*/
+.centered-form {
+    float: none;
+    margin: auto;
+    width: 500px;
+    padding-top: 50px;
+    position: relative;
+    left: 10px;
+}
+/* end tocenter form*/

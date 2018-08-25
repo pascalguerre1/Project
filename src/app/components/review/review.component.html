@@ -1,4 +1,4 @@
-<div id="body" class="animate-bottom">
+<div id="body" class="animate-bottom small pg-small">
   <div class="pg-profile-style">
   	<div class="row">
 
@@ -89,7 +89,7 @@
 			  </div>
 			<br>
 			<div>
-        <p class="text-center"><b><a routerLink="#">{{this.reviews.length}} Reviews</a></b></p>
+        <p class="text-center"><b><a routerLink="#">{{this.reviews.length}} Review(s)</a></b></p>
       </div>
 			<div class="wrap">
 				<ol class="content custom" style="padding-left: 0px">
@@ -112,7 +112,7 @@
   </div>
 
   <!-- individual reviews -->
-  <div *ngFor="let review of reviews?.reverse()" style="box-sizing: 50%">
+  <div *ngFor="let review of reviews?.reverse()">
 
     <div class="pg-review-style">
     	<div class="row">
@@ -128,7 +128,7 @@
     			 <img style="width: 15%" [src]="review.reviewerBadge" alt="badge pic">
     		  </div>
           <div class="text-center" style="font-size: 12px">
-            <p>{{review.reviewerBcount}}</p>
+            <p>{{review.reviewerBcount}} Badge(s)</p>
           </div> 		
     		</div>
 

@@ -23,6 +23,15 @@ constructor(private http: Http) { }
       }
     ))      
   }
+// returns the review by user
+  findReviewByUser(userId: string) {
+    const url = this.baseUrl + '/api/user/'+userId+'/reviews'; 
+    return this.http.get(url).pipe(map(
+      (response: Response) => {
+        return response.json();
+      }
+    )) 
+   }
 
 // returns the review by user2
   findReviewByUser2(userId2: string) {

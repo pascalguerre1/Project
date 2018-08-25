@@ -7,7 +7,7 @@ var ReviewSchema = mongoose.Schema({
 	reviewerUsername: String,
 	reviewerImage: String,
 	reviewerBadge: String,
-	reviewerBcount: String,
+	reviewerBcount: Number,
 	targetReviewId: String,
 	responsiveness: String,
 	rating: Number,

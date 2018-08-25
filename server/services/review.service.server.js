@@ -26,6 +26,17 @@ module.exports = function(app){
 				res.json(data);
 			}
 		)
+	}
+
+	// find reviews for user
+	app.get('/api/user/:uid/reviews', findAllReviewsForUser);//path to run function
+	function findAllReviewsForUser(req, res){
+		var uid = req.params['uid'];
+		reviewModel.findAllReviewsForUser(uid).then(
+			data => {
+				res.json(data);
+			}
+		)
 	}	
 
 	// function findAllReviewsForUser(req, res){

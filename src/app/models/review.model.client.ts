@@ -4,8 +4,8 @@ export class Review {
 	targetReviewId: string;
 	reviewerUsername: string;
 	reviewerImage: string;
-	reviewerBadge: string;
-	reviewerBcount: string;
+	reviewerBadge?: string;
+	reviewerBcount?: number;
 	rating:number;
 	responsiveness?: string;
 	comments: string;

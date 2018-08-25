@@ -17,6 +17,11 @@ function findAllReviewsForUser2(uid2){
 	return ReviewModel.find({targetReviewId: uid2});
 }
 
+ReviewModel.findAllReviewsForUser = findAllReviewsForUser;
+function findAllReviewsForUser(uid){
+	return ReviewModel.find({reviewerId: uid});
+}
+
 // function findReviewById(rid){
 // 	return ReviewModel.findById(rid);
 // }

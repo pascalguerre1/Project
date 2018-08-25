@@ -115,6 +115,8 @@ export class ProfileComponent implements OnInit {
   potentialRating:number;
   overallRating:number;
 
+  userReviews:Review[];
+
   constructor(private reviewService: ReviewService, public sharedService: SharedService, private router: Router, private userService: UserService, 
   	private activatedRoute: ActivatedRoute) { }
 
@@ -126,6 +128,13 @@ export class ProfileComponent implements OnInit {
         this.user = this.sharedService.user;      
       },
     )
+
+    this.reviewService.findReviewByUser(this.user._id).subscribe(//find reviews created by user
+      (userReviews:Review[]) => { 
+        this.userReviews = userReviews;  
+      },
+    )
+
     this.reviewService.findReviewByUser2(this.user._id).subscribe(
       (reviews:Review[])=>{
         this.reviews = reviews;

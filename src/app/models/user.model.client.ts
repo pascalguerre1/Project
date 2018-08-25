@@ -17,7 +17,7 @@ export class User {
 	image?: string;
 	badge?: string;
 	bio?: string;
-	bcount?: string;
+	bcount?: number;
 	role?: string;
 	dateCreated: string;
 	reviewCount?: number;
