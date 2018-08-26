@@ -16,6 +16,7 @@ name: string;
   constructor(public sharedService: SharedService, private router: Router) { }
 
   ngOnInit() {
+  	window.scrollTo(0, 0);
   }
   
   openNav() {

@@ -1,5 +1,5 @@
 <div id="body">
-  <div class="container pg-border pg-margin-top">
+  <div class="container pg-border pg-margin-top animate-bottom">
     <h2 *ngIf="!this.sharedService.attorneyRegs" class="alert alert-success" align="center">Register</h2>
     <h2 *ngIf="this.sharedService.attorneyRegs" class="alert alert-success" align="center">Register as an attorney</h2>
     <form (ngSubmit)="register()" #f="ngForm">

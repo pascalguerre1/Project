@@ -21,6 +21,7 @@ export class ContactComponent implements OnInit {
   message: string;
 
   ngOnInit() {
+    window.scrollTo(0, 0);
   }
 
   regs(){

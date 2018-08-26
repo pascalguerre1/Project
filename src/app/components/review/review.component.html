@@ -1,4 +1,4 @@
-<div id="body" class="animate-bottom small pg-small">
+<div id="body" class="small pg-small">
   <div class="pg-profile-style">
   	<div class="row">
 
@@ -112,9 +112,10 @@
   </div>
 
   <!-- individual reviews -->
+  <div class="pg-emptygrey-style">
   <div *ngFor="let review of reviews?.reverse()">
 
-    <div class="pg-review-style">
+    <div class="pg-review-style animate-bottom">
     	<div class="row">
 
     		<div class="col-md-3 text-center">
@@ -124,15 +125,24 @@
           <div class="text-center">
             <p>{{review.reviewerUsername}}</p>
           </div>
-          <div>
-    			 <img style="width: 15%" [src]="review.reviewerBadge" alt="badge pic">
-    		  </div>
-          <div class="text-center" style="font-size: 12px">
-            <p>{{review.reviewerBcount}} Badge(s)</p>
-          </div> 		
+
+          <div *ngIf="review.reviewerRole === 'user'">
+            <div>
+      			 <img style="width: 15%" [src]="review.reviewerBadge" alt="badge pic">
+      		  </div>
+            <div class="text-center" style="font-size: 12px">
+              <p>{{review.reviewerBcount}} Badge(s)</p>
+            </div> 
+          </div>
+
+          <div *ngIf="review.reviewerRole === 'attn'">
+            <div class="text-center" style="font-size: 12px">
+              <p>I'm a fellow attorney</p>
+            </div> 
+          </div>
     		</div>
 
-    		<div class="col-md-9 pg-vertical-line pg-vertical-line2 d-md-flex">
+    		<div class="col-md-9 pg-vertical-line  d-md-flex">
   	  		<div class="row container">
   	  		  <div class="col-sm-12">
               <label>Rating:</label>
@@ -175,10 +185,10 @@
       				<span>{{review.cost}}</span>
               &nbsp;&nbsp;|<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responsiveness:</label>
               <span>{{review.responsiveness}}</span>
-              <p class="float-right" style="font-size: 12px">Posted: {{review.posted}}</p>
+              <p class="float-right" style="font-size: 10px">Posted: {{review.posted}}</p>
   	        </div>
   	        <div class="col-sm-12">
-    			     <p class="form-control" rows="7" id="message">{{review.comments}}</p>
+    			     <p class="form-control" rows="7" id="message" style="font-size: 13px">{{review.comments}}</p>
   	  		  </div>
   	  		  <div class="col-sm-10">
   	         	 <a data-toggle="modal" data-target="#commentModal" data-backdrop="static" data-keyboard="false" href="">Leave a comment</a>
@@ -198,6 +208,7 @@
   
   </div>
 
+</div>
 
   <!-- Review Modals -->
   <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -237,7 +248,7 @@
             <br>
             <div class="form-group">
               <label>Comments</label>
-              <textarea class="form-control" type="text" name="comments" rows="5" ngModel #comments="ngModel" >
+              <textarea class="form-control" type="text" name="comments" rows="5" ngModel #comments="ngModel">
               </textarea>
             </div>
             <div class="text-center">

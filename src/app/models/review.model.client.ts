@@ -6,6 +6,7 @@ export class Review {
 	reviewerImage: string;
 	reviewerBadge?: string;
 	reviewerBcount?: number;
+	reviewerRole?: string;
 	rating:number;
 	responsiveness?: string;
 	comments: string;

@@ -65,6 +65,7 @@ export class ReviewComponent implements OnInit {
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.user = this.sharedService.user;
     if(!this.user){
       this.anonymousUser = true;
@@ -82,6 +83,7 @@ export class ReviewComponent implements OnInit {
       this.reviewService.findReviewByUser2(this.uid2).subscribe(
         (reviews:Review[])=>{
           this.reviews = reviews;
+          console.log(this.reviews)
         for (let x=0; x<this.reviews.length; x++){//to get the count for each rating
           if(reviews[x].rating === 1){
             this.count1star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
@@ -155,6 +157,7 @@ responsiveness: string;
     rating: this.rating,
     reviewerId: this.user._id,
     reviewerUsername: this.user.username,
+    reviewerRole: this.user.role,
     reviewerImage: this.user.image,
     reviewerBadge: this.user.badge,
     reviewerBcount: this.user.bcount,
@@ -164,6 +167,7 @@ responsiveness: string;
     comments: this.comments,
     posted: new Date(Date.now()).toLocaleDateString()+' '+new Date(Date.now()).toLocaleTimeString()
   };
+  console.log(newReview)
   this.reviewService.createReview(this.user._id, this.uid2, newReview).subscribe(
     (review: Review) =>{
       jQuery('#reviewModal').modal('hide');
@@ -190,16 +194,16 @@ selectedReview:string;
     this.selectedReview = review._id
   }
 
-    remove() {
-      this.reviewService.deleteReview(this.selectedReview).subscribe(
-          (res: any) => {
-              jQuery('#removeModal').modal('hide');
-              this.ngOnInit();
-          }
-      )
+  remove() {
+    this.reviewService.deleteReview(this.selectedReview).subscribe(
+        (res: any) => {
+            jQuery('#removeModal').modal('hide');
+            this.ngOnInit();
+        }
+    )
   }
 
-toggle(){
+toggle(){// for about this attorney section
   $("#panel").slideToggle("fast");
 }
 

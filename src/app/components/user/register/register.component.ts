@@ -121,6 +121,7 @@ export class RegisterComponent implements OnInit {
   constructor(private _cfr: ComponentFactoryResolver, private userService: UserService, private router: Router, public sharedService: SharedService) { }
 
   ngOnInit() {
+   window.scrollTo(0, 0);
    this.sharedService.attorneyRegs = false; 
   }
 

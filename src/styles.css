@@ -39,6 +39,14 @@
     padding-bottom: 10px;
     background-color: none;
 }
+.pg-emptygrey-style {
+    margin-top: 5px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    background-color: grey;
+}
 .pg-review-style {
     margin-top: 10px;
     margin-left: 150px;
