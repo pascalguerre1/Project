@@ -10,14 +10,38 @@ export class SharedService {
    	name: "",
    	city: "",
    	state:"",
-   	area: ""
+   	area: "",
+    fiveStar: undefined,
+    fourStar: undefined,
+    threeStar: undefined,
+    twoStar: undefined,
+    oneStar: undefined,
    };
+
    item1: any = {
      name: "",
      email: "",
      message:"",
    };
 
+
+  clearRating(){// reset the rating after a search
+    if(this.item.fiveStar){
+      this.item.fiveStar=  undefined;
+    }
+    if(this.item.fourStar){
+      this.item.fourStar=  undefined;
+    }
+    if(this.item.threeStar){
+      this.item.threeStar=  undefined;
+    }
+    if(this.item.twoStar){
+      this.item.twoStar=  undefined;
+    }
+    if(this.item.oneStar){
+      this.item.oneStar=  undefined;
+    }
+  }
 
      states = [
           {name: "Alabama", value: "AL"},

@@ -65,7 +65,7 @@ export class ReviewComponent implements OnInit {
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0);//move to top of page when refresh
     this.user = this.sharedService.user;
     if(!this.user){
       this.anonymousUser = true;

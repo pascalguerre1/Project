@@ -21,15 +21,14 @@ export class SearchPipe implements PipeTransform {
           }
           return false;
         }
-
-      transform(value: any, filterName: string, filterCity: string, filterState: string, filterArea: string){
+      transform(value: any, filterName: string, filterCity: string, filterState: string, filterArea: string, filter5Star: string, filter4Star: string, filter3Star: string, filter2Star: string, filter1Star: string){
         if (value && value.length){
             return value.filter(item =>{
             	let name = item.firstName+' '+item.lastName+' '+item.office
                 if (filterName && (!name || name.toLowerCase().indexOf(filterName.toLowerCase()) === -1)){
                     return false;
                 }
-                if (filterCity &&(!item.city || item.city.toLowerCase().indexOf(filterCity.toLowerCase()) === -1)){
+                if (filterCity && (!item.city || item.city.toLowerCase().indexOf(filterCity.toLowerCase()) === -1)){
                     return false;
                 }
                 if (filterState && (!item.state || item.state.toLowerCase().indexOf(filterState.toLowerCase()) === -1)){
@@ -38,6 +37,23 @@ export class SearchPipe implements PipeTransform {
                 if (filterArea && !this.areaInselectedValues(filterArea, item.selectedValues)) {
                     return false;
                 }
+                ///////////////
+                if (filter5Star && (item.overallRating !== 5 && item.overallRating !== 0)) {
+                    return false;
+                }
+                if (filter4Star && (item.overallRating !== 4 && item.overallRating !== 0)) {
+                    return false;
+                }
+                if (filter3Star && (item.overallRating !== 3 && item.overallRating !== 0)) {
+                    return false;
+                }
+                if (filter2Star && (item.overallRating !== 2 && item.overallRating !== 0)) {
+                    return false;
+                }
+                if (filter1Star && (item.overallRating !== 1 && item.overallRating !== 0)) {
+                    return false;
+                }
+                ///////////////
                 return true;
            })
         }

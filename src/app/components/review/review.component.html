@@ -194,8 +194,8 @@
   	         	 <a data-toggle="modal" data-target="#commentModal" data-backdrop="static" data-keyboard="false" href="">Leave a comment</a>
   	        </div>
   	  		  <div class="col-sm-2 float-right">
-  	         	 <a routerLink="#"><span class="fa fa-thumbs-up"></span></a>: {{review.like}} &nbsp;
-  	         	 <a routerLink="#"><span class="fa fa-share-alt"></span></a>: {{review.shared}}
+  	         	 <a data-toggle="modal" data-target="#commentModal" data-backdrop="static" data-keyboard="false" href=""><span class="fa fa-thumbs-up"></span></a>: {{review.like}} &nbsp;
+  	         	 <a data-toggle="modal" data-target="#commentModal" data-backdrop="static" data-keyboard="false" href=""><span class="fa fa-share-alt"></span></a>: {{review.shared}}
   	       </div>     	          
   	  		</div>
   	  		<br>
@@ -287,7 +287,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Leave a Comment</h5>
+          <h5 class="modal-title">Title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject, ViewChild} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router} from '@angular/router';
 import { SharedService } from '../../services/shared.service.client';
+import { NgForm } from '@angular/forms';
 declare var $: any
 
 @Component({
@@ -12,19 +13,21 @@ declare var $: any
 
 export class SidenavbarComponent implements OnInit {
 
+  @ViewChild('f') searchForm: NgForm;
+
   attorneyRegs: boolean;
 
-  name: string;
-  city: string;
-  stateValue: string;
-  area1Value: string;
-  fiveStar: boolean;
-  fourStar: boolean;
-  threeStar: boolean;
-  twoStar: boolean;
-  oneStar: boolean;
+  name: string ="";
+  city: string ="";
+  stateValue: string ="";
+  area1Value: string ="";
+  fiveStar: boolean =undefined;
+  fourStar: boolean =undefined;
+  threeStar: boolean =undefined;
+  twoStar: boolean =undefined;
+  oneStar: boolean =undefined;
 
-states = [
+  states = [
           {name: "Alabama", value: "AL"},
           {name: "Alaska", value: "AK"},
           {name: "Arizona", value: "AZ"},
@@ -96,24 +99,39 @@ states = [
         {name: "Tax Law"},  
    ];            
  
-
- 
   constructor(@Inject(DOCUMENT) document, public sharedService: SharedService, private router: Router) { }
 
   ngOnInit() {
-
   }
 
   attRegs(){
   	this.sharedService.attorneyRegs = true;
   }
 
-  regs(){
+  regs(){  
   	this.sharedService.attorneyRegs = false;
   }
 
   closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+  }
+
+  clearRating(){// reset the rating after a search
+    if(this.fiveStar){
+      this.fiveStar=  undefined;
+    }
+    if(this.fourStar){
+      this.fourStar=  undefined;
+    }
+    if(this.threeStar){
+      this.threeStar=  undefined;
+    }
+    if(this.twoStar){
+      this.twoStar=  undefined;
+    }
+    if(this.oneStar){
+      this.oneStar=  undefined;
+    }
   }
 
   search() {
@@ -125,10 +143,11 @@ states = [
       fiveStar: this.fiveStar,
       fourStar: this.fourStar,
       threeStar: this.threeStar,
-      twoStar: this.fiveStar,
+      twoStar: this.twoStar,
       oneStar: this.oneStar
     }
     this.sharedService.item = item;
+    this.clearRating();
     this.closeNav();
     this.router.navigate(['/search']);
   }

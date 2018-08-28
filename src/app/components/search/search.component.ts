@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../../services/user.service.client';
 import { ActivatedRoute} from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -6,6 +6,9 @@ import { User } from '../../models/user.model.client';
 import { SharedService } from '../../services/shared.service.client';
 import { ReviewService } from '../../services/review.service.client';
 import { Review } from '../../models/review.model.client';
+import { DOCUMENT } from '@angular/common';
+declare var $: any
+
 
 @Component({
   selector: 'app-search',
@@ -30,10 +33,22 @@ export class SearchComponent implements OnInit {
   potentialRating:number;
   overallRating:number;
 
-  constructor(private reviewService: ReviewService, private userService: UserService, 
+  constructor(@Inject(DOCUMENT) document, private reviewService: ReviewService, private userService: UserService, 
   	private activatedRoute: ActivatedRoute,
     public sharedService: SharedService) { 
   }
+
+selectRating(){
+  this.sharedService.clearRating()
+}
+
+clearAll(){
+  this.sharedService.item.name = "";
+  this.sharedService.item.city = "";
+  this.sharedService.item.state = "";
+  this.sharedService.item.area = "";
+  this.sharedService.clearRating();
+}
 
   ngOnInit() {
     this.user = this.sharedService.user;
@@ -42,7 +57,6 @@ export class SearchComponent implements OnInit {
     this.userService.findUser2().subscribe(
       (user2:User[])=>{
         this.user2 = user2;//the list of all user2
-        console.log(this.user2)
         for (let x=0; x<this.user2.length; x++){
           this.reviewService.findReviewByUser2(this.user2[x]._id).subscribe(
             (reviews:Review[])=>{

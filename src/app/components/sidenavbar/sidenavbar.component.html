@@ -1,27 +1,27 @@
 <div id="mySidenav" class="row sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <div class="col-10">
-    <form (ngSubmit)="search()" id="SearchForm" #f="ngForm"><!-- -->
-      <label class="col-form-label">Name</label>
+  <div class="col-10" style=" padding-right: 0px">
+    <form (ngSubmit)="search()" id="searchForm" #f="ngForm"><!-- -->
+      <label class="col-form-label">Name<a *ngIf="this.name !== ''" (click)="this.name =''" class="float-right" style="font-size: 12px; padding-right: 0px" routerLink="#">Clear</a></label>
         <input type="text" name="name" placeholder="Lawyer name, or firm" class="form-control" [(ngModel)]="name">
       <br>
-      <label class="col-form-label">City</label>
+      <label class="col-form-label">City<a *ngIf="this.city !== ''" (click)="this.city =''" class="float-right" style="font-size: 12px; padding-right: 0px" routerLink="#">Clear</a></label>
         <input type="text" name="city" class="form-control" [(ngModel)]="city">
       <br>
-      <label class="col-form-label">State</label>
+      <label class="col-form-label">State<a *ngIf="this.stateValue !== ''" (click)="this.stateValue =''" class="float-right" style="font-size: 12px; padding-right: 0px" routerLink="#">Clear</a></label>
       <select class="form-group input-group form-control" name="state" [(ngModel)]="stateValue">
             <option value="{{state.value}}" *ngFor="let state of states">{{state.name}}</option>
       </select>
-      <label class="col-form-label">Pratice Area</label>
+      <label class="col-form-label">Pratice Area<a *ngIf="this.area1Value !== ''" (click)="this.area1Value =''" class="float-right" style="font-size: 12px; padding-right: 0px" routerLink="#">Clear</a></label>
       <select class="form-group input-group form-control" name="area1" [(ngModel)]="area1Value">
         <option value="{{area.name}}" *ngFor="let area of areas">{{area.name}}</option>
       </select>
-      <label class="col-form-label">Rating</label>
-      <input type="checkbox" name="rating" value="5 Stars" checked [(ngModel)]="fiveStar"> 5 Stars<br>
-      <input type="checkbox" name="rating" value="4 Stars" [(ngModel)]="fourStar"> 4 Stars<br>
-      <input type="checkbox" name="rating" value="3 Stars" [(ngModel)]="threeStar"> 3 Stars<br>
-      <input type="checkbox" name="rating" value="2 Stars" [(ngModel)]="twoStar"> 2 Stars<br>
-      <input type="checkbox" name="rating" value="1 Star"  [(ngModel)]="oneStar"> 1 Star<br>
+      <label class="col-form-label">Rating<a *ngIf="this.fiveStar !== undefined || this.fourStar !== undefined || this.threeStar !== undefined || this.twoStar !== undefined || this.oneStar !== undefined" (click)="this.fiveStar =undefined || this.fourStar =undefined || this.threeStar =undefined || this.twoStar =undefined || this.oneStar =undefined" class="float-right" style="font-size: 12px; padding-right: 0px" routerLink="#">Clear</a></label>
+      <input type="radio" name="rating" value="5 Stars" [(ngModel)]="fiveStar"> 5 Stars<br>
+      <input type="radio" name="rating" value="4 Stars" [(ngModel)]="fourStar"> 4 Stars<br>
+      <input type="radio" name="rating" value="3 Stars" [(ngModel)]="threeStar"> 3 Stars<br>
+      <input type="radio" name="rating" value="2 Stars" [(ngModel)]="twoStar"> 2 Stars<br>
+      <input type="radio" name="rating" value="1 Star"  [(ngModel)]="oneStar"> 1 Star<br>
       <br>            
       <button class="btn btn-success" type="submit">Search</button>
     </form><!-- -->
