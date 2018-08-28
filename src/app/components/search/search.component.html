@@ -15,7 +15,7 @@
 		</span>
 		<button class="float-right" style="margin-right: 10px" (click)="clearAll()">Clear All</button>
 	</div>
-  	<div  *ngFor="let user of user2 | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area: this.sharedService.item.fiveStar: this.sharedService.item.fourStar: this.sharedService.item.threeStar: this.sharedService.item.twotar: this.sharedService.item.oneStar;">
+  	<div  *ngFor="let user of user2 | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area: this.sharedService.item.fiveStar: this.sharedService.item.fourStar: this.sharedService.item.threeStar: this.sharedService.item.twoStar: this.sharedService.item.oneStar;">
   	
   	<!-- attn with rating 3 or above -->
   	<div *ngIf="user.overallRating >= 3 || user.overallRating === 0" class="row animate-bottom pg-review-style">
