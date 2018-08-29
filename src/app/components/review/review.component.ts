@@ -83,7 +83,6 @@ export class ReviewComponent implements OnInit {
       this.reviewService.findReviewByUser2(this.uid2).subscribe(
         (reviews:Review[])=>{
           this.reviews = reviews;
-          console.log(this.reviews)
         for (let x=0; x<this.reviews.length; x++){//to get the count for each rating
           if(reviews[x].rating === 1){
             this.count1star = this.reviews.filter((obj) => obj.rating === reviews[x].rating).length
@@ -206,5 +205,6 @@ selectedReview:string;
 toggle(){// for about this attorney section
   $("#panel").slideToggle("fast");
 }
+
 
 }

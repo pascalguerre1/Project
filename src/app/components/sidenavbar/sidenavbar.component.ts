@@ -116,7 +116,19 @@ export class SidenavbarComponent implements OnInit {
     document.getElementById("mySidenav").style.width = "0";
   }
 
-  clearRating(){// reset the rating after a search
+  clearRating(){// reset the search form after a search
+    if(this.name){
+      this.name=  "";
+    }
+    if(this.city){
+      this.city=  "";
+    }
+    if(this.stateValue){
+      this.stateValue=  "";
+    }
+    if(this.area1Value){
+      this.area1Value=  "";
+    }
     if(this.fiveStar){
       this.fiveStar=  undefined;
     }
@@ -150,6 +162,7 @@ export class SidenavbarComponent implements OnInit {
     this.clearRating();
     this.closeNav();
     this.router.navigate(['/search']);
+    this.sharedService.uptadeFilterCount();
   }
 
 }

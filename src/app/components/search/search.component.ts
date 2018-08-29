@@ -7,6 +7,7 @@ import { SharedService } from '../../services/shared.service.client';
 import { ReviewService } from '../../services/review.service.client';
 import { Review } from '../../models/review.model.client';
 import { DOCUMENT } from '@angular/common';
+import { NgForm } from '@angular/forms';
 declare var $: any
 
 
@@ -33,13 +34,21 @@ export class SearchComponent implements OnInit {
   potentialRating:number;
   overallRating:number;
 
+  user2FilterCount: any;
+  filterCount: any;
+
   constructor(@Inject(DOCUMENT) document, private reviewService: ReviewService, private userService: UserService, 
   	private activatedRoute: ActivatedRoute,
     public sharedService: SharedService) { 
   }
 
+onChange(inputValue) {
+  this.sharedService.uptadeFilterCount();
+}
+
 selectRating(){
-  this.sharedService.clearRating()
+  this.sharedService.uptadeFilterCount();
+  this.sharedService.clearRating();
 }
 
 clearAll(){
@@ -48,6 +57,7 @@ clearAll(){
   this.sharedService.item.state = "";
   this.sharedService.item.area = "";
   this.sharedService.clearRating();
+  this.sharedService.uptadeFilterCount();
 }
 
   ngOnInit() {
@@ -109,6 +119,7 @@ clearAll(){
       }
     )
    });
+  this.sharedService.uptadeFilterCount();
   }
 
 }

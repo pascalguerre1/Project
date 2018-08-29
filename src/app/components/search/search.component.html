@@ -1,10 +1,10 @@
 <div id="body" class="small">
 	<div class="pg-empty-style"></div>
 	<div class="pg-grey-style">
-		<input id="name" type="text" [(ngModel)]="this.sharedService.item.name" placeholder="Search by Name"/>
-		<input id="city" type="text" [(ngModel)]="this.sharedService.item.city" placeholder="Search by City"/>
-		<input id="state" type="text" [(ngModel)]="this.sharedService.item.state" placeholder="Search by State"/>
-		<input id="area" type="text" [(ngModel)]="this.sharedService.item.area" placeholder="Search by Practice area"/>
+		<input id="name" type="text" [(ngModel)]="this.sharedService.item.name" placeholder="Search by Name" (change)="onChange($event.target.value)"/>
+		<input id="city" type="text" [(ngModel)]="this.sharedService.item.city" placeholder="Search by City" (change)="onChange($event.target.value)"/>
+		<input id="state" type="text" [(ngModel)]="this.sharedService.item.state" placeholder="Search by State" (change)="onChange($event.target.value)"/>
+		<input id="area" type="text" [(ngModel)]="this.sharedService.item.area" placeholder="Search by Practice area" (change)="onChange($event.target.value)"/>
 
 		<span style="color: white">
 		  &nbsp;Stars: <input type="radio" name="rating" value="5 Stars" [(ngModel)]="this.sharedService.item.fiveStar" (click)="selectRating()"> 5
@@ -13,10 +13,14 @@
 	      <input type="radio" name="rating" value="2 Stars" [(ngModel)]="this.sharedService.item.twoStar" (click)="selectRating()"> 2  
 	      <input type="radio" name="rating" value="1 Star"  [(ngModel)]="this.sharedService.item.oneStar" (click)="selectRating()"> 1  
 		</span>
-		<button class="float-right" style="margin-right: 10px" (click)="clearAll()">Clear All</button>
+		<a style="color: white; font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>(Results: <a id="filterCount"></a>)</i></a>
+		<button class="float-right" style="margin-right: 10px" (click)="clearAll()">Clear</button>
 	</div>
-  	<div  *ngFor="let user of user2 | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area: this.sharedService.item.fiveStar: this.sharedService.item.fourStar: this.sharedService.item.threeStar: this.sharedService.item.twoStar: this.sharedService.item.oneStar;">
-  	
+  	<div #myVar *ngFor="let user of user2 | attorneyFilter: this.sharedService.item.name: this.sharedService.item.city: this.sharedService.item.state: this.sharedService.item.area: this.sharedService.item.fiveStar: this.sharedService.item.fourStar: this.sharedService.item.threeStar: this.sharedService.item.twoStar: this.sharedService.item.oneStar; let i = index; let l = last">
+
+    <!-- used for getting the count on fitered results -->
+	<span  *ngIf="l" id="user2FilterCount" innerHtml="{{i+1}}" style="display: none"></span>
+
   	<!-- attn with rating 3 or above -->
   	<div *ngIf="user.overallRating >= 3 || user.overallRating === 0" class="row animate-bottom pg-review-style">
   		<div class="col-md-3 text-center">
@@ -89,7 +93,7 @@
 			<br>
           <div>
             <p class="text-center"><b><a routerLink="/user/reviews/{{user._id}}">{{user.reviewCount}} Review(s)</a></b></p>
-            <p *ngIf="user.reviewCount === 0" class="text-center" style="font-size: 12px">Be the first to write a review for this attorney</p>
+            <p *ngIf="user.reviewCount === 0" class="text-center" style="font-size: 10.5px">Be the first to write a review for this attorney</p>
           </div>
   		</div>
   	</div>

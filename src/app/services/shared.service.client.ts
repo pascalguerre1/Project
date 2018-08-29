@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+declare var $: any
 
 @Injectable()
 export class SharedService {
@@ -24,7 +26,6 @@ export class SharedService {
      message:"",
    };
 
-
   clearRating(){// reset the rating after a search
     if(this.item.fiveStar){
       this.item.fiveStar=  undefined;
@@ -42,6 +43,20 @@ export class SharedService {
       this.item.oneStar=  undefined;
     }
   }
+
+
+uptadeFilterCount(){
+  $(document).ready(function(){
+    try { 
+      this.filterCount = document.getElementById("user2FilterCount").innerHTML;//if the result 0 there's an error. i use catch and try to handle it
+    }
+    catch(error){
+      this.filterCount = 0;
+    }
+    document.getElementById("filterCount").innerHTML = this.filterCount;
+  });  
+}
+
 
      states = [
           {name: "Alabama", value: "AL"},
