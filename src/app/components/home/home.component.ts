@@ -38,6 +38,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     realEst(){
 	    var val = $('.realEst')[0].innerHTML;
@@ -46,6 +47,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     tax(){
 	    var val = $('.tax')[0].innerHTML;
@@ -54,6 +56,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     bank(){
 	    var val = $('.bank')[0].innerHTML;
@@ -62,6 +65,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     crim(){
 	    var val = $('.crim')[0].innerHTML;
@@ -70,6 +74,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     imm(){
 	    var val = $('.imm')[0].innerHTML;
@@ -78,6 +83,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     bus(){
 	    var val = $('.bus')[0].innerHTML;
@@ -86,6 +92,7 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
     fam(){
 	    var val = $('.fam')[0].innerHTML;
@@ -94,5 +101,6 @@ name: string;
 	    }
 	    this.sharedService.item = item;
 	    this.router.navigate(['/search']);
+	    this.sharedService.uptadeFilterCount();
     }
 }

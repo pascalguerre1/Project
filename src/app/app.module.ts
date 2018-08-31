@@ -51,7 +51,7 @@ import { MessagelistComponent } from './components/messagelist/messagelist.compo
     SidenavbarComponent,
     UserlistComponent,
     MessagelistComponent,
-    MessagePipe
+    MessagePipe,
     ],
   imports: [
     BrowserModule,

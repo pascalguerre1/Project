@@ -39,6 +39,9 @@ export class ReviewComponent implements OnInit {
   potentialRating:number;
   overallRating:number;
 
+  oneStar: boolean =undefined;
+
+
   attn:User;
 
      resp = [
@@ -65,6 +68,7 @@ export class ReviewComponent implements OnInit {
   	private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.check = true;//to filter review for all.
     window.scrollTo(0, 0);//move to top of page when refresh
     this.user = this.sharedService.user;
     if(!this.user){
@@ -205,6 +209,47 @@ selectedReview:string;
 toggle(){// for about this attorney section
   $("#panel").slideToggle("fast");
 }
+
+//to filter the reviews without using a pipe
+  oneStarList: Review[];
+  twoStarList: Review[];
+  threeStarList: Review[];
+  fourStarList: Review[];
+  fiveStarList: Review[];
+  Reviewfiltered: Review[];
+  check: boolean = true;
+  
+  filter1StarReview(){
+    this.check = false;
+    let oneStar = 1;
+    this.oneStarList = this.reviews.filter((review: Review) => review.rating === oneStar);
+    this.Reviewfiltered = this.oneStarList;
+    console.log(this.Reviewfiltered)
+  }
+  filter2StarReview(){
+    this.check = false;
+    let twoStar = 2;
+    this.twoStarList = this.reviews.filter((review: Review) => review.rating === twoStar);
+    this.Reviewfiltered = this.twoStarList;
+  }
+  filter3StarReview(){
+    this.check = false;
+    let threeStar = 3;
+    this.threeStarList = this.reviews.filter((review: Review) => review.rating === threeStar);
+    this.Reviewfiltered = this.threeStarList;
+  }
+  filter4StarReview(){
+    this.check = false;
+    let fourStar = 4;
+    this.fourStarList = this.reviews.filter((review: Review) => review.rating === fourStar);
+    this.Reviewfiltered = this.fourStarList;
+  }  
+  filter5StarReview(){
+    this.check = false;
+    let fiveStar = 5;
+    this.fiveStarList = this.reviews.filter((review: Review) => review.rating === fiveStar); 
+    this.Reviewfiltered = this.fiveStarList;   
+  }
 
 
 }

@@ -8,7 +8,7 @@ export class SharedService {
    attorneyRegs: boolean;
    practiceAreas: any[] = [];
    maxAreaError: boolean;
-   item: any = {
+   item: any = {// for user2 pipe
    	name: "",
    	city: "",
    	state:"",
@@ -20,7 +20,7 @@ export class SharedService {
     oneStar: undefined,
    };
 
-   item1: any = {
+   item1: any = {//for message pipe
      name: "",
      email: "",
      message:"",
